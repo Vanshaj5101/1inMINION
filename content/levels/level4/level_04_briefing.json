@@ -1,0 +1,52 @@
+{
+  "level": {
+    "number": "04",
+    "title": "Give Minion the Wheel",
+    "eyebrow": "// LEVEL 04 - AGENTS + MCPs",
+    "concept": "Agents + MCPs",
+    "duration": "10 min",
+    "subdescription": "Until now you have been giving orders. Your Minion responds. You decide the next step. That changes now. Connect your Minion to your real calendar - and watch them take action in the real world without you lifting a finger."
+  },
+
+  "mission_check": [
+    "Connected Google Calendar to Claude",
+    "Minion read the calendar and found a free slot",
+    "Minion sent the heist planning invite"
+  ],
+
+  "what_are_mcps": "Until now, your Minion has been thinking inside Claude. They can read data. They can answer questions. They can build pitch decks.\n\nBut they cannot touch anything outside.\n\nMCPs - Model Context Protocols - change that. An MCP is a connector. It lets Claude reach into a real tool and take real action. Not just talk about it. Do it.\n\nToday you connect Google Calendar. Your Minion will read your schedule, find a free slot, book a meeting, and send an invite - all from one instruction.",
+
+  "mission_targets": [
+    "Connect Claude to your Google Calendar using a Connector",
+    "Watch your Minion read your real calendar data",
+    "Give your Minion a goal and let them figure out the rest",
+    "Send a real calendar invite to your partner - your Minion does it for you"
+  ],
+
+  "mission_gear": [
+    {
+      "id": "connectors",
+      "name": "Connectors",
+      "definition": "Connectors let Claude reach outside the chat and take real action inside tools you already use - like your calendar, drive, or email.",
+      "theme_translation": "Until now your Minion has been thinking inside the lair. Connectors give them legs. They can now walk out of the lair and do things in the real world - book meetings, read your schedule, send invites - without you doing it yourself.",
+      "why_useful": [
+        "Claude stops being a chat tool and becomes a doing tool",
+        "One instruction - Claude figures out the steps",
+        "Works with tools you already use every day",
+        "This is what people mean when they say AI agents"
+      ]
+    },
+    {
+      "id": "mcps",
+      "name": "MCPs",
+      "definition": "MCP stands for Model Context Protocol - the technology standard that lets Claude connect to external tools and take actions beyond the conversation.",
+      "theme_translation": "Think of MCP as the secret tunnel from Gru's Lair to the outside world. Connectors are the doors built on top of that tunnel. You do not need to understand the tunnel - just open the door.",
+      "why_useful": [
+        "It is what powers Connectors under the hood",
+        "Any tool with an MCP can connect to Claude",
+        "The ecosystem is growing - new tools connecting every month",
+        "This is the future of how AI works inside real workflows"
+      ]
+    }
+  ]
+}

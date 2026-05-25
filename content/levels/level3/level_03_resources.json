@@ -1,0 +1,27 @@
+{
+  "level": "03",
+  "resources": [
+    {
+      "id": "prompt-no-skill",
+      "type": "prompt",
+      "label": "Pitch Prompt - Without Skill",
+      "instruction": "Open your Project from Level 2. Start a new chat. Copy and paste this prompt:",
+      "content": "Create a pitch deck for Operation: Steal the Sun using our mission plan and findings."
+    },
+    {
+      "id": "skill-file",
+      "type": "download",
+      "label": "Pitch Deck Skill File",
+      "filename": "pitch_skill.md",
+      "description": "This Skill trains your Minion to build structured, data-backed pitch decks. It works in any Project - not just this one."
+    },
+    {
+      "id": "prompt-with-skill",
+      "type": "prompt",
+      "label": "Pitch Prompt - With Skill",
+      "instruction": "Go back to your Project. Start a new chat. Copy and paste the exact same prompt:",
+      "content": "Create a pitch deck for Operation: Steal the Sun using our mission plan and findings.",
+      "note": "Same words. Watch what your Minion does differently this time."
+    }
+  ]
+}

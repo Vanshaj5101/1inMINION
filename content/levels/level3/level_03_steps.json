@@ -1,0 +1,32 @@
+{
+  "level": "03",
+  "title": "Train Your Minion",
+  "cards": [
+    {
+      "card": "01",
+      "title": "Run Without Skill",
+      "type": "prompt",
+      "resource_id": "prompt-no-skill",
+      "description": "Paste the prompt into a new chat inside your Project. Claude will respond immediately - save the output, you will compare it in Step 3."
+    },
+    {
+      "card": "02",
+      "title": "Add the Skill",
+      "type": "action-download",
+      "resource_id": "skill-file",
+      "description": "Navigate to Customize Claude and upload the Skill file to train your Minion.",
+      "steps": [
+        { "id": "step-02", "short_title": "Open Customize", "description": "Click Customize Claude in the left sidebar of Claude." },
+        { "id": "step-03", "short_title": "Go to Skills",   "description": "Click Skills inside the Customize panel." },
+        { "id": "step-04", "short_title": "Upload the Skill", "description": "Click Add Skill, then Create Skill, then upload the skill file below." }
+      ]
+    },
+    {
+      "card": "03",
+      "title": "Run Same Prompt Again",
+      "type": "prompt",
+      "resource_id": "prompt-with-skill",
+      "description": "Copy the exact same prompt. Paste it into Claude. Watch what happens differently this time."
+    }
+  ]
+}

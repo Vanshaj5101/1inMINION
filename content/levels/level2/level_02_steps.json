@@ -1,0 +1,64 @@
+{
+  "level": "02",
+  "title": "Set Up Base",
+  "cards": [
+    {
+      "card": "01",
+      "title": "Create Your Project",
+      "type": "action",
+      "steps": [
+        { "id": "step-01", "short_title": "Open Claude",      "description": "Go to claude.ai and sign in to your account." },
+        { "id": "step-02", "short_title": "Go to Projects",   "description": "Click Projects in the left sidebar of Claude." },
+        { "id": "step-03", "short_title": "New Project",      "description": "Click New Project to create your Minion's base." },
+        { "id": "step-04", "short_title": "Name Your Base",   "description": "Name it after your Minion - example: KEVIN's Heist Base." },
+        { "id": "step-05", "short_title": "Add Description",  "description": "In the description field add:", "copy_value": "Planning for Heist to the Sun" }
+      ]
+    },
+    {
+      "card": "02",
+      "title": "Add Instructions",
+      "type": "copy",
+      "resource_id": "project-instructions",
+      "description": "Copy the instructions below and paste into the instructions field."
+    },
+    {
+      "card": "03",
+      "title": "Upload Mission Data",
+      "type": "download",
+      "resource_id": "mission-data",
+      "description": "Download the mission data file and upload it under Files."
+    },
+    {
+      "card": "04",
+      "title": "Meet & Test Your Minion",
+      "type": "multi-prompt",
+      "description": "Run both prompts inside your Project to meet your Minion and verify their memory.",
+      "prompts": [
+        {
+          "id": "prompt-meet-minion",
+          "label": "Meet Your Minion",
+          "description": "Open your Project, start a new chat, and ask your Minion who they are."
+        },
+        {
+          "id": "prompt-test-memory",
+          "label": "Test the Memory",
+          "description": "Open another new chat and ask your Minion about the mission data."
+        }
+      ]
+    }
+  ],
+  "mission": {
+    "card": "06",
+    "title": "Find the Answers",
+    "type": "mission",
+    "resource_id": "mission-questions",
+    "description": "Ask your Minion the 5 mission questions to plan the heist."
+  },
+  "bonus": {
+    "card": "07",
+    "title": "Bonus Tool",
+    "type": "prompt",
+    "resource_id": "prompt-special-tool",
+    "description": "Ask your Minion to invent one unique tool based on what the data revealed."
+  }
+}

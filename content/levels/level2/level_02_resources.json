@@ -1,0 +1,72 @@
+{
+  "level": "02",
+  "resources": [
+    {
+      "id": "project-instructions",
+      "type": "copy",
+      "label": "Project Instructions",
+      "content": "You are [MINION NAME] - a data-driven mission strategist for 1inMINION. You are not a regular Minion. You are the one who reads the data while everyone else is eating bananas. Bello!\n\nWe are planning Operation: Steal the Sun. The moon heist failed. This time we do it right. You have access to 374 previous Minion mission records covering timing, ship type, team size, budget, and why missions failed. Use this data to help us make smarter decisions than every team that came before us.\n\nFor every question, always give a specific number or percentage, highlight the most surprising finding, and end with one clear recommendation. No vague answers. One recommendation only. Gru is a busy man.\n\nKeep a touch of Minion energy - Bello, Poopaye, Whaaat - but stay sharp. And whatever you do, do not get distracted by bananas. The data shows exactly where that leads."
+    },
+    {
+      "id": "mission-data",
+      "type": "download",
+      "label": "Mission Data File",
+      "filename": "minion_mission_data.csv",
+      "description": "374 records of previous Minion heist attempts. Your Minion will use this to answer the 5 mission questions."
+    },
+    {
+      "id": "prompt-meet-minion",
+      "type": "prompt",
+      "label": "Meet Your Minion",
+      "instruction": "Open your Project. Start a new chat inside it. Copy and paste this prompt:",
+      "content": "Hey [MINION NAME], how are you doing? Can you share what we are trying to do today?"
+    },
+    {
+      "id": "prompt-test-memory",
+      "type": "prompt",
+      "label": "Test the Memory",
+      "instruction": "Open another new chat inside the same Project. Copy and paste this prompt:",
+      "content": "Can you share how many records of mission data you have access to and what kind of information is in there?"
+    },
+    {
+      "id": "mission-questions",
+      "type": "mission",
+      "label": "The 5 Mission Questions",
+      "instruction": "Ask your Minion each of these questions in your Project chat. You can ask them one by one or all together.",
+      "questions": [
+        {
+          "number": "01",
+          "title": "When should we go?",
+          "prompt": "Look at the mission data and tell me - when is the best time to attempt the heist? Which month had the highest success rate and how long should the mission take?"
+        },
+        {
+          "number": "02",
+          "title": "Which ship should we take?",
+          "prompt": "Based on the mission records, which ship type and company gives us the best chance of success? Show me the numbers and give me one clear recommendation."
+        },
+        {
+          "number": "03",
+          "title": "How big should our team be?",
+          "prompt": "What does the data say about team size and experience? What combination gave the highest success rate on previous missions?"
+        },
+        {
+          "number": "04",
+          "title": "What budget do we need?",
+          "prompt": "Look at budget ranges across all missions. Which budget category succeeded most often? Was there anything surprising about how money affected mission outcomes?"
+        },
+        {
+          "number": "05",
+          "title": "Why did previous missions fail?",
+          "prompt": "Analyze the failure reasons across all 374 missions. What was the single most common reason missions failed? What should we absolutely avoid on our mission?"
+        }
+      ]
+    },
+    {
+      "id": "prompt-special-tool",
+      "type": "prompt",
+      "label": "Bonus - The Special Tool",
+      "instruction": "Ask your Minion to invent something no previous mission team had. Copy and paste this prompt:",
+      "content": "Based on everything you found in the data - especially why previous missions failed - invent one special tool that solves our biggest mission risk. Give it a name, one sentence on what it does, and why it gives us an edge no previous mission team had."
+    }
+  ]
+}

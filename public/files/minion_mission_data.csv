@@ -1,0 +1,375 @@
+mission_id,mission_nickname,month_approached,season,duration_days,side_of_sun,ship_type,ship_company,team_size,team_avg_experience_years,budget_range,success,failure_reason
+MIN-0001,Project Yellow Ball 42,March,Spring,7,South,Magma Cruiser,Stark Industries,6,7.5,Mid,Yes,N/A
+MIN-0002,Operation Solar Flare 88,November,Autumn,16,West,Magma Cruiser,Stark Industries,6,6.9,Mid,Yes,N/A
+MIN-0003,Project Plasma 40,February,Winter,24,North,Solar Glider,Wayne Enterprise,3,3.3,Low,No,Ship could not handle the heat
+MIN-0004,Project Banana Split 46,April,Spring,15,South,Turbo Pod,ASU Learning Enterprise,2,3.1,Low,No,Minions distracted by bananas and jelly
+MIN-0005,Project Plasma 99,November,Autumn,7,East,Solar Glider,Wayne Enterprise,7,6.4,High,Yes,N/A
+MIN-0006,Mission Hot Stuff 21,November,Autumn,13,South,Solar Glider,Wayne Enterprise,7,5.9,High,Yes,N/A
+MIN-0007,Operation Crispy 59,November,Autumn,20,West,Magma Cruiser,Stark Industries,5,7.7,Mid,Yes,N/A
+MIN-0008,Project Plasma 87,May,Spring,16,North,Banana Rocket,Banana Industries,7,2.7,Ultra,No,Minions distracted by bananas and jelly
+MIN-0009,Operation Star Grab 21,February,Winter,9,West,Solar Glider,Wayne Enterprise,3,2.9,Low,No,Minions distracted by bananas and jelly
+MIN-0010,Project Meltdown 83,March,Spring,22,North,Magma Cruiser,Stark Industries,7,6.4,Mid,No,Crew quit mid-mission
+MIN-0011,Mission Hot Stuff 12,September,Autumn,6,South,Turbo Pod,ASU Learning Enterprise,3,4.4,High,No,Ship could not handle the heat
+MIN-0012,Operation Tan Lines 6,March,Spring,6,West,Magma Cruiser,Stark Industries,6,6.9,Mid,Yes,N/A
+MIN-0013,Project Overcooked 20,October,Autumn,5,West,Magma Cruiser,Stark Industries,8,5.2,High,Yes,N/A
+MIN-0014,Operation Sunshine 93,June,Summer,25,South,Solar Glider,Wayne Enterprise,7,1.3,Ultra,Yes,N/A
+MIN-0015,Project Meltdown 49,November,Autumn,15,East,Banana Rocket,Banana Industries,6,4.6,Low,No,Forgot the shrink ray
+MIN-0016,Operation Star Grab 60,July,Summer,11,North,Solar Glider,Wayne Enterprise,13,1.6,Ultra,Yes,N/A
+MIN-0017,Operation Crispy 13,March,Spring,14,North,Magma Cruiser,Stark Industries,6,8.0,Mid,Yes,N/A
+MIN-0018,Mission Too Bright 30,November,Autumn,21,West,Magma Cruiser,Stark Industries,7,8.3,Mid,Yes,N/A
+MIN-0019,Mission Star Heist 74,March,Spring,12,South,Magma Cruiser,Stark Industries,5,5.7,Mid,No,Minions distracted by bananas and jelly
+MIN-0020,Project Banana Split 55,November,Autumn,15,West,Solar Glider,Wayne Enterprise,7,6.9,High,Yes,N/A
+MIN-0021,Mission Too Bright 12,February,Winter,5,West,Magma Cruiser,Stark Industries,6,4.6,Mid,No,Minions fell asleep on duty
+MIN-0022,Operation Sunburn 44,August,Summer,7,East,Magma Cruiser,Stark Industries,11,3.0,High,Yes,N/A
+MIN-0023,Operation Star Grab 99,May,Spring,17,East,Banana Rocket,Banana Industries,4,1.4,Ultra,No,Minions distracted by bananas and jelly
+MIN-0024,Operation Sunshine 78,April,Spring,15,North,Solar Glider,Wayne Enterprise,8,5.4,High,Yes,N/A
+MIN-0025,Mission Star Heist 11,February,Winter,16,East,Magma Cruiser,Stark Industries,7,6.1,Mid,Yes,N/A
+MIN-0026,Operation Scorched 69,February,Winter,23,East,Magma Cruiser,Stark Industries,7,5.2,Mid,Yes,N/A
+MIN-0027,Project Yellow Ball 69,September,Autumn,5,South,Shadow Stealth,Oscorp,8,5.0,Mid,Yes,N/A
+MIN-0028,Operation Crispy 21,June,Summer,25,North,Solar Glider,Wayne Enterprise,10,2.8,Ultra,No,Minions distracted by bananas and jelly
+MIN-0029,Operation Sun Bro 3,November,Autumn,7,West,Solar Glider,Wayne Enterprise,6,5.6,High,Yes,N/A
+MIN-0030,Operation Sunburn 61,April,Spring,23,North,Solar Glider,Wayne Enterprise,6,4.6,High,Yes,N/A
+MIN-0031,Mission Toasty 30,October,Autumn,8,South,Magma Cruiser,Stark Industries,7,5.4,High,No,Minions fell asleep on duty
+MIN-0032,Project Banana Split 76,August,Summer,6,North,Turbo Pod,ASU Learning Enterprise,2,7.4,High,Yes,N/A
+MIN-0033,Operation Sunshine 60,February,Winter,7,East,Magma Cruiser,Stark Industries,8,4.5,Mid,Yes,N/A
+MIN-0034,Project Blazing 69,March,Spring,16,East,Banana Rocket,Banana Industries,5,3.9,Low,Yes,N/A
+MIN-0035,Operation Star Grab 99,May,Spring,10,East,Shadow Stealth,Oscorp,6,5.3,High,No,Minions distracted by bananas and jelly
+MIN-0036,Operation Bright Idea 92,October,Autumn,12,East,Magma Cruiser,Stark Industries,6,5.2,High,Yes,N/A
+MIN-0037,Operation Star Grab 66,January,Winter,9,South,Banana Rocket,Banana Industries,7,1.5,Low,Yes,N/A
+MIN-0038,Operation Gru Strikes Back 26,October,Autumn,24,West,Shadow Stealth,Oscorp,7,3.7,Mid,Yes,N/A
+MIN-0039,Operation Tan Lines 72,October,Autumn,12,East,Magma Cruiser,Stark Industries,6,4.3,High,Yes,N/A
+MIN-0040,Project Sun Grab 68,August,Summer,14,South,Banana Rocket,Banana Industries,7,2.5,Low,No,Minions distracted by bananas and jelly
+MIN-0041,Project Sun Grab 34,December,Winter,21,North,Magma Cruiser,Stark Industries,8,3.0,High,No,Ship could not handle the heat
+MIN-0042,Project Sunspot 3,December,Winter,15,North,Magma Cruiser,Stark Industries,8,5.1,High,No,Minions fell asleep on duty
+MIN-0043,Operation Sunscreen 69,November,Autumn,5,South,Magma Cruiser,Stark Industries,7,6.1,Mid,Yes,N/A
+MIN-0044,Operation Bright Idea 4,March,Spring,7,North,Shadow Stealth,Oscorp,7,4.6,Mid,Yes,N/A
+MIN-0045,Project Sun Grab 82,March,Spring,17,North,Shadow Stealth,Oscorp,7,6.0,Mid,Yes,N/A
+MIN-0046,Mission Star Heist 44,September,Autumn,7,East,Shadow Stealth,Oscorp,6,4.7,Mid,Yes,N/A
+MIN-0047,Operation Sunshine 50,October,Autumn,13,West,Magma Cruiser,Stark Industries,9,5.0,High,Yes,N/A
+MIN-0048,Mission Sunroof 16,November,Autumn,7,South,Solar Glider,Wayne Enterprise,6,3.7,High,No,Minions distracted by bananas and jelly
+MIN-0049,Operation Tan Lines 37,November,Autumn,19,West,Shadow Stealth,Oscorp,7,5.7,Mid,Yes,N/A
+MIN-0050,Mission Star Heist 5,December,Winter,21,East,Shadow Stealth,Oscorp,6,6.6,Mid,Yes,N/A
+MIN-0051,Operation Star Grab 85,November,Autumn,23,East,Magma Cruiser,Stark Industries,5,8.9,Mid,Yes,N/A
+MIN-0052,Project Blazing 4,October,Autumn,23,East,Magma Cruiser,Stark Industries,8,6.1,High,Yes,N/A
+MIN-0053,Mission Toasty 69,March,Spring,5,South,Solar Glider,Wayne Enterprise,7,3.4,High,Yes,N/A
+MIN-0054,Mission Hot Stuff 39,December,Winter,9,South,Magma Cruiser,Stark Industries,7,4.8,High,Yes,N/A
+MIN-0055,Operation Bright Idea 57,September,Autumn,13,East,Magma Cruiser,Stark Industries,6,6.1,High,Yes,N/A
+MIN-0056,Operation Sunburn 77,December,Winter,6,North,Shadow Stealth,Oscorp,5,5.7,Mid,Yes,N/A
+MIN-0057,Operation Star Grab 62,March,Spring,22,North,Magma Cruiser,Stark Industries,5,7.6,Mid,Yes,N/A
+MIN-0058,Operation Solar Flare 65,March,Spring,16,North,Turbo Pod,ASU Learning Enterprise,2,4.1,Mid,No,Ship could not handle the heat
+MIN-0059,Project Blazing 18,November,Autumn,13,North,Magma Cruiser,Stark Industries,6,5.2,Mid,Yes,N/A
+MIN-0060,Project Blazing 22,October,Autumn,12,North,Shadow Stealth,Oscorp,8,4.2,Mid,No,Shrink ray malfunctioned
+MIN-0061,Mission Star Heist 29,October,Autumn,16,East,Shadow Stealth,Oscorp,8,5.7,Mid,Yes,N/A
+MIN-0062,Operation Sunburn 17,May,Spring,24,South,Banana Rocket,Banana Industries,4,2.9,Ultra,No,Minions distracted by bananas and jelly
+MIN-0063,Operation Sun Bro 19,September,Autumn,10,West,Magma Cruiser,Stark Industries,6,6.3,High,Yes,N/A
+MIN-0064,Project Blazing 63,April,Spring,25,East,Solar Glider,Wayne Enterprise,5,3.3,High,No,Shrink ray malfunctioned
+MIN-0065,Operation Bright Idea 41,September,Autumn,5,South,Magma Cruiser,Stark Industries,7,6.7,High,No,Crew quit mid-mission
+MIN-0066,Operation Gru Strikes Back 93,November,Autumn,5,North,Shadow Stealth,Oscorp,6,6.7,Mid,Yes,N/A
+MIN-0067,Operation Sun Bro 15,October,Autumn,19,West,Solar Glider,Wayne Enterprise,4,2.5,Low,No,Minions distracted by bananas and jelly
+MIN-0068,Operation Tan Lines 82,November,Autumn,21,South,Shadow Stealth,Oscorp,6,7.0,Mid,Yes,N/A
+MIN-0069,Operation Gru Strikes Back 95,December,Winter,9,South,Magma Cruiser,Stark Industries,10,4.2,High,No,Minions distracted by bananas and jelly
+MIN-0070,Project Corona 5,September,Autumn,18,East,Shadow Stealth,Oscorp,5,5.5,Mid,No,Ran out of fuel
+MIN-0071,Operation Solar Flare 48,November,Autumn,13,West,Banana Rocket,Banana Industries,6,4.6,Low,No,Minions distracted by bananas and jelly
+MIN-0072,Operation Star Grab 11,October,Autumn,16,West,Solar Glider,Wayne Enterprise,5,4.7,Low,Yes,N/A
+MIN-0073,Project Sunspot 81,November,Autumn,22,West,Magma Cruiser,Stark Industries,6,6.7,Mid,Yes,N/A
+MIN-0074,Operation Tan Lines 93,April,Spring,8,South,Turbo Pod,ASU Learning Enterprise,2,2.2,Low,No,Minions distracted by bananas and jelly
+MIN-0075,Operation Sunshine 68,March,Spring,5,North,Turbo Pod,ASU Learning Enterprise,2,8.7,Mid,Yes,N/A
+MIN-0076,Operation Bright Idea 60,November,Autumn,15,East,Solar Glider,Wayne Enterprise,8,4.2,High,Yes,N/A
+MIN-0077,Project Yellow Ball 18,November,Autumn,22,West,Magma Cruiser,Stark Industries,7,6.4,Mid,Yes,N/A
+MIN-0078,Operation Solar Flare 11,January,Winter,13,South,Banana Rocket,Banana Industries,7,2.9,Low,No,Minions distracted by bananas and jelly
+MIN-0079,Mission Star Heist 60,August,Summer,18,East,Magma Cruiser,Stark Industries,10,4.9,High,No,Shrink ray malfunctioned
+MIN-0080,Operation Sunscreen 27,February,Winter,22,West,Magma Cruiser,Stark Industries,7,6.0,Mid,No,Ship could not handle the heat
+MIN-0081,Operation Gru Strikes Back 76,November,Autumn,24,South,Shadow Stealth,Oscorp,5,6.8,Mid,Yes,N/A
+MIN-0082,Mission Sunroof 5,November,Autumn,14,East,Magma Cruiser,Stark Industries,6,5.3,Mid,Yes,N/A
+MIN-0083,Operation Solar Flare 60,August,Summer,18,South,Banana Rocket,Banana Industries,5,3.0,Low,No,Shrink ray malfunctioned
+MIN-0084,Mission Hot Pocket 93,September,Autumn,6,West,Banana Rocket,Banana Industries,7,4.0,Ultra,No,Crew quit mid-mission
+MIN-0085,Operation Sunscreen 95,October,Autumn,14,South,Solar Glider,Wayne Enterprise,3,3.3,Low,No,Minions fell asleep on duty
+MIN-0086,Project Blazing 91,March,Spring,17,West,Banana Rocket,Banana Industries,5,2.2,Low,No,Wrong turn at Mars
+MIN-0087,Operation Crispy 73,November,Autumn,24,East,Solar Glider,Wayne Enterprise,7,3.1,High,No,Minions distracted by bananas and jelly
+MIN-0088,Project Plasma 77,April,Spring,15,West,Solar Glider,Wayne Enterprise,6,4.8,High,Yes,N/A
+MIN-0089,Project Stellar 26,March,Spring,7,North,Solar Glider,Wayne Enterprise,5,3.3,High,Yes,N/A
+MIN-0090,Operation Sunscreen 98,September,Autumn,20,West,Banana Rocket,Banana Industries,4,4.2,Ultra,No,Minions fell asleep on duty
+MIN-0091,Operation Sunscreen 52,January,Winter,20,West,Banana Rocket,Banana Industries,5,2.1,Low,No,Shrink ray malfunctioned
+MIN-0092,Mission Sunroof 62,November,Autumn,5,South,Magma Cruiser,Stark Industries,5,4.1,Mid,Yes,N/A
+MIN-0093,Project Yellow Ball 71,September,Autumn,14,West,Turbo Pod,ASU Learning Enterprise,3,6.8,Low,Yes,N/A
+MIN-0094,Mission Toasty 71,February,Winter,19,West,Magma Cruiser,Stark Industries,6,5.9,Mid,Yes,N/A
+MIN-0095,Operation Bright Idea 98,March,Spring,20,North,Shadow Stealth,Oscorp,5,7.6,Mid,Yes,N/A
+MIN-0096,Mission Toasty 87,November,Autumn,15,East,Shadow Stealth,Oscorp,5,7.2,Mid,No,Ship could not handle the heat
+MIN-0097,Operation Solar Flare 44,September,Autumn,9,North,Shadow Stealth,Oscorp,7,4.1,Mid,Yes,N/A
+MIN-0098,Project Stellar 52,November,Autumn,20,North,Shadow Stealth,Oscorp,5,8.0,Mid,Yes,N/A
+MIN-0099,Operation Scorched 44,November,Autumn,13,South,Magma Cruiser,Stark Industries,5,5.0,Mid,Yes,N/A
+MIN-0100,Operation Sun Bro 97,November,Autumn,9,West,Solar Glider,Wayne Enterprise,5,3.8,High,Yes,N/A
+MIN-0101,Project Meltdown 47,September,Autumn,9,South,Shadow Stealth,Oscorp,5,6.0,Mid,No,Shrink ray malfunctioned
+MIN-0102,Project Yellow Ball 88,August,Summer,12,North,Banana Rocket,Banana Industries,3,2.7,Low,No,Ship could not handle the heat
+MIN-0103,Project Plasma 29,December,Winter,10,East,Shadow Stealth,Oscorp,5,6.2,Mid,No,Crew quit mid-mission
+MIN-0104,Project Meltdown 69,March,Spring,24,East,Banana Rocket,Banana Industries,5,3.4,Low,No,Minions distracted by bananas and jelly
+MIN-0105,Project Blazing 23,March,Spring,9,North,Magma Cruiser,Stark Industries,7,8.4,Mid,Yes,N/A
+MIN-0106,Project Yellow Ball 56,November,Autumn,18,East,Magma Cruiser,Stark Industries,5,4.1,Mid,No,Minions distracted by bananas and jelly
+MIN-0107,Mission Star Heist 85,March,Spring,5,East,Turbo Pod,ASU Learning Enterprise,3,5.9,Ultra,No,Minions distracted by bananas and jelly
+MIN-0108,Project Sun Grab 78,August,Summer,25,West,Banana Rocket,Banana Industries,4,2.2,Low,No,Minions distracted by bananas and jelly
+MIN-0109,Operation Sunburn 20,November,Autumn,8,South,Banana Rocket,Banana Industries,4,3.2,Low,Yes,N/A
+MIN-0110,Operation Star Grab 87,October,Autumn,7,South,Solar Glider,Wayne Enterprise,6,3.2,Low,Yes,N/A
+MIN-0111,Mission Hot Pocket 66,November,Autumn,7,West,Shadow Stealth,Oscorp,6,6.0,Mid,Yes,N/A
+MIN-0112,Operation Solar Flare 13,September,Autumn,25,East,Shadow Stealth,Oscorp,5,3.9,Mid,Yes,N/A
+MIN-0113,Operation Scorched 65,September,Autumn,20,West,Banana Rocket,Banana Industries,4,3.6,Ultra,No,Minions distracted by bananas and jelly
+MIN-0114,Operation Sunshine 91,December,Winter,11,East,Shadow Stealth,Oscorp,6,5.5,Mid,No,Minions distracted by bananas and jelly
+MIN-0115,Project Yellow Ball 53,November,Autumn,15,North,Shadow Stealth,Oscorp,6,6.2,Mid,Yes,N/A
+MIN-0116,Operation Bright Idea 47,November,Autumn,8,East,Magma Cruiser,Stark Industries,7,5.5,Mid,Yes,N/A
+MIN-0117,Project Overcooked 27,January,Winter,23,East,Banana Rocket,Banana Industries,3,2.5,Low,No,Minions distracted by bananas and jelly
+MIN-0118,Operation Sun Bro 96,October,Autumn,16,South,Magma Cruiser,Stark Industries,6,6.0,High,Yes,N/A
+MIN-0119,Mission Too Bright 62,November,Autumn,18,West,Banana Rocket,Banana Industries,6,3.2,Low,No,Ship could not handle the heat
+MIN-0120,Operation Bright Idea 78,October,Autumn,15,South,Magma Cruiser,Stark Industries,8,5.6,High,Yes,N/A
+MIN-0121,Project Corona 99,April,Spring,18,North,Magma Cruiser,Stark Industries,10,2.3,Ultra,No,Minions distracted by bananas and jelly
+MIN-0122,Operation Crispy 44,April,Spring,21,South,Turbo Pod,ASU Learning Enterprise,2,1.9,Low,No,Minions distracted by bananas and jelly
+MIN-0123,Project Sun Grab 63,April,Spring,11,East,Solar Glider,Wayne Enterprise,5,4.8,High,No,Minions distracted by bananas and jelly
+MIN-0124,Project Banana Split 45,October,Autumn,19,West,Turbo Pod,ASU Learning Enterprise,3,3.8,Low,No,Minions distracted by bananas and jelly
+MIN-0125,Operation Sunshine 73,February,Winter,10,South,Magma Cruiser,Stark Industries,6,6.2,Mid,No,Ran out of fuel
+MIN-0126,Mission Hot Stuff 47,November,Autumn,12,North,Turbo Pod,ASU Learning Enterprise,3,4.0,High,Yes,N/A
+MIN-0127,Operation Gru Strikes Back 78,November,Autumn,21,East,Magma Cruiser,Stark Industries,5,7.9,Mid,Yes,N/A
+MIN-0128,Project Sunspot 43,November,Autumn,25,West,Magma Cruiser,Stark Industries,7,5.4,Mid,Yes,N/A
+MIN-0129,Project Overcooked 9,September,Autumn,24,North,Shadow Stealth,Oscorp,8,5.5,Mid,Yes,N/A
+MIN-0130,Operation Crispy 57,May,Spring,19,East,Banana Rocket,Banana Industries,6,1.1,Ultra,No,Ship could not handle the heat
+MIN-0131,Mission Hot Stuff 92,March,Spring,18,South,Shadow Stealth,Oscorp,5,4.0,Mid,No,Ship could not handle the heat
+MIN-0132,Operation Scorched 49,November,Autumn,23,North,Magma Cruiser,Stark Industries,5,7.2,Mid,Yes,N/A
+MIN-0133,Mission Too Bright 58,April,Spring,14,East,Magma Cruiser,Stark Industries,10,3.6,Ultra,Yes,N/A
+MIN-0134,Operation Scorched 95,May,Spring,7,West,Banana Rocket,Banana Industries,7,2.6,Ultra,No,Minions distracted by bananas and jelly
+MIN-0135,Operation Crispy 94,October,Autumn,8,North,Shadow Stealth,Oscorp,7,4.0,Mid,No,Crew quit mid-mission
+MIN-0136,Project Sunspot 55,November,Autumn,18,West,Magma Cruiser,Stark Industries,6,7.6,Mid,Yes,N/A
+MIN-0137,Operation Star Grab 42,September,Autumn,25,West,Magma Cruiser,Stark Industries,6,6.2,High,No,Minions distracted by bananas and jelly
+MIN-0138,Mission Toasty 47,November,Autumn,23,East,Shadow Stealth,Oscorp,5,5.0,Mid,Yes,N/A
+MIN-0139,Operation Sunshine 36,August,Summer,17,West,Magma Cruiser,Stark Industries,14,2.7,High,No,Minions distracted by bananas and jelly
+MIN-0140,Mission Too Bright 82,March,Spring,8,East,Shadow Stealth,Oscorp,5,7.5,Mid,No,Wrong turn at Mars
+MIN-0141,Operation Sunburn 73,September,Autumn,6,East,Magma Cruiser,Stark Industries,7,5.9,High,Yes,N/A
+MIN-0142,Project Yellow Ball 57,March,Spring,12,North,Shadow Stealth,Oscorp,5,7.1,Mid,Yes,N/A
+MIN-0143,Project Sunspot 81,December,Winter,23,East,Shadow Stealth,Oscorp,5,5.2,Mid,Yes,N/A
+MIN-0144,Operation Sun Bro 31,March,Spring,15,West,Shadow Stealth,Oscorp,8,7.6,Mid,Yes,N/A
+MIN-0145,Project Blazing 25,September,Autumn,17,East,Magma Cruiser,Stark Industries,6,5.6,High,Yes,N/A
+MIN-0146,Operation Scorched 94,March,Spring,10,West,Magma Cruiser,Stark Industries,7,6.8,Mid,Yes,N/A
+MIN-0147,Operation Sunshine 27,November,Autumn,13,North,Turbo Pod,ASU Learning Enterprise,3,4.5,Mid,No,Ship could not handle the heat
+MIN-0148,Project Plasma 21,November,Autumn,18,West,Solar Glider,Wayne Enterprise,5,4.4,High,No,Minions fell asleep on duty
+MIN-0149,Operation Sunshine 20,August,Summer,10,East,Magma Cruiser,Stark Industries,9,2.2,High,Yes,N/A
+MIN-0150,Project Yellow Ball 15,November,Autumn,5,South,Magma Cruiser,Stark Industries,7,6.1,Mid,Yes,N/A
+MIN-0151,Operation Sunshine 36,October,Autumn,8,East,Turbo Pod,ASU Learning Enterprise,2,7.3,Mid,Yes,N/A
+MIN-0152,Operation Crispy 9,November,Autumn,19,North,Magma Cruiser,Stark Industries,7,5.7,Mid,Yes,N/A
+MIN-0153,Operation Sunshine 92,October,Autumn,9,West,Shadow Stealth,Oscorp,6,4.3,Mid,Yes,N/A
+MIN-0154,Project Blazing 85,February,Winter,7,South,Solar Glider,Wayne Enterprise,3,2.8,Low,Yes,N/A
+MIN-0155,Project Corona 94,April,Spring,24,East,Turbo Pod,ASU Learning Enterprise,3,1.5,Low,Yes,N/A
+MIN-0156,Project Stellar 94,March,Spring,11,West,Shadow Stealth,Oscorp,7,4.6,Mid,Yes,N/A
+MIN-0157,Mission Star Heist 81,December,Winter,5,North,Magma Cruiser,Stark Industries,7,3.2,High,No,Crew quit mid-mission
+MIN-0158,Project Corona 54,April,Spring,16,West,Magma Cruiser,Stark Industries,11,4.4,Ultra,Yes,N/A
+MIN-0159,Mission Toasty 10,March,Spring,23,West,Magma Cruiser,Stark Industries,5,7.0,Mid,Yes,N/A
+MIN-0160,Operation Sunshine 85,November,Autumn,9,East,Solar Glider,Wayne Enterprise,7,3.3,High,No,Shrink ray malfunctioned
+MIN-0161,Operation Scorched 22,September,Autumn,10,North,Banana Rocket,Banana Industries,5,4.0,Ultra,Yes,N/A
+MIN-0162,Operation Sun Bro 77,May,Spring,21,West,Shadow Stealth,Oscorp,9,3.8,High,No,Crew quit mid-mission
+MIN-0163,Project Yellow Ball 89,November,Autumn,5,North,Solar Glider,Wayne Enterprise,6,3.0,High,No,Minions distracted by bananas and jelly
+MIN-0164,Operation Tan Lines 73,April,Spring,23,West,Magma Cruiser,Stark Industries,11,3.0,Ultra,No,Minions distracted by bananas and jelly
+MIN-0165,Project Corona 98,November,Autumn,25,South,Banana Rocket,Banana Industries,6,3.0,Low,Yes,N/A
+MIN-0166,Project Overcooked 40,November,Autumn,17,South,Solar Glider,Wayne Enterprise,4,3.5,High,Yes,N/A
+MIN-0167,Mission Toasty 76,November,Autumn,20,South,Shadow Stealth,Oscorp,7,7.6,Mid,Yes,N/A
+MIN-0168,Operation Tan Lines 72,March,Spring,17,North,Magma Cruiser,Stark Industries,6,7.3,Mid,Yes,N/A
+MIN-0169,Mission Hot Stuff 79,November,Autumn,16,East,Magma Cruiser,Stark Industries,5,6.7,Mid,No,Minions distracted by bananas and jelly
+MIN-0170,Operation Sun Bro 78,December,Winter,21,East,Shadow Stealth,Oscorp,6,7.8,Mid,Yes,N/A
+MIN-0171,Operation Crispy 15,February,Winter,6,South,Magma Cruiser,Stark Industries,5,7.0,Mid,Yes,N/A
+MIN-0172,Operation Solar Flare 67,November,Autumn,7,North,Turbo Pod,ASU Learning Enterprise,2,3.3,Low,No,Minions distracted by bananas and jelly
+MIN-0173,Mission Hot Stuff 61,March,Spring,14,East,Banana Rocket,Banana Industries,5,3.8,Low,No,Minions distracted by bananas and jelly
+MIN-0174,Operation Sunshine 43,November,Autumn,16,East,Magma Cruiser,Stark Industries,7,8.2,Mid,Yes,N/A
+MIN-0175,Project Banana Split 28,March,Spring,11,South,Shadow Stealth,Oscorp,8,7.4,Mid,Yes,N/A
+MIN-0176,Project Meltdown 92,March,Spring,18,East,Magma Cruiser,Stark Industries,6,5.1,Mid,Yes,N/A
+MIN-0177,Project Blazing 21,March,Spring,11,South,Shadow Stealth,Oscorp,6,6.0,Mid,Yes,N/A
+MIN-0178,Project Stellar 25,November,Autumn,5,East,Magma Cruiser,Stark Industries,5,7.8,Mid,Yes,N/A
+MIN-0179,Project Yellow Ball 50,November,Autumn,14,West,Shadow Stealth,Oscorp,7,7.7,Mid,Yes,N/A
+MIN-0180,Operation Crispy 64,December,Winter,18,West,Shadow Stealth,Oscorp,6,6.3,Mid,No,Ran out of fuel
+MIN-0181,Operation Solar Flare 89,April,Spring,10,East,Turbo Pod,ASU Learning Enterprise,3,5.0,Mid,Yes,N/A
+MIN-0182,Operation Sunscreen 3,August,Summer,6,East,Magma Cruiser,Stark Industries,11,4.1,High,No,Forgot the shrink ray
+MIN-0183,Operation Sunscreen 34,April,Spring,9,North,Solar Glider,Wayne Enterprise,6,3.3,High,Yes,N/A
+MIN-0184,Mission Too Bright 15,September,Autumn,5,East,Magma Cruiser,Stark Industries,9,4.0,High,Yes,N/A
+MIN-0185,Operation Sun Bro 57,April,Spring,19,West,Solar Glider,Wayne Enterprise,9,3.9,High,No,Minions distracted by bananas and jelly
+MIN-0186,Project Corona 34,August,Summer,18,West,Magma Cruiser,Stark Industries,12,3.7,High,Yes,N/A
+MIN-0187,Project Plasma 91,April,Spring,16,North,Magma Cruiser,Stark Industries,7,2.2,Ultra,No,Ship could not handle the heat
+MIN-0188,Project Corona 36,September,Autumn,23,West,Magma Cruiser,Stark Industries,9,5.6,High,Yes,N/A
+MIN-0189,Operation Tan Lines 11,May,Spring,17,North,Banana Rocket,Banana Industries,8,1.0,Ultra,Yes,N/A
+MIN-0190,Operation Tan Lines 46,March,Spring,13,East,Magma Cruiser,Stark Industries,6,5.2,Mid,Yes,N/A
+MIN-0191,Project Meltdown 29,November,Autumn,21,North,Magma Cruiser,Stark Industries,7,7.2,Mid,Yes,N/A
+MIN-0192,Operation Solar Flare 57,October,Autumn,19,North,Magma Cruiser,Stark Industries,7,6.7,High,No,Minions distracted by bananas and jelly
+MIN-0193,Mission Toasty 32,March,Spring,25,East,Shadow Stealth,Oscorp,6,8.0,Mid,Yes,N/A
+MIN-0194,Project Sunspot 1,April,Spring,15,West,Solar Glider,Wayne Enterprise,5,5.1,High,Yes,N/A
+MIN-0195,Operation Sunshine 93,November,Autumn,11,East,Turbo Pod,ASU Learning Enterprise,3,4.0,Low,No,Forgot the shrink ray
+MIN-0196,Project Overcooked 78,March,Spring,21,East,Shadow Stealth,Oscorp,6,5.3,Mid,No,Minions fell asleep on duty
+MIN-0197,Project Banana Split 68,November,Autumn,14,East,Turbo Pod,ASU Learning Enterprise,3,8.6,Ultra,No,Minions distracted by bananas and jelly
+MIN-0198,Mission Hot Pocket 37,August,Summer,16,West,Banana Rocket,Banana Industries,4,2.1,Low,Yes,N/A
+MIN-0199,Operation Scorched 67,April,Spring,10,West,Solar Glider,Wayne Enterprise,6,3.5,High,No,Minions distracted by bananas and jelly
+MIN-0200,Project Blazing 52,October,Autumn,22,West,Shadow Stealth,Oscorp,5,5.1,Mid,No,Ship could not handle the heat
+MIN-0201,Project Blazing 8,October,Autumn,22,South,Magma Cruiser,Stark Industries,9,6.3,High,Yes,N/A
+MIN-0202,Operation Sunburn 96,May,Spring,12,West,Shadow Stealth,Oscorp,9,5.3,High,No,Minions distracted by bananas and jelly
+MIN-0203,Mission Toasty 17,November,Autumn,5,South,Magma Cruiser,Stark Industries,7,7.5,Mid,Yes,N/A
+MIN-0204,Project Banana Split 50,March,Spring,14,South,Turbo Pod,ASU Learning Enterprise,3,5.0,Low,Yes,N/A
+MIN-0205,Project Meltdown 20,October,Autumn,15,North,Solar Glider,Wayne Enterprise,6,4.3,Low,Yes,N/A
+MIN-0206,Mission Star Heist 99,November,Autumn,18,North,Shadow Stealth,Oscorp,6,5.8,Mid,Yes,N/A
+MIN-0207,Operation Sunshine 65,September,Autumn,17,West,Magma Cruiser,Stark Industries,6,6.9,High,No,Ship could not handle the heat
+MIN-0208,Operation Gru Strikes Back 94,November,Autumn,12,East,Magma Cruiser,Stark Industries,7,6.6,Mid,Yes,N/A
+MIN-0209,Project Corona 91,June,Summer,19,North,Solar Glider,Wayne Enterprise,9,2.8,Ultra,No,Forgot the shrink ray
+MIN-0210,Mission Hot Pocket 70,April,Spring,5,West,Magma Cruiser,Stark Industries,11,4.3,Ultra,No,Minions distracted by bananas and jelly
+MIN-0211,Project Meltdown 11,November,Autumn,10,North,Shadow Stealth,Oscorp,6,7.5,Mid,No,Minions distracted by bananas and jelly
+MIN-0212,Project Meltdown 95,November,Autumn,20,North,Magma Cruiser,Stark Industries,5,8.2,Mid,Yes,N/A
+MIN-0213,Operation Sunshine 99,November,Autumn,22,West,Turbo Pod,ASU Learning Enterprise,3,3.2,High,Yes,N/A
+MIN-0214,Operation Crispy 42,December,Winter,6,East,Shadow Stealth,Oscorp,5,5.5,Mid,Yes,N/A
+MIN-0215,Project Corona 11,August,Summer,12,South,Banana Rocket,Banana Industries,3,2.2,Low,No,Wrong turn at Mars
+MIN-0216,Project Meltdown 63,March,Spring,16,East,Shadow Stealth,Oscorp,8,4.4,Mid,Yes,N/A
+MIN-0217,Operation Sunscreen 78,March,Spring,21,South,Solar Glider,Wayne Enterprise,5,5.7,High,No,Minions fell asleep on duty
+MIN-0218,Operation Star Grab 70,December,Winter,24,West,Magma Cruiser,Stark Industries,10,4.0,High,Yes,N/A
+MIN-0219,Operation Solar Flare 54,March,Spring,13,North,Magma Cruiser,Stark Industries,7,5.8,Mid,Yes,N/A
+MIN-0220,Operation Tan Lines 13,March,Spring,25,South,Solar Glider,Wayne Enterprise,5,3.6,High,Yes,N/A
+MIN-0221,Mission Star Heist 13,March,Spring,13,East,Solar Glider,Wayne Enterprise,5,3.2,High,Yes,N/A
+MIN-0222,Operation Sun Bro 27,August,Summer,12,North,Banana Rocket,Banana Industries,4,2.4,Low,No,Minions distracted by bananas and jelly
+MIN-0223,Mission Star Heist 3,October,Autumn,7,West,Solar Glider,Wayne Enterprise,5,2.6,Low,No,Minions distracted by bananas and jelly
+MIN-0224,Project Sun Grab 54,March,Spring,7,South,Magma Cruiser,Stark Industries,5,7.7,Mid,Yes,N/A
+MIN-0225,Project Stellar 23,March,Spring,17,North,Magma Cruiser,Stark Industries,6,5.8,Mid,Yes,N/A
+MIN-0226,Mission Sunroof 41,March,Spring,17,North,Magma Cruiser,Stark Industries,6,5.4,Mid,Yes,N/A
+MIN-0227,Operation Bright Idea 48,October,Autumn,10,West,Shadow Stealth,Oscorp,7,5.2,Mid,Yes,N/A
+MIN-0228,Operation Crispy 35,November,Autumn,23,South,Solar Glider,Wayne Enterprise,8,4.1,High,Yes,N/A
+MIN-0229,Operation Star Grab 52,April,Spring,14,South,Turbo Pod,ASU Learning Enterprise,2,1.4,Low,No,Minions distracted by bananas and jelly
+MIN-0230,Project Sunspot 27,April,Spring,24,South,Turbo Pod,ASU Learning Enterprise,2,3.5,Low,Yes,N/A
+MIN-0231,Project Corona 53,July,Summer,17,North,Solar Glider,Wayne Enterprise,12,1.0,Ultra,No,Ship could not handle the heat
+MIN-0232,Operation Sunscreen 67,June,Summer,25,North,Solar Glider,Wayne Enterprise,10,2.9,Ultra,No,Shrink ray malfunctioned
+MIN-0233,Operation Crispy 9,August,Summer,14,North,Banana Rocket,Banana Industries,3,1.6,Low,Yes,N/A
+MIN-0234,Project Meltdown 15,November,Autumn,22,West,Banana Rocket,Banana Industries,5,2.4,Low,No,Minions fell asleep on duty
+MIN-0235,Project Meltdown 17,October,Autumn,13,West,Magma Cruiser,Stark Industries,8,6.1,High,No,Minions distracted by bananas and jelly
+MIN-0236,Project Plasma 37,October,Autumn,7,West,Shadow Stealth,Oscorp,5,5.4,Mid,No,Minions distracted by bananas and jelly
+MIN-0237,Mission Toasty 95,March,Spring,19,South,Banana Rocket,Banana Industries,4,3.9,Low,No,Wrong turn at Mars
+MIN-0238,Operation Tan Lines 15,May,Spring,16,North,Shadow Stealth,Oscorp,8,4.7,High,Yes,N/A
+MIN-0239,Operation Tan Lines 3,November,Autumn,22,East,Magma Cruiser,Stark Industries,7,6.6,Mid,Yes,N/A
+MIN-0240,Mission Star Heist 80,March,Spring,19,East,Shadow Stealth,Oscorp,6,8.0,Mid,Yes,N/A
+MIN-0241,Operation Sunburn 31,December,Winter,19,East,Shadow Stealth,Oscorp,6,5.6,Mid,Yes,N/A
+MIN-0242,Operation Sunburn 87,January,Winter,10,South,Banana Rocket,Banana Industries,7,2.2,Low,No,Minions fell asleep on duty
+MIN-0243,Project Meltdown 13,April,Spring,20,East,Magma Cruiser,Stark Industries,11,4.7,Ultra,No,Wrong turn at Mars
+MIN-0244,Project Blazing 19,September,Autumn,19,North,Shadow Stealth,Oscorp,6,5.4,Mid,No,Shrink ray malfunctioned
+MIN-0245,Mission Toasty 59,February,Winter,23,West,Solar Glider,Wayne Enterprise,4,3.3,Low,No,Minions distracted by bananas and jelly
+MIN-0246,Mission Hot Stuff 13,November,Autumn,14,West,Magma Cruiser,Stark Industries,7,4.9,Mid,Yes,N/A
+MIN-0247,Operation Sunscreen 98,November,Autumn,15,East,Magma Cruiser,Stark Industries,6,6.6,Mid,Yes,N/A
+MIN-0248,Project Plasma 13,September,Autumn,8,South,Magma Cruiser,Stark Industries,10,5.2,High,No,Crew quit mid-mission
+MIN-0249,Mission Sunroof 22,March,Spring,18,South,Shadow Stealth,Oscorp,8,7.0,Mid,Yes,N/A
+MIN-0250,Mission Too Bright 27,November,Autumn,22,East,Magma Cruiser,Stark Industries,5,4.2,Mid,Yes,N/A
+MIN-0251,Project Banana Split 91,November,Autumn,16,South,Magma Cruiser,Stark Industries,5,5.0,Mid,Yes,N/A
+MIN-0252,Mission Hot Stuff 36,October,Autumn,21,South,Turbo Pod,ASU Learning Enterprise,2,4.3,Mid,Yes,N/A
+MIN-0253,Operation Sunburn 3,November,Autumn,19,West,Shadow Stealth,Oscorp,6,7.8,Mid,Yes,N/A
+MIN-0254,Operation Sun Bro 28,November,Autumn,13,West,Magma Cruiser,Stark Industries,7,7.2,Mid,No,Crew quit mid-mission
+MIN-0255,Operation Sunshine 65,November,Autumn,24,South,Magma Cruiser,Stark Industries,6,5.4,Mid,Yes,N/A
+MIN-0256,Operation Gru Strikes Back 13,November,Autumn,20,West,Magma Cruiser,Stark Industries,6,5.5,Mid,Yes,N/A
+MIN-0257,Project Banana Split 1,November,Autumn,14,South,Magma Cruiser,Stark Industries,7,7.3,Mid,No,Minions fell asleep on duty
+MIN-0258,Operation Sunburn 85,October,Autumn,17,South,Solar Glider,Wayne Enterprise,3,2.6,Low,No,Minions distracted by bananas and jelly
+MIN-0259,Project Meltdown 14,November,Autumn,16,East,Magma Cruiser,Stark Industries,7,7.4,Mid,Yes,N/A
+MIN-0260,Operation Sunshine 26,September,Autumn,9,South,Banana Rocket,Banana Industries,4,3.7,Ultra,No,Ship could not handle the heat
+MIN-0261,Operation Scorched 38,February,Winter,17,East,Magma Cruiser,Stark Industries,5,4.2,Mid,Yes,N/A
+MIN-0262,Project Sunspot 12,November,Autumn,11,West,Shadow Stealth,Oscorp,7,5.4,Mid,No,Minions distracted by bananas and jelly
+MIN-0263,Operation Sunburn 79,November,Autumn,23,North,Magma Cruiser,Stark Industries,6,7.4,Mid,Yes,N/A
+MIN-0264,Operation Sunburn 12,November,Autumn,25,West,Magma Cruiser,Stark Industries,7,5.5,Mid,Yes,N/A
+MIN-0265,Project Yellow Ball 86,March,Spring,9,South,Shadow Stealth,Oscorp,5,4.9,Mid,No,Minions fell asleep on duty
+MIN-0266,Project Meltdown 86,November,Autumn,9,West,Banana Rocket,Banana Industries,3,2.2,Low,No,Minions fell asleep on duty
+MIN-0267,Operation Scorched 19,August,Summer,9,East,Magma Cruiser,Stark Industries,10,2.7,High,Yes,N/A
+MIN-0268,Mission Hot Pocket 13,August,Summer,12,South,Magma Cruiser,Stark Industries,8,4.2,High,No,Ran out of fuel
+MIN-0269,Operation Star Grab 25,March,Spring,5,East,Solar Glider,Wayne Enterprise,7,3.2,High,No,Forgot the shrink ray
+MIN-0270,Operation Sun Bro 47,August,Summer,16,West,Banana Rocket,Banana Industries,4,2.1,Low,No,Minions distracted by bananas and jelly
+MIN-0271,Mission Sunroof 29,April,Spring,15,South,Solar Glider,Wayne Enterprise,6,4.1,High,Yes,N/A
+MIN-0272,Operation Bright Idea 7,July,Summer,14,South,Solar Glider,Wayne Enterprise,8,1.7,Ultra,No,Minions fell asleep on duty
+MIN-0273,Project Meltdown 10,November,Autumn,10,West,Shadow Stealth,Oscorp,7,6.1,Mid,Yes,N/A
+MIN-0274,Operation Sunscreen 38,February,Winter,14,North,Solar Glider,Wayne Enterprise,4,4.9,Low,No,Minions distracted by bananas and jelly
+MIN-0275,Project Banana Split 88,January,Winter,20,North,Banana Rocket,Banana Industries,5,1.1,Low,Yes,N/A
+MIN-0276,Operation Crispy 1,September,Autumn,8,North,Shadow Stealth,Oscorp,8,5.8,Mid,Yes,N/A
+MIN-0277,Project Stellar 99,November,Autumn,18,North,Magma Cruiser,Stark Industries,6,7.0,Mid,Yes,N/A
+MIN-0278,Project Blazing 77,August,Summer,17,West,Magma Cruiser,Stark Industries,8,2.7,High,No,Forgot the shrink ray
+MIN-0279,Mission Too Bright 51,October,Autumn,14,South,Solar Glider,Wayne Enterprise,3,3.3,Low,No,Forgot the shrink ray
+MIN-0280,Operation Scorched 67,November,Autumn,9,North,Magma Cruiser,Stark Industries,5,5.7,Mid,Yes,N/A
+MIN-0281,Operation Tan Lines 41,April,Spring,10,South,Magma Cruiser,Stark Industries,12,3.6,Ultra,No,Minions distracted by bananas and jelly
+MIN-0282,Mission Hot Pocket 8,April,Spring,10,South,Solar Glider,Wayne Enterprise,5,4.6,High,No,Ship could not handle the heat
+MIN-0283,Project Sun Grab 94,March,Spring,24,North,Magma Cruiser,Stark Industries,7,7.6,Mid,Yes,N/A
+MIN-0284,Project Yellow Ball 85,November,Autumn,20,South,Shadow Stealth,Oscorp,5,6.7,Mid,Yes,N/A
+MIN-0285,Operation Sun Bro 87,November,Autumn,12,East,Banana Rocket,Banana Industries,3,2.6,Low,No,Ship could not handle the heat
+MIN-0286,Operation Sunshine 52,December,Winter,24,South,Shadow Stealth,Oscorp,6,5.9,Mid,Yes,N/A
+MIN-0287,Operation Sunshine 54,December,Winter,18,North,Magma Cruiser,Stark Industries,7,4.5,High,No,Minions distracted by bananas and jelly
+MIN-0288,Operation Tan Lines 9,December,Winter,15,North,Shadow Stealth,Oscorp,5,7.4,Mid,Yes,N/A
+MIN-0289,Operation Sunburn 81,September,Autumn,24,West,Banana Rocket,Banana Industries,7,2.2,Ultra,No,Crew quit mid-mission
+MIN-0290,Operation Solar Flare 64,March,Spring,21,East,Banana Rocket,Banana Industries,3,3.7,Low,No,Minions fell asleep on duty
+MIN-0291,Project Sun Grab 85,February,Winter,19,East,Solar Glider,Wayne Enterprise,3,2.5,Low,Yes,N/A
+MIN-0292,Project Corona 77,December,Winter,17,South,Magma Cruiser,Stark Industries,8,4.2,High,Yes,N/A
+MIN-0293,Operation Scorched 85,August,Summer,22,North,Magma Cruiser,Stark Industries,9,4.5,High,Yes,N/A
+MIN-0294,Project Corona 30,April,Spring,23,South,Magma Cruiser,Stark Industries,10,2.6,Ultra,Yes,N/A
+MIN-0295,Operation Sun Bro 17,July,Summer,23,West,Solar Glider,Wayne Enterprise,13,1.1,Ultra,No,Crew quit mid-mission
+MIN-0296,Mission Star Heist 78,May,Spring,21,South,Shadow Stealth,Oscorp,7,4.5,High,Yes,N/A
+MIN-0297,Mission Hot Pocket 58,August,Summer,22,East,Magma Cruiser,Stark Industries,10,2.4,High,No,Minions fell asleep on duty
+MIN-0298,Operation Gru Strikes Back 37,December,Winter,14,North,Magma Cruiser,Stark Industries,7,5.3,High,No,Minions distracted by bananas and jelly
+MIN-0299,Operation Scorched 68,November,Autumn,7,West,Magma Cruiser,Stark Industries,7,7.3,Mid,Yes,N/A
+MIN-0300,Operation Bright Idea 74,March,Spring,22,West,Solar Glider,Wayne Enterprise,7,5.8,High,Yes,N/A
+MIN-0301,Mission Star Heist 36,October,Autumn,25,West,Magma Cruiser,Stark Industries,9,4.1,High,No,Minions distracted by bananas and jelly
+MIN-0302,Project Sunspot 91,March,Spring,19,North,Solar Glider,Wayne Enterprise,5,4.6,High,Yes,N/A
+MIN-0303,Operation Sunscreen 70,March,Spring,25,West,Shadow Stealth,Oscorp,8,4.1,Mid,Yes,N/A
+MIN-0304,Operation Tan Lines 85,February,Winter,6,West,Solar Glider,Wayne Enterprise,4,2.6,Low,No,Minions distracted by bananas and jelly
+MIN-0305,Project Meltdown 61,November,Autumn,24,East,Shadow Stealth,Oscorp,6,5.8,Mid,Yes,N/A
+MIN-0306,Mission Sunroof 60,November,Autumn,10,West,Solar Glider,Wayne Enterprise,8,3.7,High,Yes,N/A
+MIN-0307,Project Corona 64,June,Summer,5,South,Solar Glider,Wayne Enterprise,7,2.8,Ultra,No,Forgot the shrink ray
+MIN-0308,Project Meltdown 18,May,Spring,18,East,Shadow Stealth,Oscorp,6,4.7,High,No,Forgot the shrink ray
+MIN-0309,Operation Scorched 80,February,Winter,6,West,Solar Glider,Wayne Enterprise,4,4.3,Low,Yes,N/A
+MIN-0310,Project Meltdown 2,October,Autumn,11,South,Shadow Stealth,Oscorp,6,3.1,Mid,Yes,N/A
+MIN-0311,Project Stellar 51,November,Autumn,20,East,Magma Cruiser,Stark Industries,5,8.5,Mid,Yes,N/A
+MIN-0312,Project Sunspot 95,March,Spring,18,North,Shadow Stealth,Oscorp,5,7.9,Mid,Yes,N/A
+MIN-0313,Project Blazing 64,March,Spring,18,East,Magma Cruiser,Stark Industries,7,8.4,Mid,No,Shrink ray malfunctioned
+MIN-0314,Mission Hot Pocket 85,March,Spring,23,South,Banana Rocket,Banana Industries,5,2.0,Low,Yes,N/A
+MIN-0315,Mission Hot Stuff 31,December,Winter,7,North,Shadow Stealth,Oscorp,7,5.7,Mid,No,Minions distracted by bananas and jelly
+MIN-0316,Mission Hot Stuff 30,March,Spring,23,South,Shadow Stealth,Oscorp,6,4.3,Mid,No,Minions distracted by bananas and jelly
+MIN-0317,Operation Tan Lines 94,September,Autumn,8,North,Magma Cruiser,Stark Industries,8,5.3,High,Yes,N/A
+MIN-0318,Project Banana Split 43,October,Autumn,7,West,Magma Cruiser,Stark Industries,7,4.8,High,No,Forgot the shrink ray
+MIN-0319,Project Blazing 64,March,Spring,24,East,Solar Glider,Wayne Enterprise,6,5.2,High,No,Ran out of fuel
+MIN-0320,Mission Star Heist 5,November,Autumn,13,North,Magma Cruiser,Stark Industries,7,6.7,Mid,Yes,N/A
+MIN-0321,Operation Gru Strikes Back 98,August,Summer,9,North,Magma Cruiser,Stark Industries,13,4.0,High,No,Minions distracted by bananas and jelly
+MIN-0322,Operation Bright Idea 11,October,Autumn,10,South,Shadow Stealth,Oscorp,7,3.5,Mid,Yes,N/A
+MIN-0323,Mission Sunroof 77,February,Winter,22,South,Magma Cruiser,Stark Industries,6,5.2,Mid,Yes,N/A
+MIN-0324,Operation Solar Flare 92,March,Spring,7,South,Turbo Pod,ASU Learning Enterprise,2,4.0,Mid,Yes,N/A
+MIN-0325,Operation Sunscreen 62,November,Autumn,11,East,Magma Cruiser,Stark Industries,7,4.3,Mid,Yes,N/A
+MIN-0326,Operation Sun Bro 1,November,Autumn,15,South,Shadow Stealth,Oscorp,6,5.4,Mid,Yes,N/A
+MIN-0327,Operation Sunshine 41,October,Autumn,11,East,Shadow Stealth,Oscorp,5,6.0,Mid,No,Minions fell asleep on duty
+MIN-0328,Project Yellow Ball 10,November,Autumn,22,East,Banana Rocket,Banana Industries,4,3.6,Low,Yes,N/A
+MIN-0329,Mission Hot Stuff 15,November,Autumn,14,North,Turbo Pod,ASU Learning Enterprise,2,3.6,Ultra,Yes,N/A
+MIN-0330,Operation Crispy 31,November,Autumn,6,North,Magma Cruiser,Stark Industries,5,4.5,Mid,Yes,N/A
+MIN-0331,Operation Solar Flare 68,November,Autumn,18,East,Magma Cruiser,Stark Industries,6,6.7,Mid,No,Minions distracted by bananas and jelly
+MIN-0332,Project Sun Grab 11,April,Spring,9,South,Solar Glider,Wayne Enterprise,5,4.4,High,No,Crew quit mid-mission
+MIN-0333,Project Banana Split 89,January,Winter,12,North,Banana Rocket,Banana Industries,7,1.5,Low,No,Crew quit mid-mission
+MIN-0334,Mission Star Heist 82,November,Autumn,8,South,Magma Cruiser,Stark Industries,6,5.8,Mid,Yes,N/A
+MIN-0335,Project Banana Split 87,April,Spring,14,North,Turbo Pod,ASU Learning Enterprise,3,6.6,High,No,Minions distracted by bananas and jelly
+MIN-0336,Project Sunspot 25,May,Spring,15,North,Shadow Stealth,Oscorp,7,5.8,High,Yes,N/A
+MIN-0337,Operation Solar Flare 67,March,Spring,21,East,Solar Glider,Wayne Enterprise,5,5.4,High,Yes,N/A
+MIN-0338,Project Sunspot 95,March,Spring,7,North,Shadow Stealth,Oscorp,7,5.2,Mid,No,Minions fell asleep on duty
+MIN-0339,Project Banana Split 10,May,Spring,9,East,Shadow Stealth,Oscorp,8,4.5,High,Yes,N/A
+MIN-0340,Operation Sunscreen 97,November,Autumn,13,South,Shadow Stealth,Oscorp,6,5.4,Mid,Yes,N/A
+MIN-0341,Mission Star Heist 52,March,Spring,12,West,Turbo Pod,ASU Learning Enterprise,3,5.0,Mid,Yes,N/A
+MIN-0342,Project Blazing 88,November,Autumn,25,South,Magma Cruiser,Stark Industries,7,7.6,Mid,No,Minions fell asleep on duty
+MIN-0343,Project Sunspot 7,March,Spring,18,South,Solar Glider,Wayne Enterprise,4,4.5,High,No,Minions distracted by bananas and jelly
+MIN-0344,Operation Sunburn 81,October,Autumn,20,South,Magma Cruiser,Stark Industries,9,6.7,High,Yes,N/A
+MIN-0345,Project Plasma 50,May,Spring,25,East,Shadow Stealth,Oscorp,8,3.6,High,Yes,N/A
+MIN-0346,Operation Bright Idea 85,November,Autumn,9,East,Banana Rocket,Banana Industries,6,2.8,Low,No,Forgot the shrink ray
+MIN-0347,Mission Too Bright 94,October,Autumn,14,East,Magma Cruiser,Stark Industries,9,5.6,High,Yes,N/A
+MIN-0348,Project Plasma 62,November,Autumn,10,South,Magma Cruiser,Stark Industries,7,7.6,Mid,Yes,N/A
+MIN-0349,Project Banana Split 74,November,Autumn,7,North,Turbo Pod,ASU Learning Enterprise,2,4.0,Low,No,Minions fell asleep on duty
+MIN-0350,Operation Sunburn 79,September,Autumn,13,North,Magma Cruiser,Stark Industries,6,5.0,High,Yes,N/A
+MIN-0351,Mission Too Bright 35,December,Winter,24,East,Magma Cruiser,Stark Industries,7,3.7,High,Yes,N/A
+MIN-0352,Operation Bright Idea 27,March,Spring,15,West,Banana Rocket,Banana Industries,3,2.4,Low,No,Minions distracted by bananas and jelly
+MIN-0353,Operation Sun Bro 50,March,Spring,25,East,Solar Glider,Wayne Enterprise,5,5.8,High,No,Minions fell asleep on duty
+MIN-0354,Mission Hot Pocket 38,November,Autumn,13,West,Shadow Stealth,Oscorp,6,6.5,Mid,No,Crew quit mid-mission
+MIN-0355,Operation Gru Strikes Back 21,November,Autumn,24,West,Solar Glider,Wayne Enterprise,5,6.2,High,No,Minions distracted by bananas and jelly
+MIN-0356,Operation Solar Flare 56,September,Autumn,8,North,Turbo Pod,ASU Learning Enterprise,3,3.6,Mid,No,Minions distracted by bananas and jelly
+MIN-0357,Operation Sunscreen 83,March,Spring,17,South,Magma Cruiser,Stark Industries,5,7.1,Mid,Yes,N/A
+MIN-0358,Project Blazing 15,April,Spring,11,South,Magma Cruiser,Stark Industries,7,4.4,Ultra,Yes,N/A
+MIN-0359,Operation Tan Lines 60,August,Summer,5,South,Banana Rocket,Banana Industries,6,1.7,Low,No,Wrong turn at Mars
+MIN-0360,Mission Sunroof 74,September,Autumn,25,West,Banana Rocket,Banana Industries,7,3.8,Ultra,No,Ship could not handle the heat
+MIN-0361,Project Meltdown 31,September,Autumn,25,West,Magma Cruiser,Stark Industries,10,5.0,High,No,Minions fell asleep on duty
+MIN-0362,Mission Star Heist 64,January,Winter,11,North,Banana Rocket,Banana Industries,4,1.7,Low,No,Minions fell asleep on duty
+MIN-0363,Project Overcooked 25,October,Autumn,22,North,Shadow Stealth,Oscorp,6,6.7,Mid,Yes,N/A
+MIN-0364,Operation Solar Flare 6,September,Autumn,16,West,Shadow Stealth,Oscorp,7,3.4,Mid,No,Minions distracted by bananas and jelly
+MIN-0365,Operation Solar Flare 39,November,Autumn,17,West,Shadow Stealth,Oscorp,7,7.9,Mid,Yes,N/A
+MIN-0366,Project Stellar 3,November,Autumn,8,East,Shadow Stealth,Oscorp,6,6.9,Mid,No,Minions distracted by bananas and jelly
+MIN-0367,Mission Star Heist 16,November,Autumn,18,South,Magma Cruiser,Stark Industries,6,7.7,Mid,Yes,N/A
+MIN-0368,Operation Scorched 2,September,Autumn,19,East,Magma Cruiser,Stark Industries,7,4.7,High,Yes,N/A
+MIN-0369,Project Stellar 75,September,Autumn,7,East,Banana Rocket,Banana Industries,4,2.3,Ultra,Yes,N/A
+MIN-0370,Operation Solar Flare 27,March,Spring,21,South,Magma Cruiser,Stark Industries,7,5.3,Mid,Yes,N/A
+MIN-0371,Operation Star Grab 79,November,Autumn,10,East,Shadow Stealth,Oscorp,6,5.9,Mid,Yes,N/A
+MIN-0372,Project Corona 13,May,Spring,16,East,Shadow Stealth,Oscorp,8,3.6,High,No,Minions distracted by bananas and jelly
+MIN-0373,Operation Sunshine 61,October,Autumn,22,East,Turbo Pod,ASU Learning Enterprise,3,4.6,High,Yes,N/A
+MIN-0374,Operation Crispy 24,November,Autumn,5,South,Shadow Stealth,Oscorp,5,4.6,Mid,Yes,N/A

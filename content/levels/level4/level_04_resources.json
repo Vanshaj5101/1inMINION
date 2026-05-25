@@ -1,0 +1,27 @@
+{
+  "level": "04",
+  "resources": [
+    {
+      "id": "prompt-check-schedule",
+      "type": "prompt",
+      "label": "Check Schedule",
+      "instruction": "Start a new chat in Claude. Copy and paste this prompt:",
+      "content": "What does my schedule look like tomorrow?\nList every event - title, time, and how long each one is."
+    },
+    {
+      "id": "prompt-find-slot",
+      "type": "prompt",
+      "label": "Find a Free Slot",
+      "instruction": "In the same chat, copy and paste this prompt:",
+      "content": "Look at my calendar for the next 2 weeks.\nIs there any 3-hour block where I am completely free?\nTell me the first one you find - date, day, and exact time."
+    },
+    {
+      "id": "prompt-send-invite",
+      "type": "prompt",
+      "label": "Send the Heist Invite",
+      "instruction": "Replace [PARTNER EMAIL] with your partner's actual email address. Copy and paste this prompt:",
+      "content": "Look at my calendar for the next 2 weeks.\nFind the first 3-hour slot where I am completely free.\n\nSchedule a meeting at that time with [PARTNER EMAIL].\n\nTitle: Operation: Steal the Sun - Mission Planning Session\nDuration: 3 hours\n\nSend them a calendar invite with this agenda:\n\n---\nHi,\n\nYou're being recruited for the most ambitious heist in history.\n\nWe are planning Operation: Steal the Sun. The data has been analysed.\nThe plan is ready. Now we need a crew.\n\nWhat the data told us:\n- Best time to go: [your answer from Q1]\n- Ship we're taking: [your answer from Q2]\n- Team size: [your answer from Q3]\n- Budget we need: [your answer from Q4]\n- Biggest risk - and how we avoid it: [your answer from Q5]\n\nOur secret weapon: [your special tool from Level 2]\n\nWhat we're deciding in this session:\n- Who does what on the team\n- How we present this to GRU\n- Final sign-off before execution day\n\nCome ready to commit.\n\n- [Your name], Chief Strategist, Gru Industries\n---\n\nConfirm once the invite is sent.",
+      "note": "Your Minion will read your calendar, find a free slot, create the invite, and send it - all from one instruction."
+    }
+  ]
+}
