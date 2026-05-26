@@ -13,7 +13,7 @@ export default function Hero() {
     <section
       className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-4"
       style={{
-        backgroundImage: 'url(/hero_bg2.png)',
+        backgroundImage: 'url(/hero_bg3.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center top',
         backgroundRepeat: 'no-repeat',

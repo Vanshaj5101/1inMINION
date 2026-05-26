@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { landingContent } from '@/content/landing'
-import { levels, totalTime } from '@/content/levels'
+import { levels } from '@/content/levels'
 
 const accentColor: Record<string, string> = {
   yellow: 'var(--yellow)',
@@ -69,11 +69,21 @@ export default function OnboardingCarousel() {
               {story.subheading}
             </p>
             <div style={{ height: 1, background: 'rgba(255,255,255,0.12)' }} />
-            {story.paragraphs.slice(0, 2).map((p, i) => (
-              <p key={i} style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.72)', lineHeight: 1.75, margin: 0 }}>
-                {p}
-              </p>
-            ))}
+            {story.paragraphs.map((p, i) => {
+              const isLast = i === story.paragraphs.length - 1
+              return (
+                <p key={i} style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: isLast ? 18 : 16,
+                  fontWeight: isLast ? 700 : 400,
+                  color: isLast ? 'white' : 'rgba(255,255,255,0.72)',
+                  lineHeight: 1.75,
+                  margin: 0,
+                }}>
+                  {p}
+                </p>
+              )
+            })}
           </div>
         </div>
 
@@ -89,20 +99,17 @@ export default function OnboardingCarousel() {
             <p style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.72)', lineHeight: 1.75, margin: 0 }}>
               {story.missionBox.description}
             </p>
-            <div style={{ borderLeft: '4px solid var(--yellow)', paddingLeft: 20, display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-              <span style={{ fontSize: 22, flexShrink: 0 }}>💡</span>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 16, fontWeight: 700, color: 'white', lineHeight: 1.65, margin: 0 }}>
-                {story.missionBox.highlight}
-              </p>
-            </div>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 17, fontWeight: 700, color: 'white', lineHeight: 1.65, margin: 0 }}>
+              {story.missionBox.highlight}
+            </p>
           </div>
         </div>
 
         {/* ── Slide 3: Training Program ──────────────────────── */}
         <div style={slideStyle}>
-          <div style={{ maxWidth: 900, width: '100%', display: 'flex', flexDirection: 'column', gap: 28, alignItems: 'center', textAlign: 'center' }}>
+          <div style={{ maxWidth: 900, width: '100%', display: 'flex', flexDirection: 'column', gap: 28 }}>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--yellow)', letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700 }}>
-              YOUR TRAINING PROGRAM
+              TRAINING PROGRAM
             </span>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 5vw, 60px)', color: 'white', lineHeight: 1.1, margin: 0 }}>
               4 Levels. 60 Minutes. One Heist Plan.
@@ -120,13 +127,9 @@ export default function OnboardingCarousel() {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: 8,
-                    textAlign: 'left',
                   }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                      <span style={{ fontFamily: 'var(--font-display)', fontSize: 32, color: 'rgba(255,255,255,0.25)', lineHeight: 1 }}>{level.number}</span>
-                      <span style={{ fontSize: 26 }}>{level.emoji}</span>
-                    </div>
-                    <p style={{ fontFamily: 'var(--font-display)', fontSize: 18, color: 'white', margin: 0, lineHeight: 1.2 }}>{level.codename}</p>
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: 32, color: 'rgba(255,255,255,0.25)', lineHeight: 1 }}>{level.number}</span>
+                    <p style={{ fontFamily: 'var(--font-display)', fontSize: 18, color: 'white', margin: 0, lineHeight: 1.2 }}>{level.title}</p>
                     <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: accent, fontWeight: 700, letterSpacing: '0.06em' }}>{level.concept}</span>
                     <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, margin: 0, flex: 1 }}>{level.description}</p>
                     <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'rgba(255,255,255,0.40)' }}>⏱ {level.duration}</span>
@@ -134,26 +137,31 @@ export default function OnboardingCarousel() {
                 )
               })}
             </div>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'rgba(255,255,255,0.40)', margin: 0 }}>
-              {totalTime.label}: <strong style={{ color: 'rgba(255,255,255,0.65)' }}>{totalTime.value}</strong> — {totalTime.note}
-            </p>
           </div>
         </div>
 
         {/* ── Slide 4: Ready ─────────────────────────────────── */}
-        <div style={{ ...slideStyle, textAlign: 'center' }}>
-          <div style={{ maxWidth: 560, width: '100%', display: 'flex', flexDirection: 'column', gap: 24, alignItems: 'center' }}>
+        <div style={slideStyle}>
+          <div style={{ maxWidth: 680, width: '100%', display: 'flex', flexDirection: 'column', gap: 24 }}>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--yellow)', letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700 }}>
-              READY, MINION?
+              READY TO TRAIN YOUR MINION?
             </span>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(48px, 7vw, 88px)', color: 'white', lineHeight: 1.05, margin: 0 }}>
-              Your Training Starts Now.
+              Your Minion Awaits.
             </h2>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.60)', lineHeight: 1.7, margin: 0 }}>
-              Keep this page open alongside Claude. Each level takes 10–20 minutes and builds on the last.
-            </p>
-            <Link href="/level/1" className="hero-cta" style={{ marginTop: 8 }}>
-              BEGIN TRAINING — LEVEL 01
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[
+                'Keep this page open alongside Claude throughout the session',
+                'Each level builds on the last. Do not skip ahead.',
+              ].map((step, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--yellow)', flexShrink: 0, marginTop: 8 }} />
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, margin: 0 }}>{step}</p>
+                </div>
+              ))}
+            </div>
+            <Link href="/level/1" className="hero-cta" style={{ marginTop: 8, alignSelf: 'flex-start' }}>
+              START THE MISSION
               <ArrowRight size={22} />
             </Link>
           </div>

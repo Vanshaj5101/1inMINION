@@ -3,38 +3,29 @@
 
 export const landingContent = {
 
-  pageTitle: "Heist to the Sun — AI Training Experience",
+  pageTitle: "1inMINION: Heist to the Sun",
 
   hero: {
     eyebrow: "1inMINION PRESENTS",
     title: "HEIST TO THE\nSUN",
-    oneliner: "we missed the MOON. The SUN has nowhere to hide.",
-    ctaButton: "ACCEPT THE MISSION",
+    oneliner: "we missed the MOON but the SUN has nowhere to hide.",
+    ctaButton: "BEGIN THE HEIST",
   },
 
   story: {
     sectionLabel: "THE BACKSTORY",
     heading: "The Moon Heist Failed.",
-    subheading: "But GRU is not done.",
+    subheading: "But GRU is not done!",
     paragraphs: [
-      "The moon heist was supposed to be perfect. GRU had the shrink ray. " +
-      "He had the Minions. He had the plan. And then Vector happened. " +
-      "Mission failed. Moon still in the sky.",
-
-      "But GRU never gives up. This time the target is bigger. " +
-      "Bolder. More dramatically villainous. This time — we steal the SUN.",
-
-      "There is one problem. Stealing the sun requires intelligence. " +
-      "Real strategy. Data-driven planning. And GRU's Minions — " +
-      "bless their hearts — keep getting distracted by bananas.",
-
-      "That is where you come in.",
+      "GRU had the shrink ray. He had the Minions. He had the plan. Then Vector happened. Mission failed. Moon still in the sky.",
+      "So GRU did what every great villain does. He aimed bigger. This time we are not stealing the moon.",
+      "This time we steal the SUN.",
     ],
     missionBox: {
       label: "YOUR MISSION",
       heading: "Train Your Minion.",
       description:
-        "You will train your personal AI Minion — powered by Claude — " +
+        "You will train your personal AI Minion, powered by Claude," +
         "to become a data-driven strategist. Together you will analyze " +
         "374 previous mission records, find what works, build a plan, " +
         "and pitch Operation: Steal the Sun directly to GRU.",

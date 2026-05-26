@@ -1,7 +1,7 @@
 'use client'
 
 import { Clock } from 'lucide-react'
-import { levels, totalTime } from '@/content/levels'
+import { levels } from '@/content/levels'
 import { landingContent } from '@/content/landing'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
@@ -74,26 +74,22 @@ export default function LevelsPreview() {
                   borderTop: `3px solid ${accent}`,
                 }}
               >
-                {/* Number + emoji row */}
-                <div className="flex items-start justify-between mb-4">
+                {/* Number */}
+                <div className="mb-4">
                   <span
                     className="text-5xl leading-none"
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      color: '#D1D5DB',
-                    }}
+                    style={{ fontFamily: 'var(--font-display)', color: '#D1D5DB' }}
                   >
                     {level.number}
                   </span>
-                  <span className="text-4xl">{level.emoji}</span>
                 </div>
 
-                {/* Codename */}
+                {/* Title */}
                 <h3
                   className="text-xl md:text-2xl leading-tight mb-2"
                   style={{ fontFamily: 'var(--font-display)', color: 'white' }}
                 >
-                  {level.codename}
+                  {level.title}
                 </h3>
 
                 {/* Concept badge */}
@@ -139,14 +135,6 @@ export default function LevelsPreview() {
           })}
         </div>
 
-        {/* Total time */}
-        <p
-          className="text-center text-sm mt-10"
-          style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.52)' }}
-        >
-          <strong style={{ color: 'rgba(255,255,255,0.78)' }}>{totalTime.label}:</strong>{' '}
-          {totalTime.value} — {totalTime.note}
-        </p>
 
       </div>
     </section>
