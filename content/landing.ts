@@ -7,8 +7,8 @@ export const landingContent = {
 
   hero: {
     eyebrow: "1inMINION PRESENTS",
-    title: "HEIST TO\nTHE SUN",
-    oneliner: "The moon was just practice.",
+    title: "HEIST TO THE\nSUN",
+    oneliner: "we missed the MOON. The SUN has nowhere to hide.",
     ctaButton: "ACCEPT THE MISSION",
   },
 

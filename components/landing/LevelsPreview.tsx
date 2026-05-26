@@ -26,7 +26,7 @@ export default function LevelsPreview() {
   return (
     <section
       className="scroll-section py-20 md:py-28 px-4"
-      style={{ background: 'var(--bg-secondary)' }}
+      style={{ background: 'transparent' }}
       ref={ref}
     >
       <div className="mx-auto" style={{ maxWidth: 'var(--max-width)' }}>
@@ -41,7 +41,7 @@ export default function LevelsPreview() {
           </span>
           <h2
             className="text-5xl md:text-6xl"
-            style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}
+            style={{ fontFamily: 'var(--font-display)', color: 'white' }}
           >
             {levelsSection.heading}
           </h2>
@@ -49,7 +49,7 @@ export default function LevelsPreview() {
             className="text-base md:text-lg"
             style={{
               fontFamily: 'var(--font-body)',
-              color: 'var(--text-muted)',
+              color: 'rgba(255,255,255,0.52)',
               maxWidth: 540,
               lineHeight: 1.65,
             }}
@@ -68,7 +68,11 @@ export default function LevelsPreview() {
               <div
                 key={level.number}
                 className="level-card"
-                style={{ borderTop: `3px solid ${accent}` }}
+                style={{
+                  background: 'rgba(6,10,22,0.55)',
+                  border: '1px solid rgba(255,255,255,0.10)',
+                  borderTop: `3px solid ${accent}`,
+                }}
               >
                 {/* Number + emoji row */}
                 <div className="flex items-start justify-between mb-4">
@@ -87,7 +91,7 @@ export default function LevelsPreview() {
                 {/* Codename */}
                 <h3
                   className="text-xl md:text-2xl leading-tight mb-2"
-                  style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}
+                  style={{ fontFamily: 'var(--font-display)', color: 'white' }}
                 >
                   {level.codename}
                 </h3>
@@ -110,7 +114,7 @@ export default function LevelsPreview() {
                   className="text-sm leading-relaxed flex-1 mb-4"
                   style={{
                     fontFamily: 'var(--font-body)',
-                    color: 'var(--text-muted)',
+                    color: 'rgba(255,255,255,0.52)',
                     lineHeight: 1.65,
                   }}
                 >
@@ -122,9 +126,9 @@ export default function LevelsPreview() {
                   className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full w-fit"
                   style={{
                     fontFamily: 'var(--font-body)',
-                    color: 'var(--text-muted)',
-                    background: 'var(--bg-secondary)',
-                    border: '1px solid var(--border)',
+                    color: 'rgba(255,255,255,0.52)',
+                    background: 'transparent',
+                    border: '1px solid rgba(255,255,255,0.20)',
                   }}
                 >
                   <Clock size={12} />
@@ -138,9 +142,9 @@ export default function LevelsPreview() {
         {/* Total time */}
         <p
           className="text-center text-sm mt-10"
-          style={{ fontFamily: 'var(--font-body)', color: 'var(--text-muted)' }}
+          style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.52)' }}
         >
-          <strong style={{ color: 'var(--text-secondary)' }}>{totalTime.label}:</strong>{' '}
+          <strong style={{ color: 'rgba(255,255,255,0.78)' }}>{totalTime.label}:</strong>{' '}
           {totalTime.value} — {totalTime.note}
         </p>
 

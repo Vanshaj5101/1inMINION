@@ -31,7 +31,7 @@ export default function StoryOnboarding() {
   return (
     <section
       className="scroll-section py-20 md:py-28 px-4"
-      style={{ background: 'var(--bg-primary)' }}
+      style={{ background: 'transparent' }}
       ref={ref}
     >
       <div className="max-w-3xl mx-auto flex flex-col gap-10">
@@ -46,13 +46,13 @@ export default function StoryOnboarding() {
           </span>
           <h2
             className="text-5xl md:text-6xl leading-tight"
-            style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}
+            style={{ fontFamily: 'var(--font-display)', color: 'white' }}
           >
             {story.heading}
           </h2>
           <p
             className="text-xl font-bold"
-            style={{ fontFamily: 'var(--font-body)', color: 'var(--text-muted)' }}
+            style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.52)' }}
           >
             {story.subheading}
           </p>
@@ -66,7 +66,7 @@ export default function StoryOnboarding() {
               className="text-base md:text-lg leading-relaxed"
               style={{
                 fontFamily: 'var(--font-body)',
-                color: 'var(--text-secondary)',
+                color: 'rgba(255,255,255,0.78)',
                 lineHeight: 1.75,
               }}
             >
@@ -79,7 +79,7 @@ export default function StoryOnboarding() {
         <div
           className="rounded-2xl p-8 flex flex-col gap-5"
           style={{
-            background: 'var(--bg-warm)',
+            background: 'rgba(255,251,235,0.08)',
             border: '2px solid var(--yellow)',
             borderLeft: '5px solid var(--yellow)',
           }}
@@ -93,14 +93,14 @@ export default function StoryOnboarding() {
 
           <h3
             className="text-4xl md:text-5xl leading-tight"
-            style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}
+            style={{ fontFamily: 'var(--font-display)', color: 'white' }}
           >
             {story.missionBox.heading}
           </h3>
 
           <p
             className="text-base md:text-lg leading-relaxed"
-            style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', lineHeight: 1.75 }}
+            style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75 }}
           >
             {story.missionBox.description}
           </p>
@@ -109,7 +109,7 @@ export default function StoryOnboarding() {
           <div
             className="rounded-xl px-6 py-5 flex items-start gap-3"
             style={{
-              background: 'var(--bg-primary)',
+              background: 'transparent',
               borderLeft: '4px solid var(--yellow)',
             }}
           >
@@ -118,7 +118,7 @@ export default function StoryOnboarding() {
               className="text-base md:text-lg font-bold leading-relaxed"
               style={{
                 fontFamily: 'var(--font-body)',
-                color: 'var(--text-primary)',
+                color: 'white',
                 lineHeight: 1.65,
               }}
             >

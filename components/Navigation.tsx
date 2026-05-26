@@ -12,9 +12,10 @@ export default function Navigation() {
   const pathname = usePathname()
   const [completedLevels, setCompletedLevels] = useState<number[]>([])
 
-  const levelMatch = pathname.match(/^\/level\/(\d+)/)
+  const isHomePage  = pathname === '/' || pathname === '/onboarding'
+  const levelMatch  = pathname.match(/^\/level\/(\d+)/)
   const currentLevel = levelMatch ? parseInt(levelMatch[1]) : null
-  const isLevelPage = currentLevel !== null
+  const isLevelPage  = currentLevel !== null
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem('completedLevels') || '[]') as number[]
@@ -26,9 +27,9 @@ export default function Navigation() {
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6"
       style={{
         height: 72,
-        background: 'var(--bg-primary)',
-        borderBottom: '1px solid var(--border)',
-        boxShadow: 'var(--shadow-xs)',
+        background: isHomePage ? 'transparent' : 'var(--bg-primary)',
+        borderBottom: isHomePage ? 'none' : '1px solid var(--border)',
+        boxShadow: isHomePage ? 'none' : 'var(--shadow-xs)',
       }}
     >
       {/* Left: brand */}
