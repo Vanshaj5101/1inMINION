@@ -174,7 +174,7 @@ export default function Level2Page() {
                 <Download size={22} style={{ color: 'var(--yellow)' }} />
               </div>
               <div className="flex-1">
-                <p className="font-mono font-bold text-sm" style={{ color: 'var(--yellow)' }}>{missionData.filename}</p>
+                <p className="font-mono font-bold text-sm" style={{ color: 'var(--yellow-text)' }}>{missionData.filename}</p>
                 <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
                   {missionData.description}
                 </p>
@@ -185,7 +185,7 @@ export default function Level2Page() {
             </a>
             <div className="p-3 rounded-lg" style={{ background: 'rgba(255,215,0,0.06)', border: '1px solid rgba(255,215,0,0.2)' }}>
               <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>
-                <span style={{ color: 'var(--yellow)' }}>⚠ Stay inside your Project </span>
+                <span style={{ color: 'var(--yellow-text)' }}>⚠ Stay inside your Project </span>
                 when you upload - not a regular chat. Your project name should be visible in the sidebar.
               </p>
             </div>

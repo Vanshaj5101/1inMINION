@@ -135,7 +135,7 @@ export default function Level3Page() {
                 <Download size={22} style={{ color: 'var(--yellow)' }} />
               </div>
               <div className="flex-1">
-                <p className="font-mono font-bold text-sm" style={{ color: 'var(--yellow)' }}>{skillFile.filename}</p>
+                <p className="font-mono font-bold text-sm" style={{ color: 'var(--yellow-text)' }}>{skillFile.filename}</p>
                 <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
                   {skillFile.description}
                 </p>
@@ -204,13 +204,13 @@ export default function Level3Page() {
               </ul>
             </div>
             <div className="rounded-xl p-5 space-y-3" style={{ background: 'rgba(255,215,0,0.06)', border: '2px solid var(--yellow)' }}>
-              <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'var(--yellow)' }}>
+              <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'var(--yellow-text)' }}>
                 {reveal.with.label}
               </p>
               <ul className="space-y-2">
                 {reveal.with.points.map((pt, i) => (
                   <li key={i} className="flex items-center gap-2 text-sm font-bold" style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)' }}>
-                    <span style={{ color: 'var(--yellow)' }}>✓</span> {pt}
+                    <span style={{ color: 'var(--yellow-text)' }}>✓</span> {pt}
                   </li>
                 ))}
               </ul>

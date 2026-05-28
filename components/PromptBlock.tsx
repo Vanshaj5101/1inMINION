@@ -10,6 +10,7 @@ interface PromptBlockProps {
   label: string
   variant?: Variant
   substituteMinion?: boolean
+  highlightText?: string | null
 }
 
 const borderColors: Record<Variant, string> = {
@@ -20,13 +21,13 @@ const borderColors: Record<Variant, string> = {
 }
 
 const labelColors: Record<Variant, string> = {
-  core:     'var(--yellow)',
+  core:     'var(--yellow-text)',
   advanced: 'var(--purple)',
   test:     'var(--blue)',
-  final:    'var(--yellow)',
+  final:    'var(--yellow-text)',
 }
 
-export default function PromptBlock({ promptText, label, variant = 'core', substituteMinion = false }: PromptBlockProps) {
+export default function PromptBlock({ promptText, label, variant = 'core', substituteMinion = false, highlightText = null }: PromptBlockProps) {
   const [state, setState] = useState<'idle' | 'copied' | 'error'>('idle')
   const [displayText, setDisplayText] = useState(promptText)
 
@@ -117,8 +118,19 @@ export default function PromptBlock({ promptText, label, variant = 'core', subst
       {/* Body */}
       <div className="px-4 py-4 overflow-x-auto">
         <pre className="font-mono text-sm leading-relaxed whitespace-pre-wrap break-words">
-          <span style={{ color: 'var(--yellow)', fontWeight: 600 }}>$ </span>
-          <span style={{ color: 'var(--text-primary)' }}>{displayText}</span>
+          <span style={{ color: 'var(--yellow-text)', fontWeight: 600 }}>$ </span>
+          {highlightText && displayText.includes(highlightText) ? (() => {
+            const idx = displayText.indexOf(highlightText)
+            return (
+              <>
+                <span style={{ color: 'var(--text-primary)' }}>{displayText.slice(0, idx)}</span>
+                <span style={{ background: 'rgba(242,155,28,0.15)', color: 'var(--yellow-text)', borderRadius: 2, padding: '0 1px' }}>{highlightText}</span>
+                <span style={{ color: 'var(--text-primary)' }}>{displayText.slice(idx + highlightText.length)}</span>
+              </>
+            )
+          })() : (
+            <span style={{ color: 'var(--text-primary)' }}>{displayText}</span>
+          )}
           <span className="cursor-blink" />
         </pre>
       </div>

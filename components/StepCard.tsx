@@ -22,7 +22,7 @@ export default function StepCard({ stepNumber, title, description, children, che
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1">
-          <p className="font-mono text-xs tracking-widest uppercase mb-1" style={{ color: checked ? 'var(--green)' : 'var(--yellow)' }}>
+          <p className="font-mono text-xs tracking-widest uppercase mb-1" style={{ color: checked ? 'var(--green)' : 'var(--yellow-text)' }}>
             STEP {stepNumber}
           </p>
           <h3 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>{title}</h3>

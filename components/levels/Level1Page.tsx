@@ -24,8 +24,8 @@ export default function Level1Page() {
 
   // checked[0]: StepCard 01 — ran vague prompt
   // checked[1]: StepCard 02 — ran structured prompt
-  // checked[2-6]: Layer cards 01-05 (Role, Context, Task, Format, Constraints)
-  const [checked, setChecked] = useState<boolean[]>(() => new Array(7).fill(false))
+  // checked[2-7]: Layer cards L0-L5
+  const [checked, setChecked] = useState<boolean[]>(() => new Array(8).fill(false))
   const [openAdv, setOpenAdv] = useState<string | null>(null)
   const toggleCheck = useCallback((i: number) => {
     setChecked(prev => { const next = [...prev]; next[i] = !next[i]; return next })
@@ -85,7 +85,7 @@ export default function Level1Page() {
             <PromptBlock label={res['prompt-vague'].label.toUpperCase()} promptText={vaguePrompt} variant="test" substituteMinion={true} />
             <div className="p-3 rounded-lg" style={{ background: 'rgba(255,215,0,0.06)', border: '1px solid rgba(255,215,0,0.2)' }}>
               <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>
-                <span style={{ color: 'var(--yellow)' }}>💡 </span>{res['prompt-vague'].note}
+                <span style={{ color: 'var(--yellow-text)' }}>💡 </span>{res['prompt-vague'].note}
               </p>
             </div>
           </StepCard>
@@ -94,7 +94,7 @@ export default function Level1Page() {
             <PromptBlock label={res['prompt-good'].label.toUpperCase()} promptText={goodPrompt} variant="core" />
             <div className="p-3 rounded-lg" style={{ background: 'rgba(255,215,0,0.06)', border: '1px solid rgba(255,215,0,0.2)' }}>
               <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>
-                <span style={{ color: 'var(--yellow)' }}>💡 </span>{res['prompt-good'].note}
+                <span style={{ color: 'var(--yellow-text)' }}>💡 </span>{res['prompt-good'].note}
               </p>
             </div>
           </StepCard>
@@ -126,7 +126,7 @@ export default function Level1Page() {
                   >
                     {i + 1}
                   </span>
-                  <span className="font-mono font-bold text-sm tracking-widest" style={{ color: 'var(--yellow)' }}>
+                  <span className="font-mono font-bold text-sm tracking-widest" style={{ color: 'var(--yellow-text)' }}>
                     {item.layer.toUpperCase()}
                   </span>
                 </div>
@@ -159,54 +159,62 @@ export default function Level1Page() {
             {conceptResources.map((concept, i) => {
               const layerCheckIdx = 2 + i
               const isLayerDone = checked[layerCheckIdx]
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const whatChanged = (concept.try_prompt as any)?.what_changed as string | null
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const addedHighlight = (concept as any).added_highlight as string | null
               return (
-              <div
-                key={concept.id}
-                className="rounded-lg overflow-hidden"
-                style={{ background: 'var(--bg-secondary)', border: `1px solid ${isLayerDone ? 'var(--green)' : 'var(--border)'}`, borderLeft: `2px solid ${isLayerDone ? 'var(--green)' : 'var(--yellow)'}` }}
-              >
-                {/* Concept header */}
-                <div className="px-5 py-4 space-y-1" style={{ borderBottom: '1px solid var(--border)' }}>
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <span
-                        className="font-mono font-bold text-xs px-2 py-0.5 rounded"
-                        style={{ background: isLayerDone ? 'var(--green)' : 'var(--yellow)', color: isLayerDone ? 'white' : 'var(--text-primary)' }}
+                <div
+                  key={concept.id}
+                  className="rounded-lg overflow-hidden"
+                  style={{ background: 'var(--bg-secondary)', border: `1px solid ${isLayerDone ? 'var(--green)' : 'var(--border)'}`, borderLeft: `2px solid ${isLayerDone ? 'var(--green)' : 'var(--yellow)'}` }}
+                >
+                  {/* Concept header */}
+                  <div className="px-5 py-4 space-y-1" style={{ borderBottom: '1px solid var(--border)' }}>
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <span
+                          className="font-mono font-bold text-xs px-2 py-0.5 rounded"
+                          style={{ background: isLayerDone ? 'var(--green)' : 'var(--yellow)', color: isLayerDone ? 'white' : 'var(--text-primary)', whiteSpace: 'nowrap' }}
+                        >
+                          {concept.label}
+                        </span>
+                      </div>
+                      <button
+                        onClick={() => toggleCheck(layerCheckIdx)}
+                        className="flex-shrink-0 flex items-center gap-1.5 transition-all duration-150 mt-0.5"
+                        style={{ color: isLayerDone ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
                       >
-                        LAYER {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className="font-bold text-base" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>
-                        {concept.label}
-                      </h3>
+                        {isLayerDone ? <CheckSquare size={18} /> : <Square size={18} />}
+                        <span className="hidden sm:inline">{isLayerDone ? 'Done' : 'Mark done'}</span>
+                      </button>
                     </div>
-                    <button
-                      onClick={() => toggleCheck(layerCheckIdx)}
-                      className="flex-shrink-0 flex items-center gap-1.5 transition-all duration-150 mt-0.5"
-                      style={{ color: isLayerDone ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-                    >
-                      {isLayerDone ? <CheckSquare size={18} /> : <Square size={18} />}
-                      <span className="hidden sm:inline">{isLayerDone ? 'Done' : 'Mark done'}</span>
-                    </button>
+                    <p className="text-sm leading-relaxed pt-1" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
+                      {concept.concept_intro}
+                    </p>
                   </div>
-                  <p className="text-sm leading-relaxed pt-1" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
-                    {concept.concept_intro}
-                  </p>
-                </div>
 
-                {/* Try prompt */}
-                <div className="px-5 py-4 space-y-3">
-                  <p className="text-xs font-mono font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>
-                    {concept.try_prompt?.instruction}
-                  </p>
-                  <PromptBlock
-                    label={`LAYER ${String(i + 1).padStart(2, '0')} — ADD ${concept.label.toUpperCase()}`}
-                    promptText={concept.try_prompt?.content ?? ''}
-                    variant="core"
-                    substituteMinion={true}
-                  />
+                  {/* Try prompt */}
+                  <div className="px-5 py-4 space-y-3">
+                    <p className="text-xs font-mono font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>
+                      {concept.try_prompt?.instruction}
+                    </p>
+                    <PromptBlock
+                      label={concept.label.toUpperCase()}
+                      promptText={concept.try_prompt?.content ?? ''}
+                      variant="core"
+                      highlightText={addedHighlight}
+                    />
+                    {whatChanged && (
+                      <div className="flex items-start gap-2 p-3 rounded-lg" style={{ background: 'rgba(242,155,28,0.06)', border: '1px solid rgba(242,155,28,0.2)' }}>
+                        <span className="font-mono font-bold text-xs flex-shrink-0" style={{ color: 'var(--yellow-text)' }}>+ WHAT CHANGED:</span>
+                        <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>{whatChanged}</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )})}
+              )
+            })}
           </div>
 
           {/* Advanced techniques — collapsible accordion */}
@@ -246,8 +254,15 @@ export default function Level1Page() {
                           label={adv.label.toUpperCase()}
                           promptText={adv.try_prompt?.content ?? ''}
                           variant="advanced"
-                          substituteMinion={true}
                         />
+                        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                        {(adv.try_prompt as any)?.what_changed && (
+                          <div className="flex items-start gap-2 p-3 rounded-lg" style={{ background: 'rgba(139,92,246,0.06)', border: '1px solid rgba(139,92,246,0.2)' }}>
+                            <span className="font-mono font-bold text-xs flex-shrink-0" style={{ color: 'var(--purple)' }}>+ WHAT CHANGED:</span>
+                            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                            <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>{(adv.try_prompt as any).what_changed}</p>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>

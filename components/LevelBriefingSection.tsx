@@ -122,7 +122,7 @@ export default function LevelBriefingSection({ data }: { data: BriefingData }) {
                   <ul className="space-y-2">
                     {selectedGear.why_useful.map((pt, i) => (
                       <li key={i} className="flex items-start gap-2 text-xs" style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)' }}>
-                        <span style={{ color: 'var(--yellow)', fontWeight: 700, flexShrink: 0, lineHeight: 1.8 }}>→</span>
+                        <span style={{ color: 'var(--yellow-text)', fontWeight: 700, flexShrink: 0, lineHeight: 1.8 }}>→</span>
                         {pt}
                       </li>
                     ))}

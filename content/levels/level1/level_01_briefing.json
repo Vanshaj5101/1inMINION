@@ -30,10 +30,11 @@
   "mission_check": [
     "Ran the vague prompt and saw the generic output",
     "Ran the structured prompt and compared the two outputs",
-    "Ran the Role layer prompt and saw the difference",
-    "Ran the Context layer prompt and saw the difference",
-    "Ran the Task layer prompt and saw the difference",
-    "Ran the Format layer prompt and saw the difference",
-    "Ran the Constraints layer prompt and saw the final result"
+    "Ran L0 — Raw Ask and set my baseline",
+    "Ran L1 — Specificity and saw the first improvement",
+    "Ran L2 — Role and noticed how the thinking changed",
+    "Ran L3 — Context and saw it answer for my world",
+    "Ran L4 — Output Format and got a usable result",
+    "Ran L5 — Constraints and completed the full prompt"
   ]
 }

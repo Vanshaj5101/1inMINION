@@ -11,6 +11,7 @@
   --yellow-light:  #fef3dc;
   --yellow-glow:   rgba(242, 155, 28, 0.35);
   --yellow-muted:  #b87010;
+  --yellow-text:   #7a3a00; /* accessible orange for text on white — 7.2:1 contrast */
   --purple:        #8B5CF6;
   --blue:          #3B82F6;
   --orange:        #F97316;
@@ -316,10 +317,15 @@ mark.story-highlight {
 .section-eyebrow {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--yellow);
+  font-weight: 700;
+  color: var(--text-primary);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 8px;
+  display: inline-block;
+  background: var(--yellow);
+  padding: 3px 8px;
+  border-radius: 4px;
 }
 
 /* Pill badge */
@@ -329,7 +335,7 @@ mark.story-highlight {
   gap: 4px;
   background: rgba(242,155,28,0.08);
   border: 1px solid rgba(242,155,28,0.25);
-  color: var(--yellow-muted);
+  color: var(--yellow-text);
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;

@@ -78,7 +78,7 @@ export default function Level4Page() {
         {/* What are MCPs */}
         {/* <section id="mcps">
           <div className="rounded-xl p-6 space-y-4" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderLeft: '3px solid var(--yellow)' }}>
-            <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'var(--yellow)' }}>// WHAT ARE MCPs?</p>
+            <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'var(--yellow-text)' }}>// WHAT ARE MCPs?</p>
             <p className="text-sm leading-relaxed whitespace-pre-line" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)', lineHeight: 1.75 }}>
               {briefingData.what_are_mcps}
             </p>
@@ -156,7 +156,7 @@ export default function Level4Page() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {placeholders.map(({ tag, hint }) => (
                 <div key={tag} className="p-3 rounded-lg flex items-start gap-2" style={{ background: 'var(--bg-primary)', border: '1px solid var(--border)' }}>
-                  <code className="text-xs font-mono font-bold flex-shrink-0" style={{ color: 'var(--yellow)' }}>{tag}</code>
+                  <code className="text-xs font-mono font-bold flex-shrink-0" style={{ color: 'var(--yellow-text)' }}>{tag}</code>
                   <p className="text-xs" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{hint}</p>
                 </div>
               ))}
