@@ -1,151 +1,142 @@
 export const level1 = {
   header: {
     eyebrow: '// LEVEL 01 — PROMPT ENGINEERING',
-    title: 'Speak Like Gru.\nNot Like a Minion.',
-    subtitle: 'Your Minion just arrived.\nThey understand nothing.\nGive them a chaotic order — watch chaos.\nNow speak like a mastermind.\nWatch them transform.',
+    title: 'Talk to\nYour Minion.',
+    subtitle: 'Your Minion just arrived.\nThey are eager, willing, and understand absolutely nothing.\nThe quality of their response depends entirely on the quality of your order.\nLearn to give precise, structured prompts — and watch your Minion transform.',
     duration: '⏱ 20 MINUTES',
   },
 
-  badPrompt: `help me with my work stuff and make it better`,
+  badPrompt: `Help me plan the sun heist.`,
 
-  goodPrompt: `You are a senior strategic advisor with expertise in organizational productivity.
+  goodPrompt: `You are a villain mission strategist with expertise in high-risk space operations.
 
-Context: I work at a company where teams struggle to complete projects on time despite good intentions.
+Context: GRU previously attempted to steal the moon and failed. The team is now planning a more ambitious mission to steal the sun using a shrink ray. The mission must be undetected and completed within 48 hours.
 
-Task: Give me 3 specific, actionable interventions that have worked in similar organizations.
+Task: Identify the 3 most critical factors that will determine whether this mission succeeds or fails.
 
-Format: Numbered list. Each intervention gets: name, one sentence explanation, one concrete example.
+Format: A numbered list. Each factor gets a name, one sentence explanation, and one specific risk to watch out for.
 
-Constraints: Each intervention must be implementable in under 2 weeks with no additional budget.`,
+Constraints: Be specific and direct. Do not suggest anything that requires more than the equipment already available. Avoid generic advice.`,
 
   ingredients: [
     {
       number: '01',
       name: 'ROLE',
       explanation: 'Who is Claude in this conversation?',
-      example: '"You are a behavioral scientist"',
+      example: '"You are a villain mission strategist with expertise in high-risk space operations."',
     },
     {
       number: '02',
       name: 'CONTEXT',
       explanation: 'What does Claude need to know about your world?',
-      example: '"Our team of 8 is struggling with Q3 deadline pressure"',
+      example: '"GRU previously attempted to steal the moon and failed. The team is now planning a more ambitious mission to steal the sun using a shrink ray."',
     },
     {
       number: '03',
       name: 'TASK',
       explanation: 'What exactly do you need done?',
-      example: '"Give me 3 specific actions we can take this week"',
+      example: '"Identify the 3 most critical factors that will determine whether this mission succeeds or fails."',
     },
     {
       number: '04',
       name: 'FORMAT',
       explanation: 'How should the answer look?',
-      example: '"Numbered list. Each item: name + one example + estimated time"',
+      example: '"A numbered list. Each factor gets a name, one sentence explanation, and one specific risk to watch out for."',
     },
     {
       number: '05',
       name: 'CONSTRAINTS',
       explanation: 'What rules must the answer follow?',
-      example: '"No cost. Implementable in under 48 hours. No new tools."',
+      example: '"Be specific and direct. Do not suggest anything that requires more than the equipment already available. Avoid generic advice."',
     },
   ],
 
   layers: [
     {
       id: 'L0',
-      label: 'LAYER 00 — RAW ASK',
+      label: 'BASELINE — NO STRUCTURE',
       status: 'START HERE',
       explanation: 'Type whatever comes to mind naturally.\nNo structure. No framework. Just instinct.\nThis is your baseline. Remember it.',
-      prompt: `help me plan the sun heist`,
-      tip: '💡 RUN THIS FIRST\nPaste it in Claude. Save the output.\nYou\'ll compare it to your Layer 05 version at the end. The difference is the lesson.',
+      prompt: `Help me plan the sun heist.`,
+      tip: '💡 RUN THIS FIRST\nPaste it in Claude. Save the output.\nYou\'ll compare it to your final version at the end. The difference is the lesson.',
     },
     {
       id: 'L1',
-      label: 'LAYER 01 — ADD SPECIFICITY',
-      explanation: 'Replace vague words with precise ones.\nAdd a number. Name the exact subject.\nClaude responds proportionally to how specific you are.',
-      prompt: `Give me 5 specific strategies for approaching the sun for a heist mission without being detected.`,
-      whatChanged: 'Added a number (5), added specific context (heist mission), added constraint (without being detected)',
-    },
-    {
-      id: 'L2',
-      label: 'LAYER 02 — ROLE AND PERSONA',
-      explanation: 'Tell Claude WHO it should be.\nThe role changes how Claude thinks — not just what it says.\nTry different roles and see the difference.',
-      pairActivity: true,
-      promptA: `You are a aerospace engineer with expertise in extreme environment navigation.
+      label: 'LAYER 01 — ADD A ROLE',
+      explanation: 'A role tells your Minion who they are in this conversation. It changes how they think, not just what they say. A mission strategist answers very differently from a financial analyst.',
+      prompt: `You are a villain mission strategist with expertise in high-risk space operations.
 
-Give me 5 specific strategies for approaching the sun for a heist mission without being detected.`,
-      promptB: `You are a master spy and infiltration specialist with 20 years of covert operations experience.
-
-Give me 5 specific strategies for approaching the sun for a heist mission without being detected.`,
-      labelA: 'PERSON A — ROLE',
-      labelB: 'PERSON B — ROLE',
+Help me plan the sun heist.`,
       whatChanged: 'Added a role — same task, completely different expertise and perspective',
     },
     {
+      id: 'L2',
+      label: 'LAYER 02 — ADD CONTEXT',
+      explanation: 'Context gives your Minion the background they need. Without it, they answer for a generic world. With it, they answer for yours.',
+      prompt: `You are a villain mission strategist with expertise in high-risk space operations.
+
+Context: GRU previously attempted to steal the moon and failed. The team is now planning a more ambitious mission to steal the sun using a shrink ray. The mission must be undetected and completed within 48 hours.
+
+Help me plan the sun heist.`,
+      whatChanged: 'Added context — Claude now knows the history, the goal, and the time constraint',
+    },
+    {
       id: 'L3',
-      label: 'LAYER 03 — ADD CONTEXT',
-      explanation: 'Tell Claude what it needs to know about YOUR situation.\nWithout context Claude answers for a fictional average world.\nWith context Claude answers for YOU.',
-      prompt: `You are a master spy and infiltration specialist with 20 years of covert operations experience.
+      label: 'LAYER 03 — ADD A TASK',
+      explanation: 'The task is what you actually want. Be as specific as possible. Vague tasks produce vague results every single time.',
+      prompt: `You are a villain mission strategist with expertise in high-risk space operations.
 
-Context: We are 1inMINION — a reformed villain organization. We have one shrink ray that needs to reach within 1 million km of the sun. Our team is 12 Minions with varying specializations. We have failed 2 previous missions: one vessel melted, one Minion got distracted by solar flares.
+Context: GRU previously attempted to steal the moon and failed. The team is now planning a more ambitious mission to steal the sun using a shrink ray. The mission must be undetected and completed within 48 hours.
 
-Give me 5 specific strategies for approaching the sun undetected, learning from our past failures.`,
-      whatChanged: 'Added specific context about who we are, what we have, and what has failed before',
+Task: Identify the 3 most critical factors that will determine whether this mission succeeds or fails.`,
+      whatChanged: 'Replaced the vague ask with a specific, scoped task — 3 factors, not "everything"',
     },
     {
       id: 'L4',
       label: 'LAYER 04 — ADD FORMAT',
-      explanation: 'Tell Claude HOW the answer should look.\nFormat determines whether you can actually USE the output.\nA great answer in the wrong format is still unusable.',
-      prompt: `You are a master spy and infiltration specialist with 20 years of covert operations experience.
+      explanation: 'Format tells your Minion how the output should look. A great answer in the wrong format is still unusable. Design the output before you ask the question.',
+      prompt: `You are a villain mission strategist with expertise in high-risk space operations.
 
-Context: We are 1inMINION — a reformed villain organization. We have one shrink ray that needs to reach within 1 million km of the sun. Our team is 12 Minions with varying specializations. We have failed 2 previous missions: one vessel melted, one Minion got distracted by solar flares.
+Context: GRU previously attempted to steal the moon and failed. The team is now planning a more ambitious mission to steal the sun using a shrink ray. The mission must be undetected and completed within 48 hours.
 
-Give me 5 specific strategies for approaching the sun undetected, learning from our past failures.
+Task: Identify the 3 most critical factors that will determine whether this mission succeeds or fails.
 
-Format: A table with 4 columns:
-Strategy | Why it works | Risk | Minion role required`,
-      whatChanged: 'Added a specific output format — the exact structure of the answer',
+Format: A numbered list. Each factor gets a name, one sentence explanation, and one specific risk to watch out for.`,
+      whatChanged: 'Added a specific output structure — Claude now knows exactly how to present the answer',
     },
     {
       id: 'L5',
       label: 'LAYER 05 — ADD CONSTRAINTS',
       status: 'FINAL LAYER',
-      explanation: 'Add explicit rules.\nWhat to include. What to avoid.\nWhat to prioritize. What format to use.\nConstraints produce precision.\nThis is where outputs become professional.',
-      prompt: `You are a master spy and infiltration specialist with 20 years of covert operations experience.
+      explanation: 'Constraints set the rules. They tell your Minion what to avoid, what to prioritize, and what limits to respect. Boundaries produce precision.',
+      prompt: `You are a villain mission strategist with expertise in high-risk space operations.
 
-Context: We are 1inMINION — a reformed villain organization. We have one shrink ray that needs to reach within 1 million km of the sun. Our team is 12 Minions with varying specializations. We have failed 2 previous missions: one vessel melted, one Minion got distracted by solar flares.
+Context: GRU previously attempted to steal the moon and failed. The team is now planning a more ambitious mission to steal the sun using a shrink ray. The mission must be undetected and completed within 48 hours.
 
-Give me 5 specific strategies for approaching the sun undetected, learning from our past failures.
+Task: Identify the 3 most critical factors that will determine whether this mission succeeds or fails.
 
-Format: A table with 4 columns:
-Strategy | Why it works | Risk | Minion role required
+Format: A numbered list. Each factor gets a name, one sentence explanation, and one specific risk to watch out for.
 
-Constraints:
-- Every strategy must be executable in under 48 hours
-- Do not suggest any approach Vector has already tried
-- Each risk must include a specific mitigation
-- Write for a non-technical Minion crew who need clear simple instructions`,
+Constraints: Be specific and direct. Do not suggest anything that requires more than the equipment already available. Avoid generic advice.`,
       whatChanged: 'Added explicit rules — what to include, what to avoid, how to write it',
     },
   ],
 
   advancedPrompts: {
-    optionA: `Here is an example of a great strategy entry:
-[your example here]
-Now give me 5 more at this quality level.`,
-    optionB: `Before giving me strategies, think through: what caused our 2 previous failures, what environmental factors we haven't considered, and what our Minions are actually capable of.
-Then give me your 5 strategies.`,
-    optionC: `Review your 5 strategies. Identify the weakest one. Explain why it's weak.
-Replace it with a stronger alternative.`,
+    optionA: `Here is an example of a strong mission factor:
+
+Factor 1 — Timing. The approach window must align with low solar activity. Risk: missing the window by even 2 hours doubles detection probability.
+
+Now give me 2 more factors at this quality level.`,
+    optionB: `Before giving me the critical factors, think through what caused the moon heist to fail and what environmental challenges a solar mission faces. Then give me your 3 factors.`,
+    optionC: `After writing your 3 factors, review them against these criteria: are they specific, are they data-driven, and would a villain actually act on them. Improve the weakest one before responding.`,
   },
 
   missionCheckItems: [
-    "I ran the bad prompt and saw the generic output",
-    "I added all 5 layers to my mission prompt",
-    "I compared Person A and Person B role outputs",
-    "My final prompt has: Role + Context + Task + Format + Constraints",
-    "I compared my Layer 00 and Layer 05 outputs",
-    "I'm ready to build my Minion's lair",
+    "I ran the vague prompt and saw a generic output",
+    "I ran the structured prompt and saw the difference",
+    "I built my own prompt with all 5 layers: role, context, task, format, and constraints",
+    "I compared my vague and structured outputs side by side",
+    "I can explain why the structured prompt produced a better result",
   ],
 }

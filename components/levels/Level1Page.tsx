@@ -1,243 +1,275 @@
 'use client'
 
-import { useState } from 'react'
-import { ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'
+import { useState, useCallback } from 'react'
+import { ExternalLink, ChevronDown, ChevronUp, CheckSquare, Square } from 'lucide-react'
 import { motion } from 'framer-motion'
 import PromptBlock from '../PromptBlock'
 import StepCard from '../StepCard'
-import ChallengeCard from '../ChallengeCard'
 import MissionCheck from '../MissionCheck'
-import { level1 } from '@/lib/content/level1'
+import LevelBriefingModal from '../LevelBriefingModal'
+import LevelBriefingSection from '../LevelBriefingSection'
+import TableOfContents from '../TableOfContents'
+import briefingData from '@/content/levels/level1/level_01_briefing.json'
+import stepsData from '@/content/levels/level1/level_01_steps.json'
+import resourcesData from '@/content/levels/level1/level_01_resources.json'
 
 const fadeUp = { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.3, ease: 'easeOut' } }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const res: Record<string, any> = Object.fromEntries(resourcesData.resources.map(r => [r.id, r]))
+
 export default function Level1Page() {
-  const [openLayer, setOpenLayer] = useState(0)
-  const [advancedOpen, setAdvancedOpen] = useState(false)
+  const [showBriefing, setShowBriefing] = useState(true)
+  const handleEnter = () => setShowBriefing(false)
+
+  // checked[0]: StepCard 01 — ran vague prompt
+  // checked[1]: StepCard 02 — ran structured prompt
+  // checked[2-6]: Layer cards 01-05 (Role, Context, Task, Format, Constraints)
+  const [checked, setChecked] = useState<boolean[]>(() => new Array(7).fill(false))
+  const [openAdv, setOpenAdv] = useState<string | null>(null)
+  const toggleCheck = useCallback((i: number) => {
+    setChecked(prev => { const next = [...prev]; next[i] = !next[i]; return next })
+  }, [])
+
+  const tocSections = [
+    { id: 'overview',      label: 'Overview' },
+    { id: 'difference',   label: 'See the Difference' },
+    { id: 'what-changed', label: 'What Changed' },
+    { id: 'build',        label: 'Build It Layer by Layer' },
+    { id: 'mission-check', label: 'Mission Check' },
+  ]
+
+  const cards     = stepsData.cards
+  const vagueCard = cards[0]
+  const goodCard  = cards[1]
+
+  const vaguePrompt: string = res['prompt-vague'].content
+  const goodPrompt: string  = res['prompt-good'].content
+  const breakdown: Array<{ layer: string; highlight: string; explanation: string }> = res['prompt-good'].breakdown
+
+  const conceptResources = resourcesData.resources.filter(r => r.type === 'concept')
+  const advancedResources = resourcesData.resources.filter(r => r.type === 'advanced')
 
   return (
-    <motion.main {...fadeUp} className="pt-20 pb-32 max-w-3xl mx-auto px-4 sm:px-6 space-y-16">
+    <>
+      {showBriefing && (
+        <LevelBriefingModal data={briefingData} onEnter={handleEnter} />
+      )}
 
-      {/* Level Header */}
-      <section className="space-y-4 pt-8">
-        <p className="section-eyebrow">{level1.header.eyebrow}</p>
-        <h1 className="text-4xl sm:text-5xl font-bold leading-tight whitespace-pre-line">{level1.header.title}</h1>
-        <p className="text-lg leading-relaxed whitespace-pre-line" style={{ color: 'var(--text-secondary)' }}>{level1.header.subtitle}</p>
-        <span className="pill-badge">{level1.header.duration}</span>
-        <div style={{ borderTop: '1px solid var(--border)' }} />
-      </section>
+      <TableOfContents sections={tocSections} />
 
-      {/* Part 1 */}
-      <section className="space-y-6">
-        <div>
-          <p className="section-eyebrow">// PART 01 — SEE THE DIFFERENCE</p>
-          <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>Run these prompts in Claude. See what bad vs good looks like.</p>
-        </div>
+      <motion.main {...fadeUp} className="pt-20 pb-32 max-w-3xl mx-auto px-4 sm:px-6 space-y-16">
 
-        <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex">
-          OPEN CLAUDE.AI <ExternalLink size={12} />
-        </a>
-
-        <StepCard stepNumber="01" title="Give Your Minion a Bad Order" description="Copy this prompt. Paste it into Claude. Hit enter. Read the output. Notice: vague, generic, could be anything. This is your Minion with no guidance.">
-          <PromptBlock label="BAD PROMPT 01" promptText={level1.badPrompt} variant="test" />
-        </StepCard>
-
-        <StepCard stepNumber="02" title="Now Give a Proper Order" description="Copy this improved version. Paste it into the SAME Claude chat. Compare the outputs side by side. Same Claude. Different result.">
-          <PromptBlock label="GOOD PROMPT 01" promptText={level1.goodPrompt} variant="core" />
-        </StepCard>
-
-        {/* What Changed insight */}
-        <div className="rounded-lg p-5 space-y-3" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderLeft: '3px solid var(--yellow)' }}>
-          <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'var(--yellow)' }}>// WHAT CHANGED?</p>
-          <div className="space-y-1.5">
-            {['Role — you told Claude who it is', 'Context — you gave Claude your world', 'Task — you were specific about what you need', 'Format — you designed the output shape', 'Constraints — you added boundaries'].map((line, i) => (
-              <p key={i} className="text-sm font-mono" style={{ color: 'var(--text-secondary)' }}>
-                <span style={{ color: 'var(--yellow)' }}>→ </span>{line}
-              </p>
-            ))}
-          </div>
-          <p className="text-sm font-mono font-bold mt-2" style={{ color: 'var(--text-primary)' }}>That's 5 ingredients. Remember them.</p>
-        </div>
-      </section>
-
-      {/* Part 2 — The 5 Ingredients */}
-      <section className="space-y-6">
-        <div>
-          <p className="section-eyebrow">// PART 02 — THE 5 INGREDIENTS</p>
-          <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>Every powerful prompt has these 5 things. Learn them once. Use them forever.</p>
-        </div>
-
-        <div className="flex gap-3 overflow-x-auto pb-2 -mx-2 px-2">
-          {level1.ingredients.map(ing => (
-            <div
-              key={ing.number}
-              className="flex-shrink-0 w-44 rounded-lg p-4 space-y-2 transition-all duration-200 hover:border-accent-yellow hover:shadow-yellow-sm"
-              style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)' }}
-            >
-              <span className="font-mono font-bold text-xl" style={{ color: 'var(--yellow)' }}>{ing.number}</span>
-              <p className="font-bold text-base">{ing.name}</p>
-              <p className="text-xs leading-snug" style={{ color: 'var(--text-secondary)' }}>{ing.explanation}</p>
-              <p className="text-xs font-mono italic" style={{ color: 'var(--yellow)', opacity: 0.8 }}>{ing.example}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Part 3 — Progressive Layers */}
-      <section className="space-y-6">
-        <div>
-          <p className="section-eyebrow">// PART 03 — BUILD YOUR MISSION PROMPT</p>
-          <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Add one layer at a time. Run it after each layer. Watch your Minion improve with every step.
-            <br /><br />
-            🍌 Your mission: Help plan Operation: Steal the Sun. Gru needs a strategic advisor for the heist.
+        {/* Header */}
+        <section id="overview" className="space-y-4 pt-8">
+          <p className="section-eyebrow">{briefingData.level.eyebrow}</p>
+          <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
+            {briefingData.level.title}
+          </h1>
+          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)', lineHeight: 1.7, textAlign: 'justify' }}>
+            {briefingData.level.subdescription}
           </p>
-        </div>
+          <span className="pill-badge">⏱ {briefingData.level.duration.toUpperCase()}</span>
+          <LevelBriefingSection data={briefingData} />
+          <div style={{ borderTop: '1px solid var(--border)' }} />
+        </section>
 
-        {/* Layer progress indicator */}
-        <div className="flex items-center gap-1 overflow-x-auto">
-          {level1.layers.map((layer, i) => (
-            <button
-              key={layer.id}
-              onClick={() => setOpenLayer(i)}
-              className="flex-shrink-0 px-3 py-1.5 rounded font-mono text-xs font-bold tracking-widest transition-all duration-150"
-              style={{
-                background: openLayer === i ? 'var(--yellow)' : 'transparent',
-                color: openLayer === i ? '#0F0F1A' : 'var(--text-secondary)',
-                border: `1px solid ${openLayer === i ? 'var(--yellow)' : 'var(--border)'}`,
-              }}
-            >
-              {layer.id}
-            </button>
-          ))}
-        </div>
+        {/* Part 01: See the Difference */}
+        <section id="difference" className="space-y-6">
+          <p className="section-eyebrow">// PART 01 — SEE THE DIFFERENCE</p>
 
-        {/* Accordion layers */}
-        <div className="space-y-3">
-          {level1.layers.map((layer, i) => (
-            <div
-              key={layer.id}
-              className="rounded-lg overflow-hidden transition-all duration-200"
-              style={{ background: 'var(--bg-secondary)', border: `1px solid ${openLayer === i ? 'var(--yellow)' : 'var(--border)'}` }}
-            >
-              <button
-                onClick={() => setOpenLayer(openLayer === i ? -1 : i)}
-                className="w-full flex items-center justify-between px-5 py-4"
+          <StepCard stepNumber={vagueCard.card} title={vagueCard.title} description={vagueCard.description} checked={checked[0]} onCheck={() => toggleCheck(0)}>
+            <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex">
+              OPEN CLAUDE.AI <ExternalLink size={12} />
+            </a>
+            <PromptBlock label={res['prompt-vague'].label.toUpperCase()} promptText={vaguePrompt} variant="test" substituteMinion={true} />
+            <div className="p-3 rounded-lg" style={{ background: 'rgba(255,215,0,0.06)', border: '1px solid rgba(255,215,0,0.2)' }}>
+              <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>
+                <span style={{ color: 'var(--yellow)' }}>💡 </span>{res['prompt-vague'].note}
+              </p>
+            </div>
+          </StepCard>
+
+          <StepCard stepNumber={goodCard.card} title={goodCard.title} description={goodCard.description} checked={checked[1]} onCheck={() => toggleCheck(1)}>
+            <PromptBlock label={res['prompt-good'].label.toUpperCase()} promptText={goodPrompt} variant="core" />
+            <div className="p-3 rounded-lg" style={{ background: 'rgba(255,215,0,0.06)', border: '1px solid rgba(255,215,0,0.2)' }}>
+              <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>
+                <span style={{ color: 'var(--yellow)' }}>💡 </span>{res['prompt-good'].note}
+              </p>
+            </div>
+          </StepCard>
+        </section>
+
+        {/* What Changed — 5-layer breakdown */}
+        <section id="what-changed" className="space-y-5">
+          <div>
+            <p className="section-eyebrow">// WHAT CHANGED?</p>
+            <h2 className="text-3xl sm:text-4xl font-bold mt-1" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
+              The Structured Prompt Has 5 Layers.
+            </h2>
+            <p className="text-sm mt-2 leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
+              Every layer does something different. Together they turn a vague request into a precise instruction. Here is exactly what was added and why it works.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {breakdown.map((item, i) => (
+              <div
+                key={item.layer}
+                className="rounded-lg overflow-hidden"
+                style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)' }}
               >
-                <div className="flex items-center gap-3">
-                  {layer.status && (
-                    <span className="font-mono text-xs px-2 py-0.5 rounded" style={{ background: 'rgba(233,149,10,0.09)', color: 'var(--yellow)', border: '1px solid rgba(255,215,0,0.3)' }}>
-                      {layer.status}
-                    </span>
-                  )}
-                  <span className="font-mono font-bold text-sm" style={{ color: openLayer === i ? 'var(--yellow)' : 'var(--text-muted)' }}>
-                    {layer.label}
+                <div className="flex items-center gap-3 px-5 py-3" style={{ borderBottom: '1px solid var(--border)', background: 'var(--bg-primary)' }}>
+                  <span
+                    className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center font-mono font-bold text-xs"
+                    style={{ background: 'var(--yellow)', color: 'var(--text-primary)' }}
+                  >
+                    {i + 1}
+                  </span>
+                  <span className="font-mono font-bold text-sm tracking-widest" style={{ color: 'var(--yellow)' }}>
+                    {item.layer.toUpperCase()}
                   </span>
                 </div>
-                {openLayer === i ? <ChevronUp size={16} style={{ color: 'var(--yellow)' }} /> : <ChevronDown size={16} style={{ color: 'var(--text-secondary)' }} />}
-              </button>
-
-              {openLayer === i && (
-                <div className="px-5 pb-6 space-y-5">
-                  <p className="text-sm leading-relaxed whitespace-pre-line" style={{ color: 'var(--text-secondary)' }}>{layer.explanation}</p>
-
-                  {layer.pairActivity ? (
-                    <div className="space-y-4">
-                      <div className="rounded-lg p-4" style={{ background: 'rgba(233,149,10,0.06)', border: '1px solid rgba(233,149,10,0.2)' }}>
-                        <p className="font-mono font-bold text-xs mb-2" style={{ color: 'var(--yellow)' }}>🍌 PAIR ACTIVITY</p>
-                        <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                          Person A: use the prompt on the left<br />
-                          Person B: use the prompt on the right<br />
-                          Compare your outputs. Whose role produced the better strategy? Discuss for 60 seconds.
-                        </p>
-                      </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <PromptBlock label={layer.labelA!} promptText={layer.promptA!} variant="core" />
-                        <PromptBlock label={layer.labelB!} promptText={layer.promptB!} variant="core" />
-                      </div>
-                    </div>
-                  ) : (
-                    <PromptBlock label={layer.label} promptText={layer.prompt!} variant="core" />
-                  )}
-
-                  {layer.tip && (
-                    <div className="rounded-lg p-4" style={{ background: 'rgba(29,91,212,0.06)', border: '1px solid rgba(29,91,212,0.2)' }}>
-                      <p className="text-sm leading-relaxed whitespace-pre-line font-mono" style={{ color: 'var(--blue)' }}>{layer.tip}</p>
-                    </div>
-                  )}
-
-                  {layer.whatChanged && (
-                    <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>
-                      <span style={{ color: 'var(--yellow)' }}>// WHAT CHANGED: </span>{layer.whatChanged}
-                    </p>
-                  )}
-
-                  {layer.id === 'L5' && (
-                    <div className="rounded-lg p-5 space-y-2" style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--yellow)' }}>
-                      <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'var(--yellow)' }}>// THE REVEAL</p>
-                      <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                        Now compare your Layer 00 and Layer 05 outputs.<br /><br />
-                        Same Claude. Same mission.<br />
-                        5 layers added. Completely different output.<br /><br />
-                        Nothing changed except the prompt.<br />
-                        That's prompt engineering.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Advanced Section */}
-      <section>
-        <button
-          onClick={() => setAdvancedOpen(o => !o)}
-          className="w-full flex items-center justify-between px-5 py-4 rounded-lg mb-4 transition-all duration-200"
-          style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-purple)' }}
-        >
-          <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'var(--red)' }}>
-            // ADVANCED TRAINING — CLASSIFIED
-          </p>
-          <div className="classified-stamp" style={{ position: 'relative', top: 'auto', right: 'auto', transform: 'rotate(-15deg)', display: 'inline-block' }}>
-            CLASSIFIED
-          </div>
-          {advancedOpen ? <ChevronUp size={16} style={{ color: 'var(--purple)' }} /> : <ChevronDown size={16} style={{ color: 'var(--purple)' }} />}
-        </button>
-
-        {advancedOpen && (
-          <ChallengeCard variant="advanced" title="ADVANCED VILLAIN CHALLENGE">
-            <div className="space-y-4 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              <p>Choose ONE of these advanced techniques and apply it to your Layer 05 prompt:</p>
-              <div className="space-y-4">
-                <div className="p-4 rounded-lg" style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border)' }}>
-                  <p className="font-mono font-bold text-xs mb-2" style={{ color: 'var(--purple)' }}>Option A — Few-Shot Examples</p>
-                  <PromptBlock label="OPTION A" promptText={level1.advancedPrompts.optionA} variant="advanced" />
-                </div>
-                <div className="p-4 rounded-lg" style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border)' }}>
-                  <p className="font-mono font-bold text-xs mb-2" style={{ color: 'var(--purple)' }}>Option B — Chain of Thought</p>
-                  <PromptBlock label="OPTION B" promptText={level1.advancedPrompts.optionB} variant="advanced" />
-                </div>
-                <div className="p-4 rounded-lg" style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border)' }}>
-                  <p className="font-mono font-bold text-xs mb-2" style={{ color: 'var(--purple)' }}>Option C — Self-Critique</p>
-                  <PromptBlock label="OPTION C" promptText={level1.advancedPrompts.optionC} variant="advanced" />
+                <div className="px-5 py-4 space-y-3">
+                  <p className="text-sm font-mono leading-relaxed" style={{ color: 'var(--text-primary)', fontStyle: 'italic' }}>
+                    &ldquo;{item.highlight}&rdquo;
+                  </p>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
+                    {item.explanation}
+                  </p>
                 </div>
               </div>
-              <p>Run your chosen technique. Compare the output to your Layer 05 version. What improved?</p>
-            </div>
-          </ChallengeCard>
-        )}
-      </section>
+            ))}
+          </div>
+        </section>
 
-      {/* Mission Check */}
-      <MissionCheck
-        items={level1.missionCheckItems}
-        nextLevel="/level/2"
-        nextLabel="ADVANCE TO LEVEL 02: BUILD THE LAIR"
-        levelNumber={1}
-      />
-    </motion.main>
+        {/* Part 02: Build It Layer by Layer */}
+        <section id="build" className="space-y-6">
+          <div>
+            <p className="section-eyebrow">// PART 02 — BUILD IT LAYER BY LAYER</p>
+            <h2 className="text-3xl sm:text-4xl font-bold mt-1" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
+              Now Add Each Layer Yourself.
+            </h2>
+            <p className="text-sm mt-2 leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
+              Start from the vague prompt. Add one layer at a time. Run it after each addition. Watch how the output changes with every step.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {conceptResources.map((concept, i) => {
+              const layerCheckIdx = 2 + i
+              const isLayerDone = checked[layerCheckIdx]
+              return (
+              <div
+                key={concept.id}
+                className="rounded-lg overflow-hidden"
+                style={{ background: 'var(--bg-secondary)', border: `1px solid ${isLayerDone ? 'var(--green)' : 'var(--border)'}`, borderLeft: `2px solid ${isLayerDone ? 'var(--green)' : 'var(--yellow)'}` }}
+              >
+                {/* Concept header */}
+                <div className="px-5 py-4 space-y-1" style={{ borderBottom: '1px solid var(--border)' }}>
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      <span
+                        className="font-mono font-bold text-xs px-2 py-0.5 rounded"
+                        style={{ background: isLayerDone ? 'var(--green)' : 'var(--yellow)', color: isLayerDone ? 'white' : 'var(--text-primary)' }}
+                      >
+                        LAYER {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <h3 className="font-bold text-base" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>
+                        {concept.label}
+                      </h3>
+                    </div>
+                    <button
+                      onClick={() => toggleCheck(layerCheckIdx)}
+                      className="flex-shrink-0 flex items-center gap-1.5 transition-all duration-150 mt-0.5"
+                      style={{ color: isLayerDone ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                    >
+                      {isLayerDone ? <CheckSquare size={18} /> : <Square size={18} />}
+                      <span className="hidden sm:inline">{isLayerDone ? 'Done' : 'Mark done'}</span>
+                    </button>
+                  </div>
+                  <p className="text-sm leading-relaxed pt-1" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
+                    {concept.concept_intro}
+                  </p>
+                </div>
+
+                {/* Try prompt */}
+                <div className="px-5 py-4 space-y-3">
+                  <p className="text-xs font-mono font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>
+                    {concept.try_prompt?.instruction}
+                  </p>
+                  <PromptBlock
+                    label={`LAYER ${String(i + 1).padStart(2, '0')} — ADD ${concept.label.toUpperCase()}`}
+                    promptText={concept.try_prompt?.content ?? ''}
+                    variant="core"
+                    substituteMinion={true}
+                  />
+                </div>
+              </div>
+            )})}
+          </div>
+
+          {/* Advanced techniques — collapsible accordion */}
+          <div className="rounded-lg overflow-hidden" style={{ border: '1px solid var(--border-purple)' }}>
+            <div className="px-5 py-4" style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)' }}>
+              <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'var(--purple)' }}>
+                // ADVANCED — WHEN YOU WANT TO GO FURTHER
+              </p>
+            </div>
+            <div className="divide-y" style={{ borderColor: 'var(--border)' }}>
+              {advancedResources.map(adv => {
+                const isOpen = openAdv === adv.id
+                return (
+                  <div key={adv.id}>
+                    <button
+                      onClick={() => setOpenAdv(isOpen ? null : adv.id)}
+                      className="w-full flex items-center justify-between px-5 py-4 text-left transition-colors duration-150"
+                      style={{ background: isOpen ? 'rgba(139,92,246,0.04)' : 'transparent', cursor: 'pointer' }}
+                    >
+                      <div>
+                        <p className="font-mono font-bold text-sm" style={{ color: 'var(--purple)' }}>{adv.label}</p>
+                        <p className="text-xs mt-0.5 leading-relaxed" style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>
+                          {adv.concept_intro}
+                        </p>
+                      </div>
+                      {isOpen
+                        ? <ChevronUp size={15} className="flex-shrink-0 ml-4" style={{ color: 'var(--purple)' }} />
+                        : <ChevronDown size={15} className="flex-shrink-0 ml-4" style={{ color: 'var(--text-muted)' }} />
+                      }
+                    </button>
+                    {isOpen && (
+                      <div className="px-5 pb-5 space-y-3" style={{ borderTop: '1px solid var(--border)' }}>
+                        <p className="text-xs font-mono font-bold tracking-widest pt-4" style={{ color: 'var(--text-muted)' }}>
+                          {adv.try_prompt?.instruction}
+                        </p>
+                        <PromptBlock
+                          label={adv.label.toUpperCase()}
+                          promptText={adv.try_prompt?.content ?? ''}
+                          variant="advanced"
+                          substituteMinion={true}
+                        />
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Mission Check */}
+        <div id="mission-check">
+          <MissionCheck
+            items={briefingData.mission_check}
+            nextLevel="/level/2"
+            nextLabel="ADVANCE TO LEVEL 02: SET UP BASE"
+            levelNumber={1}
+            checked={checked}
+            onToggle={toggleCheck}
+          />
+        </div>
+
+      </motion.main>
+    </>
   )
 }

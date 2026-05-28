@@ -32,17 +32,17 @@
       "card": "04",
       "title": "Meet & Test Your Minion",
       "type": "multi-prompt",
-      "description": "Run both prompts inside your Project to meet your Minion and verify their memory.",
+      "description": "Run each prompt in a separate new chat inside your Project. Do not use the same chat for both — that is the point. Each chat should start fresh, but your Minion will still remember everything.",
       "prompts": [
         {
           "id": "prompt-meet-minion",
           "label": "Meet Your Minion",
-          "description": "Open your Project, start a new chat, and ask your Minion who they are."
+          "description": "Start a new chat inside your Project and run this prompt. Your Minion will introduce themselves."
         },
         {
           "id": "prompt-test-memory",
           "label": "Test the Memory",
-          "description": "Open another new chat and ask your Minion about the mission data."
+          "description": "Open a second new chat inside the same Project and run this prompt. A brand new chat — but your Minion still knows everything."
         }
       ]
     }

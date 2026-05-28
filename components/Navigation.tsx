@@ -11,6 +11,7 @@ const LEVEL_LABELS = ['Level 1', 'Level 2', 'Level 3', 'Level 4']
 export default function Navigation() {
   const pathname = usePathname()
   const [completedLevels, setCompletedLevels] = useState<number[]>([])
+  const [hoveredLevel, setHoveredLevel] = useState<number | null>(null)
 
   const isHomePage  = pathname === '/' || pathname === '/onboarding'
   const levelMatch  = pathname.match(/^\/level\/(\d+)/)
@@ -36,118 +37,117 @@ export default function Navigation() {
       <Link
         href="/"
         className="flex items-center gap-2"
-        style={{ textDecoration: 'none', color: 'var(--text-primary)' }}
+        style={{ textDecoration: 'none', color: 'var(--text-primary)', flexShrink: 0 }}
       >
         <Image src="/1inMINION.png" alt="1inMINION" width={160} height={60} style={{ objectFit: 'contain' }} />
       </Link>
 
       {/* Center: level progress track — level pages only */}
       {isLevelPage && (
-        <div className="absolute left-1/2 -translate-x-1/2 flex items-center" style={{ gap: 0 }}>
-          {LEVELS.map((n, idx) => {
-            const isCompleted = completedLevels.includes(n)
-            const isCurrent   = n === currentLevel
+        <div
+          className="absolute left-1/2 -translate-x-1/2"
+          style={{ width: 'calc(100% - 380px)', maxWidth: 800 }}
+        >
+          {/* Connector lines — positioned relative to full track, circle-center to circle-center */}
+          <div style={{ position: 'relative', height: 40 }}>
+            {[0, 1, 2].map(idx => {
+              const nextReached = completedLevels.includes(idx + 2) || (idx + 2) === currentLevel
+              return (
+                <div key={idx} style={{
+                  position: 'absolute',
+                  top: 19,
+                  left: `calc(${12.5 + idx * 25}% + 20px)`,
+                  width: `calc(25% - 40px)`,
+                  height: 2,
+                  background: nextReached
+                    ? 'linear-gradient(to right, var(--yellow-muted), rgba(255,215,0,0.35))'
+                    : 'var(--border)',
+                  borderRadius: 1,
+                  transition: 'background 0.3s ease',
+                  zIndex: 0,
+                }} />
+              )
+            })}
 
-            // connector line between nodes
-            const showLine = idx < LEVELS.length - 1
-            // line is "active" (yellow) if the next level has been reached or completed
-            const nextN = n + 1
-            const nextReached = completedLevels.includes(nextN) || nextN === currentLevel
+            {/* Circles */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', height: '100%', position: 'relative', zIndex: 1 }}>
+              {LEVELS.map((n, idx) => {
+                const isCompleted = completedLevels.includes(n)
+                const isCurrent   = n === currentLevel
+                const isHovered   = hoveredLevel === n
 
-            return (
-              <div key={n} className="flex items-center">
-                {/* Node */}
-                <Link
-                  href={`/level/${n}`}
-                  aria-label={`Level ${n} of 4`}
-                  className="flex flex-col items-center"
-                  style={{ textDecoration: 'none', position: 'relative' }}
-                >
-                  {/* Icon container */}
-                  <div
-                    className="flex items-center justify-center transition-all duration-200"
-                    style={{
-                      width: 44,
-                      height: 44,
-                      borderRadius: '50%',
-                      border: isCurrent
-                        ? '2.5px solid var(--yellow)'
-                        : isCompleted
-                        ? '2.5px solid var(--green)'
-                        : '2px solid var(--border)',
-                      background: isCurrent
-                        ? 'var(--yellow-light)'
-                        : isCompleted
-                        ? 'rgba(5,150,105,0.10)'
-                        : 'var(--bg-secondary)',
-                      boxShadow: isCurrent ? '0 0 0 3px rgba(255,215,0,0.2)' : 'none',
-                      position: 'relative',
-                      zIndex: 1,
-                    }}
-                  >
-                    {isCurrent ? (
-                      /* Minion on current level */
-                      <Image
-                        src="/minion_img.png"
-                        alt="minion"
-                        width={28}
-                        height={28}
-                        style={{ objectFit: 'contain', borderRadius: '50%' }}
-                      />
-                    ) : isCompleted ? (
-                      /* Green flag on completed levels */
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="none" style={{ display: 'block' }}>
-                        <path d="M4 3v18" stroke="#059669" strokeWidth="2.2" strokeLinecap="round"/>
-                        <path d="M4 4 L18 8 L4 13 Z" fill="#059669"/>
-                      </svg>
-                    ) : (
-                      /* Lock on locked levels */
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--text-muted)' }}>
-                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                      </svg>
-                    )}
+                return (
+                  <div key={n} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                    {/* Circle node */}
+                    <div
+                      onMouseEnter={() => setHoveredLevel(n)}
+                      onMouseLeave={() => setHoveredLevel(null)}
+                    >
+                      <Link
+                        href={`/level/${n}`}
+                        aria-label={`Level ${n} of 4`}
+                        style={{ textDecoration: 'none', display: 'block' }}
+                      >
+                        <div style={{
+                          width: 40, height: 40, borderRadius: '50%',
+                          border: isCurrent ? '2.5px solid var(--yellow)' : isCompleted ? '2.5px solid var(--yellow)' : '2px solid var(--border)',
+                          background: isCurrent ? 'var(--yellow-light)' : isCompleted ? 'rgba(242,155,28,0.10)' : 'var(--bg-secondary)',
+                          boxShadow: isCurrent ? '0 0 0 3px rgba(255,215,0,0.2)' : isHovered ? '0 0 0 4px rgba(255,215,0,0.25)' : 'none',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          transition: 'box-shadow 0.2s ease',
+                          overflow: 'hidden',
+                        }}>
+                          {isCurrent ? (
+                            <Image src="/minion_img.png" alt="minion" width={26} height={26}
+                              style={{
+                                objectFit: 'contain',
+                                borderRadius: '50%',
+                                transform: isHovered ? 'scale(1.35)' : 'scale(1)',
+                                transition: 'transform 0.2s ease',
+                              }} />
+                          ) : isCompleted ? (
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+                              <path d="M4 3v18" stroke="#f29b1c" strokeWidth="2.2" strokeLinecap="round"/>
+                              <path d="M4 4 L18 8 L4 13 Z" fill="#f29b1c"/>
+                            </svg>
+                          ) : (
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--text-muted)' }}>
+                              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                          )}
+                        </div>
+                      </Link>
+                    </div>
                   </div>
+                )
+              })}
+            </div>
+          </div>
 
-                  {/* Label below */}
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: 10,
-                      fontWeight: isCurrent ? 700 : 500,
-                      color: isCurrent ? 'var(--yellow-muted)' : isCompleted ? 'var(--green)' : 'var(--text-muted)',
-                      marginTop: 4,
-                      letterSpacing: '0.04em',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {LEVEL_LABELS[idx]}
-                  </span>
-                </Link>
-
-                {/* Connector line */}
-                {showLine && (
-                  <div
-                    style={{
-                      width: 48,
-                      height: 2,
-                      marginBottom: 14, /* align with icon centers */
-                      background: nextReached
-                        ? 'linear-gradient(to right, var(--yellow-muted), rgba(255,215,0,0.4))'
-                        : 'var(--border)',
-                      borderRadius: 1,
-                      transition: 'background 0.3s ease',
-                    }}
-                  />
-                )}
-              </div>
-            )
-          })}
+          {/* Labels row — grid mirrors circles grid for perfect alignment */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', marginTop: 6 }}>
+            {LEVELS.map((n, idx) => {
+              const isCompleted = completedLevels.includes(n)
+              const isCurrent   = n === currentLevel
+              return (
+                <span key={n} style={{
+                  fontFamily: 'var(--font-mono)', fontSize: 10,
+                  fontWeight: isCurrent ? 700 : 500,
+                  color: isCurrent ? 'var(--yellow-muted)' : isCompleted ? 'var(--yellow-muted)' : 'var(--text-muted)',
+                  letterSpacing: '0.04em', whiteSpace: 'nowrap',
+                  textAlign: 'center', display: 'block',
+                }}>
+                  {LEVEL_LABELS[idx]}
+                </span>
+              )
+            })}
+          </div>
         </div>
       )}
 
-      {/* Right: spacer */}
-      <div className="w-[120px]" />
+      {/* Right: spacer mirrors logo width */}
+      <div style={{ width: 160, flexShrink: 0 }} />
     </nav>
   )
 }

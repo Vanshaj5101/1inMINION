@@ -1,0 +1,39 @@
+{
+  "level": {
+    "number": "01",
+    "title": "Talk to Your Minion",
+    "eyebrow": "// LEVEL 01 — PROMPT ENGINEERING",
+    "concept": "Prompt Engineering",
+    "duration": "20 min",
+    "subdescription": "Your Minion just arrived. They are eager, willing, and understand absolutely nothing. The quality of their response depends entirely on the quality of your order. Learn to give precise, structured prompts and watch your Minion transform from confused to capable."
+  },
+
+  "mission_targets": [
+    "Apply core prompt engineering principles such as role, context, task, format, and constraints to write more effective AI prompts"
+  ],
+
+  "mission_gear": [
+    {
+      "id": "prompt-engineering",
+      "name": "Prompt Engineering",
+      "definition": "The skill of writing clear, structured instructions that guide an AI to produce the exact output you need.",
+      "theme_translation": "A Minion with vague orders runs around doing nothing useful. A Minion with precise orders executes perfectly. Same Minion. The difference is how you talk to them.",
+      "why_useful": [
+        "Better prompts produce dramatically better outputs",
+        "Works with any AI tool you will ever use",
+        "The foundation for everything else in this session",
+        "Takes seconds to apply but changes everything about the result"
+      ]
+    }
+  ],
+
+  "mission_check": [
+    "Ran the vague prompt and saw the generic output",
+    "Ran the structured prompt and compared the two outputs",
+    "Ran the Role layer prompt and saw the difference",
+    "Ran the Context layer prompt and saw the difference",
+    "Ran the Task layer prompt and saw the difference",
+    "Ran the Format layer prompt and saw the difference",
+    "Ran the Constraints layer prompt and saw the final result"
+  ]
+}

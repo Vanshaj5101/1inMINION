@@ -128,6 +128,20 @@ export default function Level2Page() {
                 </div>
               ))}
             </div>
+
+            {/* Project setup screenshot */}
+            <div className="space-y-2">
+              <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                <img
+                  src="/level2_project_setup.png"
+                  alt="Claude Projects interface showing Instructions and Files panels"
+                  style={{ width: '100%', display: 'block' }}
+                />
+              </div>
+              <p className="text-xs font-mono text-center" style={{ color: 'var(--text-muted)' }}>
+                Your screen should show a similar interface.
+              </p>
+            </div>
           </StepCard>
 
           {/* Card 02: Add Instructions */}
@@ -175,6 +189,20 @@ export default function Level2Page() {
                 when you upload - not a regular chat. Your project name should be visible in the sidebar.
               </p>
             </div>
+
+            {/* Post-upload screenshot */}
+            <div className="space-y-2">
+              <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                <img
+                  src="/level2_with_data.png"
+                  alt="Claude Projects interface with instructions and mission data file uploaded"
+                  style={{ width: '100%', display: 'block' }}
+                />
+              </div>
+              <p className="text-xs font-mono text-center" style={{ color: 'var(--text-muted)' }}>
+                Your screen should show a similar interface.
+              </p>
+            </div>
           </StepCard>
 
           {/* Card 04: Meet & Test Your Minion (combined) */}
@@ -187,10 +215,12 @@ export default function Level2Page() {
           >
             <div className="space-y-2">
               <p className="font-mono text-xs font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>PROMPT 1</p>
+              <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{combinedCard.prompts?.[0]?.description}</p>
               <PromptBlock label="PROMPT - MEET YOUR MINION" promptText={meetMinionPrompt} variant="core" substituteMinion={true} />
             </div>
             <div className="space-y-2">
               <p className="font-mono text-xs font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>PROMPT 2</p>
+              <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{combinedCard.prompts?.[1]?.description}</p>
               <PromptBlock label="PROMPT - TEST THE MEMORY" promptText={testMemoryPrompt} variant="core" />
             </div>
           </StepCard>
@@ -208,23 +238,32 @@ export default function Level2Page() {
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {questions.map(({ number, title, prompt }, qi) => {
-              const checkIdx = 4 + qi  // Q1→4, Q2→5, ... Q5→8
+              const checkIdx = 4 + qi
+              const isDone = checked[checkIdx]
               return (
-                <div key={number} className="space-y-3">
+                <div
+                  key={number}
+                  className="rounded-lg p-5 flex flex-col gap-4 transition-all duration-300"
+                  style={{
+                    background: 'var(--bg-secondary)',
+                    border: `1px solid ${isDone ? 'var(--green)' : 'var(--border)'}`,
+                    borderLeft: `2px solid ${isDone ? 'var(--green)' : 'var(--yellow)'}`,
+                  }}
+                >
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <span className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-mono font-bold text-sm" style={{ background: 'var(--yellow)', color: 'var(--text-primary)' }}>
+                      <span className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-mono font-bold text-sm" style={{ background: isDone ? 'var(--green)' : 'var(--yellow)', color: isDone ? 'white' : 'var(--text-primary)' }}>
                         {number}
                       </span>
                       <h3 className="font-bold text-xl" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)', letterSpacing: '0.02em' }}>
                         {title}
                       </h3>
                     </div>
-                    <button onClick={() => toggleCheck(checkIdx)} className="flex items-center gap-1.5 flex-shrink-0 transition-all duration-150" style={{ color: checked[checkIdx] ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11 }}>
-                      {checked[checkIdx] ? <CheckSquare size={16} /> : <Square size={16} />}
-                      <span className="hidden sm:inline">{checked[checkIdx] ? 'Done' : 'Mark done'}</span>
+                    <button onClick={() => toggleCheck(checkIdx)} className="flex items-center gap-1.5 flex-shrink-0 transition-all duration-150" style={{ color: isDone ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                      {isDone ? <CheckSquare size={18} /> : <Square size={18} />}
+                      <span className="hidden sm:inline">{isDone ? 'Done' : 'Mark done'}</span>
                     </button>
                   </div>
                   <PromptBlock
@@ -239,28 +278,36 @@ export default function Level2Page() {
         </section>
 
         {/* Special Tool */}
-        <section id="special-tool" className="space-y-5" style={{ borderTop: '2px solid var(--yellow)', paddingTop: 24 }}>
-          <div className="flex items-start justify-between gap-3">
-            <div className="flex-1">
-              <p className="section-eyebrow">// THE FINAL QUESTION</p>
-              <h2 className="text-3xl sm:text-4xl font-bold mt-1" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
-                {specialToolLabel}
-              </h2>
-              <p className="text-sm mt-2 leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
-                {specialToolInstruction}
-              </p>
+        <section id="special-tool" style={{ borderTop: '2px solid var(--yellow)', paddingTop: 24 }}>
+          <p className="section-eyebrow mb-4">// THE FINAL QUESTION</p>
+          <div
+            className="rounded-lg p-5 flex flex-col gap-4 transition-all duration-300"
+            style={{
+              background: 'var(--bg-secondary)',
+              border: `1px solid ${checked[9] ? 'var(--green)' : 'var(--border)'}`,
+              borderLeft: `2px solid ${checked[9] ? 'var(--green)' : 'var(--yellow)'}`,
+            }}
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex-1">
+                <h2 className="text-3xl sm:text-4xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
+                  {specialToolLabel}
+                </h2>
+                <p className="text-sm mt-2 leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
+                  {specialToolInstruction}
+                </p>
+              </div>
+              <button onClick={() => toggleCheck(9)} className="flex-shrink-0 flex items-center gap-1.5 transition-all duration-150 mt-1" style={{ color: checked[9] ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                {checked[9] ? <CheckSquare size={18} /> : <Square size={18} />}
+                <span className="hidden sm:inline">{checked[9] ? 'Done' : 'Mark done'}</span>
+              </button>
             </div>
-            <button onClick={() => toggleCheck(9)} className="flex-shrink-0 flex items-center gap-1.5 transition-all duration-150 mt-1" style={{ color: checked[9] ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-              {checked[9] ? <CheckSquare size={18} /> : <Square size={18} />}
-              <span className="hidden sm:inline">{checked[9] ? 'Done' : 'Mark done'}</span>
-            </button>
+            <PromptBlock
+              label="SPECIAL TOOL - ASK AFTER Q5"
+              promptText={specialToolContent}
+              variant="final"
+            />
           </div>
-
-          <PromptBlock
-            label="SPECIAL TOOL - ASK AFTER Q5"
-            promptText={specialToolContent}
-            variant="final"
-          />
         </section>
 
         <div id="mission-check">

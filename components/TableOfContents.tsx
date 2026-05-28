@@ -38,7 +38,7 @@ export default function TableOfContents({ sections }: { sections: TocSection[] }
   return (
     <nav
       className="hidden xl:flex fixed flex-col gap-1"
-      style={{ top: 128, right: 256, zIndex: 40, maxWidth: 168, pointerEvents: 'none' }}
+      style={{ top: 128, right: 'calc(50% - 576px)', zIndex: 40, maxWidth: 168, pointerEvents: 'none' }}
       aria-label="On this page"
     >
       <p

@@ -30,6 +30,10 @@ export const metadata: Metadata = {
   title: 'Heist to the Sun — AI Training Experience',
   description: 'AI Minion Training Program — Mission Control',
   robots: 'noindex',
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

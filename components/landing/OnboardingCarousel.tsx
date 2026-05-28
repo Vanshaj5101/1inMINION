@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { landingContent } from '@/content/landing'
 import { levels } from '@/content/levels'
+import { useMinionName } from '@/hooks/useMinionName'
 
 const accentColor: Record<string, string> = {
   yellow: 'var(--yellow)',
@@ -18,6 +19,14 @@ const TOTAL = 4
 export default function OnboardingCarousel() {
   const { story } = landingContent
   const [current, setCurrent] = useState(0)
+  const [nameInput, setNameInput] = useState('')
+  const { saveMinionName } = useMinionName()
+  const router = useRouter()
+
+  const handleStartMission = () => {
+    if (nameInput.trim()) saveMinionName(nameInput.trim())
+    router.push('/level/1')
+  }
 
   const prev = useCallback(() => setCurrent(c => Math.max(0, c - 1)), [])
   const next = useCallback(() => setCurrent(c => Math.min(TOTAL - 1, c + 1)), [])
@@ -141,29 +150,69 @@ export default function OnboardingCarousel() {
         </div>
 
         {/* ── Slide 4: Ready ─────────────────────────────────── */}
-        <div style={slideStyle}>
-          <div style={{ maxWidth: 680, width: '100%', display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <div style={{ ...slideStyle, alignItems: 'center' }}>
+          <div style={{ maxWidth: 680, width: '100%', display: 'flex', flexDirection: 'column', gap: 24, alignItems: 'flex-start' }}>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--yellow)', letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700 }}>
               READY TO TRAIN YOUR MINION?
             </span>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(48px, 7vw, 88px)', color: 'white', lineHeight: 1.05, margin: 0 }}>
               Your Minion Awaits.
             </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {[
-                'Keep this page open alongside Claude throughout the session',
-                'Each level builds on the last. Do not skip ahead.',
-              ].map((step, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--yellow)', flexShrink: 0, marginTop: 8 }} />
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, margin: 0 }}>{step}</p>
-                </div>
-              ))}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, margin: 0 }}>
+                Keep this page open alongside Claude throughout the session
+              </p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, margin: 0 }}>
+                Each level builds on the last. Do not skip ahead.
+              </p>
             </div>
-            <Link href="/level/1" className="hero-cta" style={{ marginTop: 8, alignSelf: 'flex-start' }}>
-              START THE MISSION
-              <ArrowRight size={22} />
-            </Link>
+
+            {/* Name input */}
+            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <label style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+                Give your Minion a name
+              </label>
+              <input
+                type="text"
+                value={nameInput}
+                onChange={e => setNameInput(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleStartMission()}
+                placeholder="KEVIN, BOB, STUART..."
+                maxLength={24}
+                style={{
+                  width: '100%',
+                  background: 'rgba(255,255,255,0.08)',
+                  border: '1.5px solid rgba(255,255,255,0.2)',
+                  borderRadius: 12,
+                  padding: '14px 20px',
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 22,
+                  letterSpacing: '0.06em',
+                  color: 'white',
+                  outline: 'none',
+                  textAlign: 'center',
+                  transition: 'border-color 0.2s ease',
+                }}
+                onFocus={e => (e.currentTarget.style.borderColor = 'var(--yellow)')}
+                onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)')}
+              />
+            </div>
+
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: 4 }}>
+              <button
+                onClick={handleStartMission}
+                disabled={!nameInput.trim()}
+                className="hero-cta"
+                style={{
+                  opacity: nameInput.trim() ? 1 : 0.4,
+                  cursor: nameInput.trim() ? 'pointer' : 'not-allowed',
+                  pointerEvents: nameInput.trim() ? 'auto' : 'none',
+                }}
+              >
+                START THE MISSION
+                <ArrowRight size={22} />
+              </button>
+            </div>
           </div>
         </div>
 

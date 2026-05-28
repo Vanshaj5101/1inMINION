@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Clipboard, Check } from 'lucide-react'
 
 type Variant = 'core' | 'advanced' | 'test' | 'final'
@@ -28,6 +28,7 @@ const labelColors: Record<Variant, string> = {
 
 export default function PromptBlock({ promptText, label, variant = 'core', substituteMinion = false }: PromptBlockProps) {
   const [state, setState] = useState<'idle' | 'copied' | 'error'>('idle')
+  const [displayText, setDisplayText] = useState(promptText)
 
   const getPromptText = () => {
     if (!substituteMinion) return promptText
@@ -61,6 +62,11 @@ export default function PromptBlock({ promptText, label, variant = 'core', subst
     }
     setTimeout(() => setState('idle'), 2000)
   }
+
+  useEffect(() => {
+    setDisplayText(getPromptText())
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [promptText, substituteMinion])
 
   const borderColor = borderColors[variant]
   const labelColor  = labelColors[variant]
@@ -112,7 +118,7 @@ export default function PromptBlock({ promptText, label, variant = 'core', subst
       <div className="px-4 py-4 overflow-x-auto">
         <pre className="font-mono text-sm leading-relaxed whitespace-pre-wrap break-words">
           <span style={{ color: 'var(--yellow)', fontWeight: 600 }}>$ </span>
-          <span style={{ color: 'var(--text-primary)' }}>{promptText}</span>
+          <span style={{ color: 'var(--text-primary)' }}>{displayText}</span>
           <span className="cursor-blink" />
         </pre>
       </div>

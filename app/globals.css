@@ -7,10 +7,10 @@
 /* ─── Design tokens ─────────────────────────────────────────────────────────── */
 :root {
   /* Accent palette */
-  --yellow:        #FFD700;
-  --yellow-light:  #FEF9C3;
-  --yellow-glow:   rgba(255, 215, 0, 0.35);
-  --yellow-muted:  #D4A017;
+  --yellow:        #f29b1c;
+  --yellow-light:  #fef3dc;
+  --yellow-glow:   rgba(242, 155, 28, 0.35);
+  --yellow-muted:  #b87010;
   --purple:        #8B5CF6;
   --blue:          #3B82F6;
   --orange:        #F97316;
@@ -22,7 +22,7 @@
   --bg-secondary:  #F9FAFB;
   --bg-tertiary:   #F3F4F6;
   --bg-code:       #F4F4F0;
-  --bg-warm:       #FFFBEB;
+  --bg-warm:       #fff8eb;
 
   /* Text */
   --text-primary:   #1F2937;
@@ -31,7 +31,7 @@
 
   /* Borders */
   --border:         #E5E7EB;
-  --border-yellow:  #FFD700;
+  --border-yellow:  #f29b1c;
   --border-purple:  #8B5CF6;
 
   /* Typography */
@@ -45,7 +45,7 @@
   --shadow-sm:    0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
   --shadow-md:    0 4px 8px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
   --shadow-hover: 0 8px 18px rgba(0,0,0,0.09), 0 2px 6px rgba(0,0,0,0.05);
-  --shadow-amber: 0 4px 20px rgba(255,215,0,0.4);
+  --shadow-amber: 0 4px 20px rgba(242,155,28,0.4);
 
   /* Layout */
   --section-py:    80px;
@@ -85,8 +85,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 4px 20px rgba(255,215,0,0.4); }
-  50%       { box-shadow: 0 4px 40px rgba(255,215,0,0.7); }
+  0%, 100% { box-shadow: 0 4px 20px rgba(242,155,28,0.4); }
+  50%       { box-shadow: 0 4px 40px rgba(242,155,28,0.7); }
 }
 
 @keyframes blinkCursor {
@@ -101,15 +101,15 @@ body {
 }
 
 @keyframes shadowPulse {
-  0%, 100% { box-shadow: 0 4px 20px rgba(255,215,0,0.35); }
-  50%       { box-shadow: 0 8px 32px rgba(255,215,0,0.6); }
+  0%, 100% { box-shadow: 0 4px 20px rgba(242,155,28,0.35); }
+  50%       { box-shadow: 0 8px 32px rgba(242,155,28,0.6); }
 }
 
 /* ─── Landing — Hero ────────────────────────────────────────────────────────── */
 
 /* "SUN" gradient text */
 .sun-gradient {
-  background: linear-gradient(135deg, #FFD700, #F97316);
+  background: linear-gradient(135deg, #f29b1c, #F97316);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -120,7 +120,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--yellow);
+  background: linear-gradient(135deg, #f29b1c, #F97316);
   color: var(--text-primary);
   font-family: var(--font-display);
   font-size: 22px;
@@ -130,12 +130,22 @@ body {
   border: none;
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 4px 20px var(--yellow-glow);
-  animation: pulse-glow 3s ease-in-out infinite;
-  transition: transform 150ms ease;
+  box-shadow: 0 4px 20px rgba(242,155,28,0.45);
+  transition: transform 150ms ease, box-shadow 150ms ease;
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
 }
-.hero-cta:hover { transform: scale(1.04); }
+.hero-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.50) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.55s ease;
+}
+.hero-cta:hover { transform: scale(1.04); box-shadow: 0 6px 28px rgba(242,155,28,0.60); }
+.hero-cta:hover::after { transform: translateX(120%); }
 
 /* Floating background blobs */
 .blob {
@@ -146,7 +156,7 @@ body {
 }
 .blob-1 {
   width: 480px; height: 480px;
-  background: rgba(255,215,0,0.07);
+  background: rgba(242,155,28,0.07);
   top: -10%; right: -8%;
   animation-duration: 11s;
 }
@@ -159,7 +169,7 @@ body {
 }
 .blob-3 {
   width: 200px; height: 200px;
-  background: rgba(255,215,0,0.05);
+  background: rgba(242,155,28,0.05);
   top: 40%; left: 5%;
   animation-duration: 13s;
   animation-delay: 5s;
@@ -168,7 +178,7 @@ body {
 /* Inline text highlight — yellow marker effect */
 mark.story-highlight {
   background: none;
-  background-image: linear-gradient(to bottom, transparent 45%, rgba(255, 215, 0, 0.55) 45%);
+  background-image: linear-gradient(to bottom, transparent 45%, rgba(242, 155, 28, 0.55) 45%);
   color: inherit;
   font-weight: 800;
   padding: 0 1px;
@@ -270,7 +280,7 @@ mark.story-highlight {
 .prompt-block.variant-test     { border-left: 3px solid var(--blue); }
 .prompt-block.variant-final    {
   border-left: 3px solid var(--yellow);
-  box-shadow: var(--shadow-sm), 0 0 0 1px rgba(255,215,0,0.12);
+  box-shadow: var(--shadow-sm), 0 0 0 1px rgba(242,155,28,0.12);
 }
 
 /* Cursor blink */
@@ -317,8 +327,8 @@ mark.story-highlight {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: rgba(255,215,0,0.08);
-  border: 1px solid rgba(255,215,0,0.25);
+  background: rgba(242,155,28,0.08);
+  border: 1px solid rgba(242,155,28,0.25);
   color: var(--yellow-muted);
   font-family: var(--font-mono);
   font-size: 11px;
@@ -348,7 +358,7 @@ mark.story-highlight {
   text-decoration: none;
 }
 .btn-primary:hover {
-  box-shadow: 0 8px 24px rgba(255,215,0,0.45);
+  box-shadow: 0 8px 24px rgba(242,155,28,0.45);
   transform: translateY(-1px);
 }
 
@@ -370,7 +380,7 @@ mark.story-highlight {
   transition: background 150ms ease;
   text-decoration: none;
 }
-.btn-secondary:hover { background: rgba(255,215,0,0.08); }
+.btn-secondary:hover { background: rgba(242,155,28,0.08); }
 
 /* Screenshot placeholder */
 .screenshot-placeholder {
