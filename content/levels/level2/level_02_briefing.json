@@ -2,56 +2,40 @@
   "level": {
     "number": "02",
     "title": "Set Up Base",
-    "eyebrow": "// LEVEL 02 — PROJECTS + CONTEXT",
-    "concept": "Projects + Context",
+    "eyebrow": "// LEVEL 02 — CUSTOM GPTs",
+    "concept": "Custom GPTs",
     "duration": "25 min",
-    "subdescription": "Your Minion is smart but forgetful. Every new chat - blank slate. No memory. No context. Back to square one. It is time to build your Minion a permanent base - so they are always briefed, always ready, and never starting from scratch."
+    "subdescription": "Your Minion can talk. But they know nothing about your mission, your data, or your world. Time to change that. You will build a Custom GPT trained as a data-driven strategist, load it with 374 mission records, and interrogate the data to plan the perfect heist."
   },
 
   "mission_targets": [
-    "Create a ChatGPT Project - your Minion's permanent organized workspace",
-    "Load context into that Project - so your Minion knows your world without being told every time",
-    "Run prompts without repeating yourself - ever again"
-  ],
-
-  "mission_check": [
-    "Project created and named after my Minion",
-    "Project instructions pasted in",
-    "Mission data uploaded to the Project",
-    "Met my Minion and confirmed they remember everything",
-    "Q1: Best month for the heist identified",
-    "Q2: Ship type and company selected",
-    "Q3: Optimal team size confirmed",
-    "Q4: Budget range locked in",
-    "Q5: Top failure reasons mapped",
-    "Special tool invented for the mission",
-    "Mission debrief .txt file created and saved to my computer"
+    "Build your first Custom GPT trained as a data-driven mission strategist",
+    "Upload the mission data file so your GPT can analyze 374 previous heist records",
+    "Find answers to the 5 mission questions from the data",
+    "Invent one special tool and compile everything into a mission debrief file"
   ],
 
   "mission_gear": [
     {
-      "id": "projects",
-      "name": "Projects",
-      "definition": "A permanent workspace in ChatGPT that saves your instructions and files - so every new chat starts with your Minion already briefed.",
-      "theme_translation": "Think of it as Gru's Lair. Without it - Gru would have to rebuild the entire operation from scratch every single morning. With it - everything is in place, ready to go, every time.",
+      "id": "custom-gpt-data",
+      "name": "Custom GPT with Data",
+      "definition": "A Custom GPT is a specialist version of ChatGPT trained with specific instructions. When you upload a data file, it becomes an analyst that can find patterns and insights from your exact dataset.",
+      "theme_translation": "Think of it as giving your Minion a dossier. A regular Minion makes guesses. Your Data Strategist Minion reads 374 mission records, spots what nobody else noticed, and tells you exactly what the data says.",
       "why_useful": [
-        "Your Minion remembers who they are and what they know",
-        "You never re-explain yourself across chats",
-        "Everything stays organized in one place",
-        "Your instructions are reusable - set once, works forever"
-      ]
-    },
-    {
-      "id": "context",
-      "name": "Context",
-      "definition": "The background information you load into your Project - files, data, and instructions that tell your Minion everything they need to know about your world and your goals.",
-      "theme_translation": "Before any great heist, Gru briefs the team - here is the target, here is the plan, here is what we know. Context is that briefing. Loaded once. Available always.",
-      "why_useful": [
-        "Your Minion gives specific answers - not generic ones",
-        "Responses are grounded in your actual situation",
-        "The more context you load - the smarter your Minion gets",
-        "Files, data, and instructions all count as context"
+        "Analyzes your specific data rather than guessing from general knowledge",
+        "Finds patterns and surprising insights humans miss",
+        "Answers questions grounded in real numbers and percentages",
+        "Stays consistent and focused on your mission throughout"
       ]
     }
+  ],
+
+  "mission_check": [
+    "I created a Custom GPT called 1inMINION Data Strategist",
+    "I added the name, description, and instructions to the GPT",
+    "I uploaded the mission data file to my GPT",
+    "I got answers to all 5 mission questions from the data",
+    "My GPT invented a special tool for the mission",
+    "I generated the mission debrief and saved it as a txt file"
   ]
 }

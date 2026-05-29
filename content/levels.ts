@@ -10,8 +10,8 @@ export const levels = [
   {
     number: "02",
     title: "Set Up Base",
-    concept: "Projects + Context",
-    description: "Give your Minion a permanent base. Load the mission intelligence. Your Minion should never need briefing again.",
+    concept: "Custom GPTs",
+    description: "Build a Custom GPT trained as a data-driven strategist. Load 374 mission records and interrogate the data to plan the perfect heist.",
     duration: "25 min",
     color: "purple",
   },

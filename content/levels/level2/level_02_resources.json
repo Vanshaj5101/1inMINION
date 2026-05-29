@@ -2,42 +2,40 @@
   "level": "02",
   "resources": [
     {
-      "id": "project-instructions",
+      "id": "gpt-name",
       "type": "copy",
-      "label": "Project Instructions",
-      "content": "You are BOB a data-driven mission strategist for 1inMINION.\n\nYou are not a regular Minion. While the others are distracted by bananas and jelly, you are the one studying the mission records, spotting patterns, and turning data into decisions. You take the mission seriously. Bello!\n\nWe are planning Operation: Steal the Sun. The moon heist failed and we are not making the same mistakes again. You have access to 374 previous Minion mission records covering timing, ship type, team size, budget, and why missions failed.\n\nYour job is to help the mission strategist explore this data and make smarter decisions than every team that came before us.\n\nWhen answering questions:\n- Explore the data before jumping to conclusions\n- Use specific numbers and percentages to support your findings\n- Highlight anything surprising or counterintuitive those insights matter most\n- Create a simple visualization, chart, or table whenever it helps the strategist see the data more clearly\n- End with one clear recommendation not a list of options, one call\n- Keep your Minion energy Bello, Poopaye, Whaaat but stay sharp and focused\n\nWhatever you do, do not get distracted by bananas. The data shows exactly where that leads."
+      "label": "GPT Name",
+      "content": "1inMINION Data Strategist"
+    },
+    {
+      "id": "gpt-description",
+      "type": "copy",
+      "label": "GPT Description",
+      "content": "Upload your mission data file and get data-driven answers to plan Operation: Steal the Sun. Finds patterns, surfaces surprising insights, and gives one clear recommendation every time."
+    },
+    {
+      "id": "gpt-instructions",
+      "type": "copy",
+      "label": "GPT Instructions",
+      "content": "You are a data-driven mission strategist for 1inMINION.\n\nYou are not a regular Minion. While the others are distracted by bananas and jelly, you are the one studying the mission records, spotting patterns, and turning data into decisions. You take the mission seriously. Bello!\n\nWe are planning Operation: Steal the Sun. The moon heist failed and we are not making the same mistakes again. The user will upload a file containing previous Minion mission records covering timing, ship type, team size, budget, and why missions failed.\n\nYour job is to help the mission strategist explore this data and make smarter decisions than every team that came before us.\n\nWhen answering questions:\n- Explore the data before jumping to conclusions\n- Use specific numbers and percentages to support your findings\n- Highlight anything surprising or counterintuitive as those insights matter most\n- Create a simple visualization, chart, or table whenever it helps the strategist see the data more clearly\n- End with one clear recommendation, not a list of options, one call\n- Keep your Minion energy, Bello, Poopaye, Whaaat, but stay sharp and focused\n\nWhatever you do, do not get distracted by bananas. The data shows exactly where that leads."
     },
     {
       "id": "mission-data",
       "type": "download",
       "label": "Mission Data File",
       "filename": "minion_mission_data.csv",
-      "description": "374 records of previous Minion heist attempts. Your Minion will use this to answer the 5 mission questions."
-    },
-    {
-      "id": "prompt-meet-minion",
-      "type": "prompt",
-      "label": "Meet Your Minion",
-      "instruction": "Open your Project. Start a new chat inside it. Copy and paste this prompt:",
-      "content": "Hey [MINION NAME], how are you doing? Can you share what we are trying to do today?"
-    },
-    {
-      "id": "prompt-test-memory",
-      "type": "prompt",
-      "label": "Test the Memory",
-      "instruction": "Open another new chat inside the same Project. Copy and paste this prompt:",
-      "content": "Can you share how many records of mission data you have access to and what kind of information is in there?"
+      "description": "374 records of previous Minion heist attempts. Upload this file directly into your Custom GPT chat before asking the mission questions."
     },
     {
       "id": "mission-questions",
       "type": "mission",
       "label": "The 5 Mission Questions",
-      "instruction": "Ask your Minion each of these questions in your Project chat. You can ask them one by one or all together.",
+      "instruction": "Ask your GPT each of these questions one at a time. Save each answer before moving to the next.",
       "questions": [
         {
           "number": "01",
           "title": "When should we go?",
-          "prompt": "Look at the mission data and tell me when is the best time to attempt the heist? Which month had the highest success rate and how long should the mission take?"
+          "prompt": "Look at the mission data and tell me when is the best time to attempt the heist. Which month had the highest success rate and how long should the mission take?"
         },
         {
           "number": "02",
@@ -52,29 +50,29 @@
         {
           "number": "04",
           "title": "What budget do we need?",
-          "selfGuided": true
+          "prompt": "Look at budget ranges across all missions. Which budget category succeeded most often? Was there anything surprising about how money affected mission outcomes?"
         },
         {
           "number": "05",
           "title": "Why did previous missions fail?",
-          "selfGuided": true
+          "prompt": "Analyze the failure reasons across all 374 missions. What was the single most common reason missions failed? What should we absolutely avoid on our mission?"
         }
       ]
     },
     {
       "id": "prompt-special-tool",
       "type": "prompt",
-      "label": "Bonus The Special Tool",
-      "instruction": "Ask your Minion to invent something no previous mission team had. Copy and paste this prompt:",
-      "content": "Based on everything you know about Operation: Steal the Sun, invent one special tool that your team could bring on this mission. Give it a name, one sentence on what it does, and why it gives us an edge no previous mission team ever had."
+      "label": "Invent Your Special Tool",
+      "instruction": "Ask your GPT to invent something unique for the mission. Copy and paste this prompt:",
+      "content": "Based on everything you know about Operation: Steal the Sun, invent one special tool that your team could bring on this mission.\n\nGive it a name, one sentence on what it does, and why it gives us an edge no previous mission team ever had."
     },
     {
       "id": "prompt-create-txt",
       "type": "prompt",
-      "label": "Create Your Mission Debrief File",
-      "instruction": "Ask your Minion to compile everything you found into a structured mission debrief. Copy and paste this prompt:",
-      "content": "Based on all the answers we found today, create a structured mission debrief as a plain text document.\n\nUse exactly this format:\n\nMISSION NAME\nOperation: Steal the Sun\n\nBEST TIMING\n[month, season, optimal duration from the data]\n\nBEST SHIP\n[ship type and company with success rate]\n\nOPTIMAL TEAM\n[team size and experience level with success rate]\n\nBUDGET\n[budget range and why it wins]\n\nBIGGEST MISSION RISK\n[most common failure reason with percentage]\n\nOUR SPECIAL TOOL\nName: [tool name]\nWhat it does: [one sentence]\nWhy it gives us an edge: [one sentence]\n\nMISSION SUMMARY\n[2 to 3 sentences summarizing the overall plan]\n\nKeep each section short and specific. Numbers only, no vague claims.\n\nOnce you have written the full debrief, generate it as a downloadable .txt file named mission_debrief.txt.",
-      "note": "Download the mission_debrief.txt file and keep it safe — you will need it in the next level."
+      "label": "Generate Mission Debrief File",
+      "instruction": "Ask your GPT to compile everything into a structured debrief. Copy and paste this prompt:",
+      "content": "Based on all the answers we found today, create a structured mission debrief as plain text.\n\nUse exactly this format:\n\nMISSION NAME\nOperation: Steal the Sun\n\nBEST TIMING\n[month, season, optimal duration from the data]\n\nBEST SHIP\n[ship type and company with success rate]\n\nOPTIMAL TEAM\n[team size and experience level with success rate]\n\nBUDGET\n[budget range and why it wins]\n\nBIGGEST MISSION RISK\n[most common failure reason with percentage]\n\nOUR SPECIAL TOOL\nName: [tool name]\nWhat it does: [one sentence]\nWhy it gives us an edge: [one sentence]\n\nMISSION SUMMARY\n[2 to 3 sentences summarizing the overall plan]\n\nKeep each section short and specific. Numbers only, no vague claims.",
+      "note": "Copy the full output and save it as a .txt file on your computer. You will upload this to the Project Manager GPT in the next level."
     }
   ]
 }
