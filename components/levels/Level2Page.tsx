@@ -124,14 +124,24 @@ export default function Level2Page() {
               <h3 className="font-bold text-lg" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
                 Follow these steps to build your Custom GPT
               </h3>
-              <a
-                href="https://chatgpt.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary inline-flex flex-shrink-0"
-              >
-                Open ChatGPT <ExternalLink size={13} />
-              </a>
+              <div className="flex items-center gap-3 flex-shrink-0">
+                <a
+                  href="https://chatgpt.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary inline-flex"
+                >
+                  Open ChatGPT <ExternalLink size={13} />
+                </a>
+                <button
+                  onClick={() => { toggleCheck(0); toggleCheck(1) }}
+                  className="flex items-center gap-1.5 transition-all duration-150"
+                  style={{ color: (checked[0] && checked[1]) ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                >
+                  {(checked[0] && checked[1]) ? <CheckSquare size={18} /> : <Square size={18} />}
+                  <span className="hidden sm:inline">{(checked[0] && checked[1]) ? 'Done' : 'Mark done'}</span>
+                </button>
+              </div>
             </div>
 
             <div className="space-y-2">
@@ -184,9 +194,19 @@ export default function Level2Page() {
               border: `1px solid ${checked[2] ? 'var(--green)' : 'var(--border)'}`,
             }}
           >
-            <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
-              Download the mission data file below, then upload it directly into your Custom GPT chat.
-            </p>
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
+                Download the mission data file below, then upload it directly into your Custom GPT chat.
+              </p>
+              <button
+                onClick={() => toggleCheck(2)}
+                className="flex items-center gap-1.5 flex-shrink-0 transition-all duration-150"
+                style={{ color: checked[2] ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+              >
+                {checked[2] ? <CheckSquare size={18} /> : <Square size={18} />}
+                <span className="hidden sm:inline">{checked[2] ? 'Done' : 'Mark done'}</span>
+              </button>
+            </div>
 
             <a
               href="/files/minion_mission_data.csv"
@@ -208,10 +228,6 @@ export default function Level2Page() {
               </span>
             </a>
 
-            <button onClick={() => toggleCheck(2)} className="flex items-center gap-2 text-left self-start" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-              {checked[2] ? <CheckSquare size={16} style={{ color: 'var(--yellow)', flexShrink: 0 }} /> : <Square size={16} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />}
-              <span className="text-xs" style={{ color: checked[2] ? 'var(--text-primary)' : 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{briefingData.mission_check[2]}</span>
-            </button>
           </div>
         </section>
 
@@ -228,50 +244,57 @@ export default function Level2Page() {
           </div>
 
           <div className="space-y-4">
-            {questions.map(({ number, title, prompt }) => (
-              <div
-                key={number}
-                className="rounded-lg p-5 flex flex-col gap-4 transition-all duration-300"
-                style={{
-                  background: 'var(--bg-secondary)',
-                  border: '1px solid var(--border)',
-                  borderLeft: '2px solid var(--yellow)',
-                }}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-mono font-bold text-sm" style={{ background: 'var(--yellow)', color: 'var(--text-primary)' }}>
-                    {number}
-                  </span>
-                  <h3 className="font-bold text-xl" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
-                    {title}
-                  </h3>
+            {questions.map(({ number, title, prompt }, qi) => {
+              const isDone = qi === 4 && checked[3]
+              return (
+                <div
+                  key={number}
+                  className="rounded-lg p-5 flex flex-col gap-4 transition-all duration-300"
+                  style={{
+                    background: 'var(--bg-secondary)',
+                    border: '1px solid var(--border)',
+                    borderLeft: '2px solid var(--yellow)',
+                  }}
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      <span className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-mono font-bold text-sm" style={{ background: 'var(--yellow)', color: 'var(--text-primary)' }}>
+                        {number}
+                      </span>
+                      <h3 className="font-bold text-xl" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
+                        {title}
+                      </h3>
+                    </div>
+                    {qi === 4 && (
+                      <button onClick={() => toggleCheck(3)} className="flex items-center gap-1.5 flex-shrink-0" style={{ color: checked[3] ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                        {checked[3] ? <CheckSquare size={18} /> : <Square size={18} />}
+                        <span className="hidden sm:inline">{checked[3] ? 'Done' : 'Mark done'}</span>
+                      </button>
+                    )}
+                  </div>
+                  <PromptBlock label={`${number} - ${title.toUpperCase()}`} promptText={prompt} variant="core" />
                 </div>
-                <PromptBlock label={`${number} - ${title.toUpperCase()}`} promptText={prompt} variant="core" />
-              </div>
-            ))}
-          </div>
-
-          <button onClick={() => toggleCheck(3)} className="flex items-center gap-2 text-left" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-            {checked[3] ? <CheckSquare size={16} style={{ color: 'var(--yellow)', flexShrink: 0 }} /> : <Square size={16} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />}
-            <span className="text-xs" style={{ color: checked[3] ? 'var(--text-primary)' : 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{briefingData.mission_check[3]}</span>
-          </button>
+              )
+            })}
         </section>
 
         {/* Special Tool */}
         <section id="special-tool" style={{ borderTop: '2px solid var(--yellow)', paddingTop: 24 }}>
           <p className="section-eyebrow mb-4">// THE FINAL QUESTION</p>
           <div className="rounded-lg p-5 flex flex-col gap-4" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderLeft: '2px solid var(--yellow)' }}>
-            <h2 className="text-3xl sm:text-4xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
-              Invent Your Special Tool
-            </h2>
+            <div className="flex items-start justify-between gap-3">
+              <h2 className="text-3xl sm:text-4xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
+                Invent Your Special Tool
+              </h2>
+              <button onClick={() => toggleCheck(4)} className="flex items-center gap-1.5 flex-shrink-0 mt-1" style={{ color: checked[4] ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                {checked[4] ? <CheckSquare size={18} /> : <Square size={18} />}
+                <span className="hidden sm:inline">{checked[4] ? 'Done' : 'Mark done'}</span>
+              </button>
+            </div>
             <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
               {specialToolInstruction}
             </p>
             <PromptBlock label="SPECIAL TOOL — ASK AFTER Q5" promptText={specialToolContent} variant="final" />
-            <button onClick={() => toggleCheck(4)} className="flex items-center gap-2 text-left self-start" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-              {checked[4] ? <CheckSquare size={16} style={{ color: 'var(--yellow)', flexShrink: 0 }} /> : <Square size={16} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />}
-              <span className="text-xs" style={{ color: checked[4] ? 'var(--text-primary)' : 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{briefingData.mission_check[4]}</span>
-            </button>
           </div>
         </section>
 
