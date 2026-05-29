@@ -1,11 +1,11 @@
 {
   "level": {
     "number": "02",
-    "title": "Set Up Base",
+    "title": "Arm Your Minion",
     "eyebrow": "// LEVEL 02 — CUSTOM GPTs",
     "concept": "Custom GPTs",
     "duration": "25 min",
-    "subdescription": "Your Minion can talk. But they know nothing about your mission, your data, or your world. Time to change that. You will build a Custom GPT trained as a data-driven strategist, load it with 374 mission records, and interrogate the data to plan the perfect heist."
+    "subdescription": "The sun does not steal itself.\nArm your Minion as a data analyst, load 374 mission records, and let them find the pattern nobody spotted."
   },
 
   "mission_targets": [
@@ -34,7 +34,11 @@
     "I created a Custom GPT called 1inMINION Data Strategist",
     "I added the name, description, and instructions to the GPT",
     "I uploaded the mission data file to my GPT",
-    "I got answers to all 5 mission questions from the data",
+    "I found the best timing from the data (Q01)",
+    "I found the best ship from the data (Q02)",
+    "I found the optimal team size from the data (Q03)",
+    "I found the budget range from the data (Q04)",
+    "I found the biggest mission risk from the data (Q05)",
     "My GPT invented a special tool for the mission",
     "I generated the mission debrief and saved it as a txt file"
   ]

@@ -8,9 +8,9 @@
       "type": "action",
       "description": "Connect your calendar once - takes about 60 seconds. Your Minion will have access to your real schedule.",
       "steps": [
-        { "id": "step-01", "short_title": "Open Customize",    "description": "Click Customize Claude in the left sidebar of Claude." },
+        { "id": "step-01", "short_title": "Open Customize",    "description": "Click Customize ChatGPT in the left sidebar of ChatGPT." },
         { "id": "step-02", "short_title": "Add Connector",     "description": "Click Add Connectors, then Browse Connectors." },
-        { "id": "step-03", "short_title": "Connect Calendar",  "description": "Find Google Calendar, click Connect, and give the required permissions. Use the same Google account you are logged into Claude with." }
+        { "id": "step-03", "short_title": "Connect Calendar",  "description": "Find Google Calendar, click Connect, and give the required permissions. Use the same Google account you are logged into ChatGPT with." }
       ]
     },
     {

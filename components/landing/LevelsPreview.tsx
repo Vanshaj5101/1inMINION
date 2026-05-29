@@ -6,18 +6,20 @@ import { levels } from '@/content/levels'
 import { landingContent } from '@/content/landing'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
+// Brightened accents tuned to read equally strong against the dark card background.
+// (Kept local to the cards so the global --purple/--blue used by prompt blocks stay unchanged.)
 const accentColor: Record<string, string> = {
   yellow: 'var(--yellow)',
-  purple: 'var(--purple)',
-  blue:   'var(--blue)',
+  purple: '#A78BFA',
+  blue:   '#60A5FA',
   orange: 'var(--orange)',
 }
 
 const accentBg: Record<string, string> = {
-  yellow: 'rgba(255,215,0,0.08)',
-  purple: 'rgba(139,92,246,0.08)',
-  blue:   'rgba(59,130,246,0.08)',
-  orange: 'rgba(249,115,22,0.08)',
+  yellow: 'rgba(242,155,28,0.12)',
+  purple: 'rgba(167,139,250,0.14)',
+  blue:   'rgba(96,165,250,0.14)',
+  orange: 'rgba(249,115,22,0.12)',
 }
 
 export default function LevelsPreview() {
@@ -120,6 +122,7 @@ export default function LevelsPreview() {
                     fontFamily: 'var(--font-body)',
                     color: 'rgba(255,255,255,0.65)',
                     lineHeight: 1.65,
+                    whiteSpace: 'pre-line',
                   }}
                 >
                   {level.description}

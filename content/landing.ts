@@ -25,13 +25,10 @@ export const landingContent = {
       label: "YOUR MISSION",
       heading: "Train Your Minion.",
       description:
-        "You will train your personal AI Minion, powered by Claude," +
-        "to become a data-driven strategist. Together you will analyze " +
-        "374 previous mission records, find what works, build a plan, " +
-        "and pitch Operation: Steal the Sun directly to GRU.",
+        "You will build and train your own AI Minion, powered by ChatGPT, to become a data-driven strategist. " +
+        "Together you will analyze 374 previous mission records, find what works, and build a complete mission plan for Operation: Steal the Sun.",
       highlight:
-        "Every skill you build with your Minion today is a skill " +
-        "you take back to your real work tomorrow.",
+        "Every skill you build with your Minion today is a skill you take back to your real work tomorrow.",
     },
     ctaButton: "TRAIN THE MINION",
   },

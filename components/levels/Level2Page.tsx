@@ -20,8 +20,9 @@ export default function Level2Page() {
   const [showBriefing, setShowBriefing] = useState(true)
   const handleEnter = () => setShowBriefing(false)
 
-  // 6 checked items matching mission_check
-  const [checked, setChecked] = useState<boolean[]>(() => new Array(6).fill(false))
+  // 10 checked items matching mission_check (0 created GPT, 1 name/desc/instructions,
+  // 2 uploaded data, 3-7 the five questions Q01-Q05, 8 special tool, 9 debrief)
+  const [checked, setChecked] = useState<boolean[]>(() => new Array(10).fill(false))
   const toggleCheck = useCallback((i: number) => {
     setChecked(prev => { const next = [...prev]; next[i] = !next[i]; return next })
   }, [])
@@ -76,13 +77,15 @@ export default function Level2Page() {
   )
 
   const buildSteps = [
-    { num: '01', title: 'Open Explore GPTs', desc: 'Click Explore GPTs in the left sidebar of ChatGPT.' },
-    { num: '02', title: 'Click + Create',     desc: 'Click the + Create button in the top right corner of the Explore GPTs page.' },
-    { num: '03', title: 'Switch to Configure', desc: 'Click the Configure tab at the top of the GPT builder.' },
-    { num: '04', title: 'Add Name',           desc: 'Copy and paste the GPT name into the Name field.', field: 'name' },
-    { num: '05', title: 'Add Description',    desc: 'Copy and paste the description into the Description field.', field: 'description' },
-    { num: '06', title: 'Add Instructions',   desc: 'Copy the full GPT instructions and paste into the Instructions field.', field: 'instructions' },
-    { num: '07', title: 'Hit Create',         desc: 'Click the Create button in the top right corner to save your GPT.' },
+    { num: '01', title: 'Open Explore GPTs',       desc: 'Click Explore GPTs in the left sidebar of ChatGPT.' },
+    { num: '02', title: 'Click + Create',           desc: 'Click the + Create button in the top right corner of the Explore GPTs page.' },
+    { num: '03', title: 'Switch to Configure',      desc: 'Click the Configure tab at the top of the GPT builder. Your screen should look like this.', field: 'configure' },
+    { num: '04', title: 'Upload GPT Image',         desc: 'Click the + circle at the top to upload a profile image for your GPT. Download and use the image below.', field: 'icon' },
+    { num: '05', title: 'Add Name',                 desc: 'Copy and paste the GPT name into the Name field.', field: 'name' },
+    { num: '06', title: 'Add Description',          desc: 'Copy and paste the description into the Description field.', field: 'description' },
+    { num: '07', title: 'Add Instructions',         desc: 'Copy the full GPT instructions and paste into the Instructions field.', field: 'instructions' },
+    { num: '08', title: 'Enable All Capabilities',  desc: 'Scroll down to Capabilities and check all 5 options — Web Search, Apps, Canvas, Image Generation, and Code Interpreter & Data Analysis.', field: 'capabilities' },
+    { num: '09', title: 'Hit Create',               desc: 'Click the Create button in the top right corner to save your GPT.', field: 'saved' },
   ]
 
   return (
@@ -101,7 +104,7 @@ export default function Level2Page() {
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
             {briefingData.level.title}
           </h1>
-          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)', lineHeight: 1.7, textAlign: 'justify' }}>
+          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)', lineHeight: 1.7, textAlign: 'left', whiteSpace: 'pre-line' }}>
             {briefingData.level.subdescription}
           </p>
           <span className="pill-badge">⏱ {briefingData.level.duration.toUpperCase()}</span>
@@ -155,24 +158,71 @@ export default function Level2Page() {
                       <p className="font-bold text-xs mb-0.5" style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)' }}>{step.title}</p>
                       <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{step.desc}</p>
                     </div>
+                    {step.field === 'icon' && (
+                      <div className="flex items-center gap-4 pt-1">
+                        <div className="rounded-xl overflow-hidden flex-shrink-0" style={{ border: '1px solid var(--border)', width: 80, height: 80 }}>
+                          <img src="/level2_gpt_icon.png" alt="1inMINION Data Strategist GPT icon" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        </div>
+                        <a
+                          href="/level2_gpt_icon.png"
+                          download="1inMINION_Data_Strategist_icon.png"
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-bold transition-all duration-150"
+                          style={{ background: 'var(--yellow)', color: 'var(--text-primary)', textDecoration: 'none' }}
+                        >
+                          <Download size={12} /> DOWNLOAD ICON
+                        </a>
+                      </div>
+                    )}
+                    {step.field === 'configure' && (
+                      <div className="space-y-1 pt-1">
+                        <p className="font-mono text-xs font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>THE CONFIGURE TAB LOOKS LIKE THIS</p>
+                        <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                          <img src="/level2_gpt_configure_empty.png" alt="Empty GPT Configure tab showing Name, Description, and Instructions fields" style={{ width: '100%', display: 'block' }} />
+                        </div>
+                      </div>
+                    )}
                     {step.field === 'name' && <CopyField id="gpt-name" value={gptName} />}
                     {step.field === 'description' && <CopyField id="gpt-description" value={gptDescription} />}
                     {step.field === 'instructions' && (
-                      <div className="flex items-start gap-2">
-                        <div className="flex-1 text-xs px-3 py-2 rounded-md font-mono leading-relaxed" style={{ background: 'var(--bg-code)', border: '1px solid var(--border)', color: 'var(--text-primary)', maxHeight: 120, overflowY: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-                          {gptInstructions.slice(0, 180)}…
+                      <>
+                        <div className="flex items-start gap-2">
+                          <div className="flex-1 text-xs px-3 py-2 rounded-md font-mono leading-relaxed" style={{ background: 'var(--bg-code)', border: '1px solid var(--border)', color: 'var(--text-primary)', maxHeight: 120, overflowY: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+                            {gptInstructions.slice(0, 180)}…
+                          </div>
+                          <button
+                            onClick={() => copyValue('gpt-instructions', gptInstructions)}
+                            className="flex-shrink-0 flex items-center gap-1 px-2 py-1.5 rounded-md text-xs font-mono font-bold transition-all duration-150"
+                            style={{
+                              background: copiedId === 'gpt-instructions' ? 'rgba(5,150,105,0.1)' : 'var(--yellow)',
+                              color: copiedId === 'gpt-instructions' ? 'var(--green)' : 'var(--text-primary)',
+                              border: copiedId === 'gpt-instructions' ? '1px solid var(--green)' : 'none',
+                            }}
+                          >
+                            {copiedId === 'gpt-instructions' ? <><Check size={11} /> COPIED</> : <><Copy size={11} /> COPY</>}
+                          </button>
                         </div>
-                        <button
-                          onClick={() => copyValue('gpt-instructions', gptInstructions)}
-                          className="flex-shrink-0 flex items-center gap-1 px-2 py-1.5 rounded-md text-xs font-mono font-bold transition-all duration-150"
-                          style={{
-                            background: copiedId === 'gpt-instructions' ? 'rgba(5,150,105,0.1)' : 'var(--yellow)',
-                            color: copiedId === 'gpt-instructions' ? 'var(--green)' : 'var(--text-primary)',
-                            border: copiedId === 'gpt-instructions' ? '1px solid var(--green)' : 'none',
-                          }}
-                        >
-                          {copiedId === 'gpt-instructions' ? <><Check size={11} /> COPIED</> : <><Copy size={11} /> COPY</>}
-                        </button>
+                        <div className="space-y-1 pt-1">
+                          <p className="font-mono text-xs font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>YOUR CONFIGURE SCREEN SHOULD LOOK LIKE THIS</p>
+                          <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                            <img src="/level2_gpt_configure.png" alt="GPT Configure screen with name, description, and instructions filled in" style={{ width: '100%', display: 'block' }} />
+                          </div>
+                        </div>
+                      </>
+                    )}
+                    {step.field === 'capabilities' && (
+                      <div className="space-y-1 pt-1">
+                        <p className="font-mono text-xs font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>CHECK ALL 5 CAPABILITIES</p>
+                        <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)', maxWidth: 420 }}>
+                          <img src="/level2_gpt_capabilities.png" alt="All capabilities checked including Code Interpreter and Data Analysis" style={{ width: '100%', display: 'block' }} />
+                        </div>
+                      </div>
+                    )}
+                    {step.field === 'saved' && (
+                      <div className="space-y-1 pt-1">
+                        <p className="font-mono text-xs font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>CLICK VIEW GPT TO OPEN YOUR NEW GPT</p>
+                        <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)', maxWidth: 480 }}>
+                          <img src="/level2_gpt_saved.png" alt="GPT Updated dialog showing 1inMINION Data Strategist with View GPT button" style={{ width: '100%', display: 'block' }} />
+                        </div>
                       </div>
                     )}
                   </div>
@@ -228,6 +278,13 @@ export default function Level2Page() {
               </span>
             </a>
 
+            <div className="space-y-1 pt-1">
+              <p className="font-mono text-xs font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>YOUR GPT CHAT SHOULD LOOK LIKE THIS</p>
+              <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                <img src="/level2_data_uploaded.png" alt="1inMINION Data Strategist GPT with minion_mission_data.csv uploaded in chat" style={{ width: '100%', display: 'block' }} />
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -245,7 +302,6 @@ export default function Level2Page() {
 
           <div className="space-y-4">
             {questions.map(({ number, title, prompt }, qi) => {
-              const isDone = qi === 4 && checked[3]
               return (
                 <div
                   key={number}
@@ -265,17 +321,21 @@ export default function Level2Page() {
                         {title}
                       </h3>
                     </div>
-                    {qi === 4 && (
-                      <button onClick={() => toggleCheck(3)} className="flex items-center gap-1.5 flex-shrink-0" style={{ color: checked[3] ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-                        {checked[3] ? <CheckSquare size={18} /> : <Square size={18} />}
-                        <span className="hidden sm:inline">{checked[3] ? 'Done' : 'Mark done'}</span>
-                      </button>
-                    )}
+                    <button onClick={() => toggleCheck(3 + qi)} className="flex items-center gap-1.5 flex-shrink-0" style={{ color: checked[3 + qi] ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                      {checked[3 + qi] ? <CheckSquare size={18} /> : <Square size={18} />}
+                      <span className="hidden sm:inline">{checked[3 + qi] ? 'Done' : 'Mark done'}</span>
+                    </button>
                   </div>
-                  <PromptBlock label={`${number} - ${title.toUpperCase()}`} promptText={prompt} variant="core" />
+                  {qi < 3 && <PromptBlock label={`${number} - ${title.toUpperCase()}`} promptText={prompt} variant="core" />}
+                  {qi >= 3 && (
+                    <p className="text-xs" style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontStyle: 'italic' }}>
+                      // This one is yours — ask your GPT in your own words. You already know how.
+                    </p>
+                  )}
                 </div>
               )
             })}
+          </div>
         </section>
 
         {/* Special Tool */}
@@ -286,9 +346,9 @@ export default function Level2Page() {
               <h2 className="text-3xl sm:text-4xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
                 Invent Your Special Tool
               </h2>
-              <button onClick={() => toggleCheck(4)} className="flex items-center gap-1.5 flex-shrink-0 mt-1" style={{ color: checked[4] ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-                {checked[4] ? <CheckSquare size={18} /> : <Square size={18} />}
-                <span className="hidden sm:inline">{checked[4] ? 'Done' : 'Mark done'}</span>
+              <button onClick={() => toggleCheck(8)} className="flex items-center gap-1.5 flex-shrink-0 mt-1" style={{ color: checked[8] ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                {checked[8] ? <CheckSquare size={18} /> : <Square size={18} />}
+                <span className="hidden sm:inline">{checked[8] ? 'Done' : 'Mark done'}</span>
               </button>
             </div>
             <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
@@ -312,9 +372,9 @@ export default function Level2Page() {
                   <p className="font-bold text-lg leading-tight" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>Generate Your Mission Debrief File</p>
                 </div>
               </div>
-              <button onClick={() => toggleCheck(5)} className="flex-shrink-0 flex items-center gap-1.5 transition-all duration-150" style={{ color: checked[5] ? 'var(--green)' : 'rgba(0,0,0,0.45)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-                {checked[5] ? <CheckSquare size={20} /> : <Square size={20} />}
-                <span className="hidden sm:inline font-bold">{checked[5] ? 'Done' : 'Mark done'}</span>
+              <button onClick={() => toggleCheck(9)} className="flex-shrink-0 flex items-center gap-1.5 transition-all duration-150" style={{ color: checked[9] ? 'var(--green)' : 'rgba(0,0,0,0.45)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                {checked[9] ? <CheckSquare size={20} /> : <Square size={20} />}
+                <span className="hidden sm:inline font-bold">{checked[9] ? 'Done' : 'Mark done'}</span>
               </button>
             </div>
             <div className="px-5 py-5 flex flex-col gap-4" style={{ background: 'var(--bg-warm)' }}>
@@ -332,7 +392,7 @@ export default function Level2Page() {
           <MissionCheck
             items={briefingData.mission_check}
             nextLevel="/level/3"
-            nextLabel="ADVANCE TO LEVEL 03: TRAIN YOUR MINION"
+            nextLabel="ADVANCE TO LEVEL 03: THE MISSION PLAN"
             levelNumber={2}
             checked={checked}
             onToggle={toggleCheck}

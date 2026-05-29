@@ -279,7 +279,7 @@ export default function Level1Page() {
           <MissionCheck
             items={briefingData.mission_check}
             nextLevel="/level/2"
-            nextLabel="ADVANCE TO LEVEL 02: SET UP BASE"
+            nextLabel="ADVANCE TO LEVEL 02: ARM YOUR MINION"
             levelNumber={1}
             checked={checked}
             onToggle={toggleCheck}

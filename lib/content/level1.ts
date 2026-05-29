@@ -22,13 +22,13 @@ Constraints: Be specific and direct. Do not suggest anything that requires more 
     {
       number: '01',
       name: 'ROLE',
-      explanation: 'Who is Claude in this conversation?',
+      explanation: 'Who is ChatGPT in this conversation?',
       example: '"You are a villain mission strategist with expertise in high-risk space operations."',
     },
     {
       number: '02',
       name: 'CONTEXT',
-      explanation: 'What does Claude need to know about your world?',
+      explanation: 'What does ChatGPT need to know about your world?',
       example: '"GRU previously attempted to steal the moon and failed. The team is now planning a more ambitious mission to steal the sun using a shrink ray."',
     },
     {
@@ -58,7 +58,7 @@ Constraints: Be specific and direct. Do not suggest anything that requires more 
       status: 'START HERE',
       explanation: 'Type whatever comes to mind naturally.\nNo structure. No framework. Just instinct.\nThis is your baseline. Remember it.',
       prompt: `Help me plan the sun heist.`,
-      tip: '💡 RUN THIS FIRST\nPaste it in Claude. Save the output.\nYou\'ll compare it to your final version at the end. The difference is the lesson.',
+      tip: '💡 RUN THIS FIRST\nPaste it in ChatGPT. Save the output.\nYou\'ll compare it to your final version at the end. The difference is the lesson.',
     },
     {
       id: 'L1',
@@ -78,7 +78,7 @@ Help me plan the sun heist.`,
 Context: GRU previously attempted to steal the moon and failed. The team is now planning a more ambitious mission to steal the sun using a shrink ray. The mission must be undetected and completed within 48 hours.
 
 Help me plan the sun heist.`,
-      whatChanged: 'Added context — Claude now knows the history, the goal, and the time constraint',
+      whatChanged: 'Added context — ChatGPT now knows the history, the goal, and the time constraint',
     },
     {
       id: 'L3',
@@ -102,7 +102,7 @@ Context: GRU previously attempted to steal the moon and failed. The team is now 
 Task: Identify the 3 most critical factors that will determine whether this mission succeeds or fails.
 
 Format: A numbered list. Each factor gets a name, one sentence explanation, and one specific risk to watch out for.`,
-      whatChanged: 'Added a specific output structure — Claude now knows exactly how to present the answer',
+      whatChanged: 'Added a specific output structure — ChatGPT now knows exactly how to present the answer',
     },
     {
       id: 'L5',

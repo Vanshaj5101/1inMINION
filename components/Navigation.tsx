@@ -15,17 +15,19 @@ export default function Navigation() {
   const [completedLevels, setCompletedLevels] = useState<number[]>([])
   const [hoveredLevel, setHoveredLevel] = useState<number | null>(null)
 
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem('completedLevels') || '[]') as number[]
+    setCompletedLevels(stored)
+  }, [pathname])
+
+  // Must come AFTER all hooks — an early return before a hook violates the
+  // Rules of Hooks and crashes the re-render when navigating away from /slides.
   if (pathname === '/slides') return null
 
   const isHomePage  = pathname === '/' || pathname === '/onboarding'
   const levelMatch  = pathname.match(/^\/level\/(\d+)/)
   const currentLevel = levelMatch ? parseInt(levelMatch[1]) : null
   const isLevelPage  = currentLevel !== null
-
-  useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem('completedLevels') || '[]') as number[]
-    setCompletedLevels(stored)
-  }, [pathname])
 
   return (
     <nav

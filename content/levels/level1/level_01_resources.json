@@ -5,7 +5,7 @@
       "id": "prompt-vague",
       "type": "prompt",
       "label": "The Vague Prompt",
-      "instruction": "Open Claude in a new tab. Copy and paste this prompt and run it. Read the output.",
+      "instruction": "Open ChatGPT in a new tab. Copy and paste this prompt and run it. Read the output.",
       "content": "Why did the moon mission fail?",
       "note": "Notice how generic and unfocused the response is. This is your Minion with no guidance."
     },

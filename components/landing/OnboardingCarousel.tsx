@@ -173,7 +173,7 @@ export default function OnboardingCarousel() {
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, margin: 0 }}>
-                Keep this page open alongside Claude throughout the session
+                Keep this page open alongside ChatGPT throughout the session
               </p>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: 16, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, margin: 0 }}>
                 Each level builds on the last. Do not skip ahead.

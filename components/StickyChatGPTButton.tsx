@@ -5,7 +5,7 @@ import { ExternalLink } from 'lucide-react'
 
 const HIDDEN_ON = ['/', '/onboarding', '/slides']
 
-export default function StickyClaudeButton() {
+export default function StickyChatGPTButton() {
   const pathname = usePathname()
   if (HIDDEN_ON.includes(pathname)) return null
 

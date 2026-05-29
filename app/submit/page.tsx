@@ -58,7 +58,7 @@ Mission complete.`}
         <p className="section-eyebrow">// STEP 01 — GENERATE YOUR PITCH DECK</p>
         <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
           Run this prompt inside your Project from Level 02. Make sure your Skill from Level 03 is loaded.<br /><br />
-          Claude will generate a complete HTML pitch deck. This is your Sun Heist plan — your mission submission.
+          ChatGPT will generate a complete HTML pitch deck. This is your Sun Heist plan — your mission submission.
         </p>
         <PromptBlock
           label="FINAL MISSION PROMPT — THE PITCH DECK"
@@ -74,12 +74,12 @@ Mission complete.`}
           {
             letter: 'A',
             title: 'Copy the HTML',
-            content: `When Claude finishes generating the code:
-Click anywhere inside Claude's response
+            content: `When ChatGPT finishes generating the code:
+Click anywhere inside ChatGPT's response
 Press Ctrl+A (Windows) or Cmd+A (Mac) to select all
 Then Ctrl+C or Cmd+C to copy
 
-Tip: Look for the copy button in Claude's response — it's usually a small icon in the top right of the code block. That's the easiest way.`,
+Tip: Look for the copy button in ChatGPT's response — it's usually a small icon in the top right of the code block. That's the easiest way.`,
           },
           {
             letter: 'B',
