@@ -110,7 +110,7 @@ export default function Level2Page() {
                   <div className="flex-1 min-w-0">
                     <p className="font-bold text-xs mb-0.5" style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)' }}>{step.short_title}</p>
                     <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{step.description}</p>
-                    {'copy_value' in step && step.copy_value && (
+                    {'copy_value' in step && typeof step.copy_value === 'string' && step.copy_value && (
                       <div className="flex items-center gap-2 mt-2 pl-0">
                         <code className="flex-1 text-xs px-3 py-1.5 rounded-md font-mono" style={{ background: 'var(--bg-code)', border: '1px solid var(--border)', color: 'var(--text-primary)' }}>
                           {step.copy_value}
