@@ -169,27 +169,37 @@ export default function SlidesPage() {
 
   const [hoveredDot, setHoveredDot] = useState<number | null>(null)
 
+  // Only the title slide uses the photo background. Content slides use a
+  // subtle solid gradient so text stays readable.
+  const isTitleSlide = current === 0
+
   return (
     <main style={{
       position: 'relative',
       height: '100vh',
       width: '100vw',
       overflow: 'hidden',
-      backgroundImage: 'url(/hero_bg3.png)',
+      backgroundImage: isTitleSlide
+        ? 'url(/hero_bg3.png)'
+        : 'linear-gradient(155deg, #0d1730 0%, #080d1c 55%, #04060f 100%)',
       backgroundSize: 'cover',
       backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat',
       backgroundColor: '#060a16',
+      transition: 'background-image 0.4s ease',
     }}>
 
-      {/* Fixed dark overlay — never moves */}
-      <div style={{
-        position: 'fixed',
-        inset: 0,
-        background: 'linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 50%, rgba(0,0,0,0.62) 100%)',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }} />
+      {/* Fixed dark overlay — darkens the photo on the title slide for legibility.
+          Hidden on content slides, which already use a clean gradient. */}
+      {isTitleSlide && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 50%, rgba(0,0,0,0.62) 100%)',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }} />
+      )}
 
       {/* Slides track — transparent panels only */}
       <div style={{ position: 'relative', zIndex: 1, height: '100%' }}>
