@@ -170,15 +170,6 @@ export default function Level2Page() {
               ))}
             </div>
 
-            {/* Checklist items 1 & 2 */}
-            <div className="flex flex-col gap-2 pt-1">
-              {[0, 1].map(i => (
-                <button key={i} onClick={() => toggleCheck(i)} className="flex items-center gap-2 text-left" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-                  {checked[i] ? <CheckSquare size={16} style={{ color: 'var(--yellow)', flexShrink: 0 }} /> : <Square size={16} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />}
-                  <span className="text-xs" style={{ color: checked[i] ? 'var(--text-primary)' : 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{briefingData.mission_check[i]}</span>
-                </button>
-              ))}
-            </div>
           </div>
         </section>
 
