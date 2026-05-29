@@ -179,27 +179,33 @@ export default function SlidesPage() {
       height: '100vh',
       width: '100vw',
       overflow: 'hidden',
-      backgroundImage: isTitleSlide
-        ? 'url(/hero_bg3.png)'
-        : 'linear-gradient(155deg, #0d1730 0%, #080d1c 55%, #04060f 100%)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center top',
-      backgroundRepeat: 'no-repeat',
       backgroundColor: '#060a16',
-      transition: 'background-image 0.4s ease',
     }}>
 
-      {/* Fixed dark overlay — darkens the photo on the title slide for legibility.
-          Hidden on content slides, which already use a clean gradient. */}
-      {isTitleSlide && (
-        <div style={{
-          position: 'fixed',
-          inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 50%, rgba(0,0,0,0.62) 100%)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }} />
-      )}
+      {/* Background layers crossfade by opacity (background-image itself can't animate).
+          Photo layer (with its darkening overlay baked in) is shown on the title slide;
+          the dark gradient layer is shown on content slides. */}
+      <div style={{
+        position: 'fixed',
+        inset: 0,
+        backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 50%, rgba(0,0,0,0.62) 100%), url(/hero_bg3.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center top',
+        backgroundRepeat: 'no-repeat',
+        opacity: isTitleSlide ? 1 : 0,
+        transition: 'opacity 0.55s ease',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }} />
+      <div style={{
+        position: 'fixed',
+        inset: 0,
+        background: 'linear-gradient(155deg, #0d1730 0%, #080d1c 55%, #04060f 100%)',
+        opacity: isTitleSlide ? 0 : 1,
+        transition: 'opacity 0.55s ease',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }} />
 
       {/* Slides track — transparent panels only */}
       <div style={{ position: 'relative', zIndex: 1, height: '100%' }}>
