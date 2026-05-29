@@ -56,7 +56,7 @@ export default function Level2Page() {
   const debriefInstruction: string   = res['prompt-create-txt'].instruction
   const debriefNote: string          = res['prompt-create-txt'].note
 
-  const CopyField = ({ id, value, label }: { id: string; value: string; label: string }) => (
+  const CopyField = ({ id, value }: { id: string; value: string }) => (
     <div className="flex items-center gap-2">
       <code className="flex-1 text-xs px-3 py-1.5 rounded-md font-mono truncate" style={{ background: 'var(--bg-code)', border: '1px solid var(--border)', color: 'var(--text-primary)' }}>
         {value}
@@ -145,8 +145,8 @@ export default function Level2Page() {
                       <p className="font-bold text-xs mb-0.5" style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)' }}>{step.title}</p>
                       <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{step.desc}</p>
                     </div>
-                    {step.field === 'name' && <CopyField id="gpt-name" value={gptName} label="GPT Name" />}
-                    {step.field === 'description' && <CopyField id="gpt-description" value={gptDescription} label="GPT Description" />}
+                    {step.field === 'name' && <CopyField id="gpt-name" value={gptName} />}
+                    {step.field === 'description' && <CopyField id="gpt-description" value={gptDescription} />}
                     {step.field === 'instructions' && (
                       <div className="flex items-start gap-2">
                         <div className="flex-1 text-xs px-3 py-2 rounded-md font-mono leading-relaxed" style={{ background: 'var(--bg-code)', border: '1px solid var(--border)', color: 'var(--text-primary)', maxHeight: 120, overflowY: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
