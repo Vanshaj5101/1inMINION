@@ -2,31 +2,19 @@
   "level": "03",
   "resources": [
     {
-      "id": "gpt-name",
-      "type": "copy",
-      "label": "GPT Name",
-      "content": "1inMINION Project Manager"
-    },
-    {
-      "id": "gpt-description",
-      "type": "copy",
-      "label": "GPT Description",
-      "content": "Upload your project brief and get a structured, aesthetic HTML project plan with risks, a quick win, and an interactive checklist."
-    },
-    {
-      "id": "gpt-instructions",
-      "type": "download",
-      "label": "GPT Instructions File",
-      "filename": "custom_gpt_project_manager.txt",
-      "description": "The full instruction set for your Custom GPT. Download this file, copy the entire contents, and paste into the Instructions field."
+      "id": "gpt-url",
+      "type": "link",
+      "label": "1inMINION Project Manager GPT",
+      "url": "https://chatgpt.com/g/g-6a192ef1fb1481919a5d08c17df59778-1inminion-project-manager",
+      "description": "Your pre-built Custom GPT. Open this link to get started."
     },
     {
       "id": "prompt-with-gpt",
       "type": "prompt",
       "label": "Run Your Custom GPT",
-      "instruction": "Upload your mission debrief .txt file from Level 2 into the chat, then send this prompt:",
+      "instruction": "Upload your mission_debrief.txt file from Level 2 into the chat, then send this prompt:",
       "content": "Here is my project brief. Please create my project plan.",
-      "note": "Your Custom GPT will read your mission debrief and generate a fully structured HTML project plan - with risks, a quick win, and an interactive checklist."
+      "note": "Your Custom GPT will read your mission debrief and generate a fully structured HTML project plan — with risks, a quick win, and an interactive checklist."
     }
   ]
 }

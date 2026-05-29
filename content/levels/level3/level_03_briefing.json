@@ -9,9 +9,9 @@
   },
 
   "mission_targets": [
-    "Create your own Custom GPT called 1inMINION Project Manager",
-    "Load it with specialist instructions so it behaves differently from regular ChatGPT",
-    "Run your Level 2 mission debrief through it and receive a structured HTML project plan"
+    "Open the pre-built 1inMINION Project Manager Custom GPT",
+    "Upload your Level 2 mission debrief and run the prompt",
+    "Receive a structured HTML project plan with risks, a quick win, and an interactive checklist"
   ],
 
   "mission_gear": [
@@ -30,11 +30,9 @@
   ],
 
   "mission_check": [
-    "I opened Explore GPTs and clicked + Create",
-    "I switched to the Configure tab and added the name, description, and instructions",
-    "I enabled all capabilities including Code Interpreter and Web Search",
-    "I saved my Custom GPT and clicked View GPT",
-    "I uploaded my Level 2 mission debrief .txt file into the GPT",
-    "My Custom GPT generated an HTML project plan with risks, a quick win, and a checklist"
+    "Opened the 1inMINION Project Manager GPT",
+    "Uploaded my mission_debrief.txt from Level 2",
+    "Sent the prompt and received my HTML project plan",
+    "My project plan includes risks, a quick win, and an interactive checklist"
   ]
 }
