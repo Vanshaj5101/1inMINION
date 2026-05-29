@@ -55,7 +55,7 @@ export default function Level3Page() {
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
             {briefingData.level.title}
           </h1>
-          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)', lineHeight: 1.7, textAlign: 'justify' }}>
+          <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)', lineHeight: 1.7, textAlign: 'left', whiteSpace: 'pre-line' }}>
             {briefingData.level.subdescription}
           </p>
           <span className="pill-badge">⏱ {briefingData.level.duration.toUpperCase()}</span>

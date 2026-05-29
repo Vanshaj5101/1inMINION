@@ -51,13 +51,7 @@ const SLIDES = [
   },
   {
     eyebrow: 'HEIST TO STEAL THE SUN',
-    title: 'Activity: Level 2 — Projects & Context',
-    isTitle: false,
-    body: null,
-  },
-  {
-    eyebrow: 'HEIST TO STEAL THE SUN',
-    title: 'Activity: Level 3 — Custom GPT',
+    title: 'Activity: Level 2 — Custom GPTs',
     isTitle: false,
     body: null,
   },

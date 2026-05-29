@@ -36,7 +36,7 @@ Include these sections:
 
 7. MY COMMITMENT
    One specific workflow I will use AI for starting this week — not the sun heist, but my actual job.
-   Be specific: "I will use Claude to [specific task] every [day/week] to save approximately [X hours]."
+   Be specific: "I will use ChatGPT to [specific task] every [day/week] to save approximately [X hours]."
 
 DESIGN REQUIREMENTS:
 - Dark background (#0A0A0F or similar)

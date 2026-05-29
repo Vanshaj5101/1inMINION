@@ -170,7 +170,7 @@ export default function Level4Page() {
 
             <div className="rounded-xl p-5 space-y-2" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)' }}>
               <p className="font-bold text-base" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)', letterSpacing: '0.02em' }}>
-                One prompt. Claude found the slot, booked the meeting, and sent the invite.
+                One prompt. ChatGPT found the slot, booked the meeting, and sent the invite.
               </p>
               <p className="text-sm" style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)' }}>
                 You didn&apos;t open your calendar. You didn&apos;t type a single event. You didn&apos;t write the agenda. That is an agent acting in the real world.

@@ -5,7 +5,7 @@
       "id": "prompt-check-schedule",
       "type": "prompt",
       "label": "Check Schedule",
-      "instruction": "Start a new chat in Claude. Copy and paste this prompt:",
+      "instruction": "Start a new chat in ChatGPT. Copy and paste this prompt:",
       "content": "What does my schedule look like tomorrow?\nList every event - title, time, and how long each one is."
     },
     {
