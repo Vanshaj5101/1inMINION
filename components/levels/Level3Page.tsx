@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import { Download, CheckSquare, Square } from 'lucide-react'
+import { Download, Copy, Check, CheckSquare, Square } from 'lucide-react'
 import { motion } from 'framer-motion'
 import PromptBlock from '../PromptBlock'
 import StepCard from '../StepCard'
@@ -22,33 +22,37 @@ export default function Level3Page() {
   const [showBriefing, setShowBriefing] = useState(true)
   const handleEnter = () => setShowBriefing(false)
 
-  // checked[0]: card 01 — ran without skill
-  // checked[1]: card 02 — uploaded skill
-  // checked[2]: card 03 — ran with skill
-  // checked[3]: saw the difference
-  // checked[4]: minion asked questions
-  const [checked, setChecked] = useState<boolean[]>(() => new Array(4).fill(false))
+  // checked[0]: steps 01–08 — GPT built
+  // checked[1]: step 09 — ran with GPT
+  const [checked, setChecked] = useState<boolean[]>(() => new Array(2).fill(false))
   const toggleCheck = useCallback((i: number) => {
     setChecked(prev => { const next = [...prev]; next[i] = !next[i]; return next })
   }, [])
 
+  const [copiedId, setCopiedId] = useState<string | null>(null)
+  const copyValue = useCallback((id: string, text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedId(id)
+      setTimeout(() => setCopiedId(null), 2000)
+    })
+  }, [])
+
   const tocSections = [
     { id: 'overview',      label: 'Overview' },
-    { id: 'steps',         label: 'Setup - 3 Steps' },
-    { id: 'reveal',        label: 'The Difference' },
+    { id: 'build',         label: 'Build Your Custom GPT' },
+    { id: 'run',           label: 'Run Your Custom GPT' },
     { id: 'mission-check', label: 'Mission Check' },
   ]
 
-  const cards = stepsData.cards
-  const noSkillCard   = cards[0]
-  const addSkillCard  = cards[1]
-  const withSkillCard = cards[2]
+  const gptName: string        = res['gpt-name'].content
+  const gptDescription: string = res['gpt-description'].content
+  const gptInstructions        = res['gpt-instructions'] as { filename: string; description: string }
+  const withGptPrompt: string  = res['prompt-with-gpt'].content
+  const withGptInstruction: string = res['prompt-with-gpt'].instruction
+  const withGptNote: string    = res['prompt-with-gpt'].note
 
-  const noSkillPrompt: string   = res['prompt-no-skill'].content
-  const withSkillPrompt: string = res['prompt-with-skill'].content
-  const skillFile               = res['skill-file'] as { filename: string; description: string }
-
-  const { reveal } = briefingData
+  // Steps 01–08 (build the GPT)
+  const buildSteps = stepsData.steps.filter(s => s.id !== 'step-09')
 
   return (
     <>
@@ -74,160 +78,175 @@ export default function Level3Page() {
           <div style={{ borderTop: '1px solid var(--border)' }} />
         </section>
 
-        {/* Steps */}
-        <section id="steps" className="space-y-6">
-          <p className="section-eyebrow">// SETUP - 3 STEPS</p>
-
-          {/* Card 01: Run Without Skill */}
+        {/* Build Your Custom GPT */}
+        <section id="build" className="space-y-6">
+          <p className="section-eyebrow">// BUILD YOUR CUSTOM GPT</p>
           <StepCard
-            stepNumber={noSkillCard.card}
-            title={noSkillCard.title}
-            description={noSkillCard.description}
+            stepNumber="01"
+            title="Create Your 1inMINION Project Manager"
+            description="Follow these steps to build and configure your Custom GPT."
             checked={checked[0]}
             onCheck={() => toggleCheck(0)}
           >
-            <PromptBlock
-              label="PITCH PROMPT - RUN WITHOUT SKILL"
-              promptText={noSkillPrompt}
-              variant="test"
-            />
-            <div className="p-4 rounded-lg flex items-start gap-3" style={{ background: 'var(--bg-primary)', border: '1px solid var(--border)' }}>
-              <span className="text-base flex-shrink-0">👀</span>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
-                Claude builds immediately. No questions. It guesses what to include, how to structure it, what tone to use. Save the output - you will compare it in Step 3.
-              </p>
-            </div>
-          </StepCard>
-
-          {/* Card 02: Add the Skill */}
-          <StepCard
-            stepNumber={addSkillCard.card}
-            title={addSkillCard.title}
-            description={addSkillCard.description}
-            checked={checked[1]}
-            onCheck={() => toggleCheck(1)}
-          >
-            {/* Action sub-steps */}
             <div className="space-y-2">
-              {(addSkillCard.steps ?? []).map((step, i) => (
+              {buildSteps.map((step, i) => (
                 <div key={step.id} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: 'var(--bg-primary)', border: '1px solid var(--border)' }}>
                   <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center font-mono font-bold text-xs mt-0.5" style={{ background: 'var(--yellow)', color: 'var(--text-primary)' }}>
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <div>
-                    <p className="font-bold text-xs mb-0.5" style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)' }}>{step.short_title}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{step.description}</p>
+                  <div className="flex-1 min-w-0 space-y-2">
+                    <div>
+                      <p className="font-bold text-xs mb-0.5" style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)' }}>{step.short_title}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{step.description}</p>
+                    </div>
+
+                    {/* Copy — GPT Name */}
+                    {step.id === 'step-04' && (
+                      <div className="flex items-center gap-2">
+                        <code className="flex-1 text-xs px-3 py-1.5 rounded-md font-mono" style={{ background: 'var(--bg-code)', border: '1px solid var(--border)', color: 'var(--text-primary)' }}>
+                          {gptName}
+                        </code>
+                        <button
+                          onClick={() => copyValue('gpt-name', gptName)}
+                          className="flex-shrink-0 flex items-center gap-1 px-2 py-1.5 rounded-md text-xs font-mono font-bold transition-all duration-150"
+                          style={{
+                            background: copiedId === 'gpt-name' ? 'rgba(5,150,105,0.1)' : 'var(--yellow)',
+                            color: copiedId === 'gpt-name' ? 'var(--green)' : 'var(--text-primary)',
+                            border: copiedId === 'gpt-name' ? '1px solid var(--green)' : 'none',
+                          }}
+                        >
+                          {copiedId === 'gpt-name' ? <><Check size={11} /> COPIED</> : <><Copy size={11} /> COPY</>}
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Copy — GPT Description */}
+                    {step.id === 'step-05' && (
+                      <div className="flex items-center gap-2">
+                        <code className="flex-1 text-xs px-3 py-1.5 rounded-md font-mono" style={{ background: 'var(--bg-code)', border: '1px solid var(--border)', color: 'var(--text-primary)' }}>
+                          {gptDescription}
+                        </code>
+                        <button
+                          onClick={() => copyValue('gpt-description', gptDescription)}
+                          className="flex-shrink-0 flex items-center gap-1 px-2 py-1.5 rounded-md text-xs font-mono font-bold transition-all duration-150"
+                          style={{
+                            background: copiedId === 'gpt-description' ? 'rgba(5,150,105,0.1)' : 'var(--yellow)',
+                            color: copiedId === 'gpt-description' ? 'var(--green)' : 'var(--text-primary)',
+                            border: copiedId === 'gpt-description' ? '1px solid var(--green)' : 'none',
+                          }}
+                        >
+                          {copiedId === 'gpt-description' ? <><Check size={11} /> COPIED</> : <><Copy size={11} /> COPY</>}
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Download — Instructions file */}
+                    {step.id === 'step-06' && (
+                      <a
+                        href="/files/custom_gpt_project_manager.txt"
+                        download={gptInstructions.filename}
+                        className="flex items-center gap-3 p-4 rounded-xl transition-all duration-150"
+                        style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', textDecoration: 'none' }}
+                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--yellow)'; e.currentTarget.style.boxShadow = 'var(--shadow-sm)' }}
+                        onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.boxShadow = 'none' }}
+                      >
+                        <div className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(255,215,0,0.1)' }}>
+                          <Download size={20} style={{ color: 'var(--yellow)' }} />
+                        </div>
+                        <div className="flex-1">
+                          <p className="font-mono font-bold text-sm" style={{ color: 'var(--yellow-text)' }}>{gptInstructions.filename}</p>
+                          <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{gptInstructions.description}</p>
+                        </div>
+                        <span className="font-mono text-xs font-bold px-3 py-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--yellow)', color: 'var(--text-primary)' }}>
+                          DOWNLOAD
+                        </span>
+                      </a>
+                    )}
+
+                    {/* Capabilities screenshot */}
+                    {step.id === 'step-07' && (
+                      <div className="space-y-2">
+                        <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)', maxWidth: 360 }}>
+                          <img src="/chatgpt_capabilities.png" alt="All capabilities checked in GPT builder" style={{ width: '100%', display: 'block' }} />
+                        </div>
+                        <p className="text-xs font-mono" style={{ color: 'var(--text-muted)' }}>Make sure all 5 capabilities are checked.</p>
+                      </div>
+                    )}
+
+                    {/* Configured interface screenshot */}
+                    {step.id === 'step-07' && (
+                      <div className="space-y-2 pt-1">
+                        <p className="text-xs font-mono font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>YOUR CONFIGURE SCREEN SHOULD LOOK LIKE THIS</p>
+                        <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                          <img src="/chatgpt_gpt_configure.png" alt="GPT Configure screen with name, description, and instructions filled in" style={{ width: '100%', display: 'block' }} />
+                        </div>
+                      </div>
+                    )}
+
+                    {/* GPT saved screenshot */}
+                    {step.id === 'step-08' && (
+                      <div className="space-y-2">
+                        <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                          <img src="/chatgpt_gpt_saved.png" alt="GPT Updated dialog with View GPT button" style={{ width: '100%', display: 'block' }} />
+                        </div>
+                        <p className="text-xs font-mono" style={{ color: 'var(--text-muted)' }}>Click View GPT to open your new Custom GPT.</p>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
             </div>
-
-            {/* Download */}
-            <a
-              href="/files/pitch_skill.md"
-              download={skillFile.filename}
-              className="flex items-center gap-4 p-5 rounded-xl transition-all duration-150"
-              style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', textDecoration: 'none' }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--yellow)'; e.currentTarget.style.boxShadow = 'var(--shadow-sm)' }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.boxShadow = 'none' }}
-            >
-              <div className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center" style={{ background: 'rgba(255,215,0,0.1)' }}>
-                <Download size={22} style={{ color: 'var(--yellow)' }} />
-              </div>
-              <div className="flex-1">
-                <p className="font-mono font-bold text-sm" style={{ color: 'var(--yellow-text)' }}>{skillFile.filename}</p>
-                <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
-                  {skillFile.description}
-                </p>
-              </div>
-              <span className="font-mono text-xs font-bold px-3 py-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--yellow)', color: 'var(--text-primary)' }}>
-                DOWNLOAD
-              </span>
-            </a>
           </StepCard>
+        </section>
 
-          {/* Card 03: Run Same Prompt Again */}
+        {/* Run Your Custom GPT */}
+        <section id="run" className="space-y-6">
+          <p className="section-eyebrow">// RUN YOUR CUSTOM GPT</p>
           <StepCard
-            stepNumber={withSkillCard.card}
-            title={withSkillCard.title}
-            description={withSkillCard.description}
-            checked={checked[2]}
-            onCheck={() => toggleCheck(2)}
+            stepNumber="02"
+            title="Run Your Custom GPT"
+            checked={checked[1]}
+            onCheck={() => toggleCheck(1)}
           >
+            {/* Upload reminder — highlighted */}
+            <div
+              className="flex items-start gap-3 p-4 rounded-xl"
+              style={{
+                background: 'var(--yellow)',
+                boxShadow: '0 0 0 3px rgba(242,155,28,0.25)',
+              }}
+            >
+              <span className="text-xl flex-shrink-0">📎</span>
+              <p className="text-sm font-bold leading-relaxed" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-body)' }}>
+                Upload your mission debrief .txt file from Level 2 into the chat first — then send this prompt.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                <img src="/level3_run_custom_gpt.png" alt="1inMINION Project Manager with mission debrief file attached and prompt ready to send" style={{ width: '100%', display: 'block' }} />
+              </div>
+              <p className="text-xs font-mono text-center" style={{ color: 'var(--text-muted)' }}>
+                Attach your mission_debrief.txt, then send the prompt below.
+              </p>
+            </div>
+
             <PromptBlock
-              label="SAME PROMPT - RUN AGAIN WITH SKILL LOADED"
-              promptText={withSkillPrompt}
+              label="PROMPT — PASTE INTO YOUR CUSTOM GPT"
+              promptText={withGptPrompt}
               variant="core"
             />
             <div className="p-4 rounded-lg flex items-start gap-3" style={{ background: 'rgba(5,150,105,0.06)', border: '1px solid rgba(5,150,105,0.25)' }}>
               <span className="text-base flex-shrink-0">✅</span>
               <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
-                Claude now asks you 4 questions before touching the deck. It waits for your answers. The output it builds is shaped by what YOU said matters - not what Claude guessed.
+                {withGptNote}
               </p>
             </div>
           </StepCard>
         </section>
 
-        {/* The Difference */}
-        <section id="reveal" className="space-y-5" style={{ borderTop: '2px solid var(--yellow)', paddingTop: 24 }}>
-          <div className="flex items-start justify-between gap-3">
-            <div className="flex-1">
-              <p className="section-eyebrow">// THE DIFFERENCE</p>
-              <h2 className="text-3xl sm:text-4xl font-bold mt-1" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>
-                Before vs After.
-              </h2>
-              <p className="text-sm mt-2 leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
-                Compare both outputs side by side. Notice what changed.
-              </p>
-            </div>
-            <button
-              onClick={() => toggleCheck(3)}
-              className="flex-shrink-0 flex items-center gap-1.5 transition-all duration-150 mt-1"
-              style={{ color: checked[3] ? 'var(--green)' : 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-            >
-              {checked[3] ? <CheckSquare size={18} /> : <Square size={18} />}
-              <span className="hidden sm:inline">{checked[3] ? 'Done' : 'Mark done'}</span>
-            </button>
-          </div>
-
-          <div className="comparison-grid">
-            <div className="rounded-xl p-5 space-y-3" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)' }}>
-              <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'var(--text-secondary)' }}>
-                {reveal.without.label}
-              </p>
-              <ul className="space-y-2">
-                {reveal.without.points.map((pt, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm" style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)' }}>
-                    <span style={{ color: '#D1D5DB' }}>✗</span> {pt}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-xl p-5 space-y-3" style={{ background: 'rgba(255,215,0,0.06)', border: '2px solid var(--yellow)' }}>
-              <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'var(--yellow-text)' }}>
-                {reveal.with.label}
-              </p>
-              <ul className="space-y-2">
-                {reveal.with.points.map((pt, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm font-bold" style={{ fontFamily: 'var(--font-body)', color: 'var(--text-primary)' }}>
-                    <span style={{ color: 'var(--yellow-text)' }}>✓</span> {pt}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="rounded-xl p-6 text-center space-y-3" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)' }}>
-            <p className="text-xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)', letterSpacing: '0.02em' }}>
-              {reveal.insight}
-            </p>
-            <p className="text-sm leading-relaxed" style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)' }}>
-              {reveal.reuse}
-            </p>
-          </div>
-        </section>
-
         <div id="mission-check">
+          {/* Level 04 temporarily hidden — restore when ready:
           <MissionCheck
             items={briefingData.mission_check}
             nextLevel="/level/4"
@@ -235,8 +254,18 @@ export default function Level3Page() {
             levelNumber={3}
             checked={checked}
             onToggle={toggleCheck}
+          /> */}
+          <MissionCheck
+            items={briefingData.mission_check}
+            nextLevel="/"
+            nextLabel="MISSION COMPLETE — RETURN TO BASE"
+            levelNumber={3}
+            isFinale={true}
+            checked={checked}
+            onToggle={toggleCheck}
           />
         </div>
+
       </motion.main>
     </>
   )

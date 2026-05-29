@@ -7,11 +7,9 @@
       "title": "Create Your Project",
       "type": "action",
       "steps": [
-        { "id": "step-01", "short_title": "Open Claude",      "description": "Go to claude.ai and sign in to your account." },
-        { "id": "step-02", "short_title": "Go to Projects",   "description": "Click Projects in the left sidebar of Claude." },
-        { "id": "step-03", "short_title": "New Project",      "description": "Click New Project to create your Minion's base." },
-        { "id": "step-04", "short_title": "Name Your Base",   "description": "Name it after your Minion - example: KEVIN's Heist Base." },
-        { "id": "step-05", "short_title": "Add Description",  "description": "In the description field add:", "copy_value": "Planning for Heist to the Sun" }
+        { "id": "step-01", "short_title": "Open ChatGPT",   "description": "Go to chatgpt.com and sign in to your account." },
+        { "id": "step-02", "short_title": "New Project",    "description": "Click New project in the left sidebar." },
+        { "id": "step-03", "short_title": "Name Your Base", "description": "Type your Minion's name followed by HEIST BASE - example: KEVIN's HEIST BASE. Then click Create project." }
       ]
     },
     {
@@ -19,20 +17,26 @@
       "title": "Add Instructions",
       "type": "copy",
       "resource_id": "project-instructions",
-      "description": "Copy the instructions below and paste into the instructions field."
+      "description": "Load your Minion's permanent instructions into the project.",
+      "steps": [
+        { "id": "step-02-01", "short_title": "More Options", "description": "Click the ··· button in the top right corner of your project." },
+        { "id": "step-02-02", "short_title": "Project Settings", "description": "Select Project settings from the menu." },
+        { "id": "step-02-03", "short_title": "Add Instructions", "description": "Paste the instructions below into the Instructions field." },
+        { "id": "step-02-04", "short_title": "Save", "description": "Click Save." }
+      ]
     },
     {
       "card": "03",
       "title": "Upload Mission Data",
       "type": "download",
       "resource_id": "mission-data",
-      "description": "Download the mission data file and upload it under Files."
+      "description": "Click the Sources tab in your project. Download the mission data file below, then click Add sources to upload it."
     },
     {
       "card": "04",
       "title": "Meet & Test Your Minion",
       "type": "multi-prompt",
-      "description": "Run each prompt in a separate new chat inside your Project. Do not use the same chat for both — that is the point. Each chat should start fresh, but your Minion will still remember everything.",
+      "description": "Run each prompt in a separate new chat inside your Project. Do not use the same chat for both - that is the point. Each chat should start fresh, but your Minion will still remember everything.",
       "prompts": [
         {
           "id": "prompt-meet-minion",
@@ -42,7 +46,7 @@
         {
           "id": "prompt-test-memory",
           "label": "Test the Memory",
-          "description": "Open a second new chat inside the same Project and run this prompt. A brand new chat — but your Minion still knows everything."
+          "description": "Open a second new chat inside the same Project and run this prompt. A brand new chat - but your Minion still knows everything."
         }
       ]
     }

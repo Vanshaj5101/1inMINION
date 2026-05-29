@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { Clock } from 'lucide-react'
 import { levels } from '@/content/levels'
 import { landingContent } from '@/content/landing'
@@ -22,6 +23,7 @@ const accentBg: Record<string, string> = {
 export default function LevelsPreview() {
   const { levelsSection } = landingContent
   const ref = useScrollAnimation()
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
 
   return (
     <section
@@ -59,26 +61,32 @@ export default function LevelsPreview() {
         </div>
 
         {/* Levels grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {levels.map((level) => {
             const accent = accentColor[level.color] ?? 'var(--yellow)'
             const bg = accentBg[level.color] ?? 'rgba(255,215,0,0.08)'
+            const isHovered = hoveredCard === level.number
 
             return (
               <div
                 key={level.number}
+                onMouseEnter={() => setHoveredCard(level.number)}
+                onMouseLeave={() => setHoveredCard(null)}
                 className="level-card"
                 style={{
-                  background: 'rgba(6,10,22,0.55)',
-                  border: '1px solid rgba(255,255,255,0.10)',
+                  background: isHovered ? 'rgba(6,10,22,0.85)' : 'rgba(6,10,22,0.55)',
+                  border: `1px solid ${isHovered ? accent : 'rgba(255,255,255,0.10)'}`,
                   borderTop: `3px solid ${accent}`,
+                  transform: isHovered ? 'translateY(-6px) scale(1.02)' : 'translateY(0) scale(1)',
+                  boxShadow: isHovered ? `0 16px 40px rgba(0,0,0,0.5), 0 0 20px ${accent}33` : 'none',
+                  transition: 'transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease',
                 }}
               >
                 {/* Number */}
                 <div className="mb-4">
                   <span
                     className="text-5xl leading-none"
-                    style={{ fontFamily: 'var(--font-display)', color: '#D1D5DB' }}
+                    style={{ fontFamily: 'var(--font-display)', color: isHovered ? accent : '#D1D5DB', transition: 'color 0.25s ease' }}
                   >
                     {level.number}
                   </span>
@@ -110,7 +118,7 @@ export default function LevelsPreview() {
                   className="text-sm leading-relaxed flex-1 mb-4"
                   style={{
                     fontFamily: 'var(--font-body)',
-                    color: 'rgba(255,255,255,0.52)',
+                    color: 'rgba(255,255,255,0.65)',
                     lineHeight: 1.65,
                   }}
                 >
@@ -122,9 +130,10 @@ export default function LevelsPreview() {
                   className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full w-fit"
                   style={{
                     fontFamily: 'var(--font-body)',
-                    color: 'rgba(255,255,255,0.52)',
+                    color: isHovered ? accent : 'rgba(255,255,255,0.70)',
                     background: 'transparent',
-                    border: '1px solid rgba(255,255,255,0.20)',
+                    border: `1px solid ${isHovered ? accent : 'rgba(255,255,255,0.35)'}`,
+                    transition: 'color 0.25s ease, border-color 0.25s ease',
                   }}
                 >
                   <Clock size={12} />

@@ -30,6 +30,22 @@ export default function MissionCheck({ items, nextLevel, nextLabel, levelNumber,
     }
   }
 
+  const selectAll = () => {
+    if (onToggle) {
+      checked.forEach((val, i) => { if (!val) onToggle(i) })
+    } else {
+      setInternalChecked(new Array(items.length).fill(true))
+    }
+  }
+
+  const deselectAll = () => {
+    if (onToggle) {
+      checked.forEach((val, i) => { if (val) onToggle(i) })
+    } else {
+      setInternalChecked(new Array(items.length).fill(false))
+    }
+  }
+
   const handleAdvance = () => {
     if (levelNumber !== undefined) {
       const stored = JSON.parse(localStorage.getItem('completedLevels') || '[]') as number[]
@@ -52,9 +68,24 @@ export default function MissionCheck({ items, nextLevel, nextLabel, levelNumber,
       className="rounded-lg p-6 flex flex-col gap-5 transition-all duration-300"
       style={{ background: 'var(--bg-secondary)', border: `1px solid ${borderColor}` }}
     >
-      <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'var(--text-secondary)' }}>
-        // MISSION CHECK — BEFORE YOU ADVANCE
-      </p>
+      <div className="flex items-center justify-between">
+        <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'var(--text-secondary)' }}>
+          // MISSION CHECK - BEFORE YOU ADVANCE
+        </p>
+        <button
+          onClick={allChecked ? deselectAll : selectAll}
+          className="font-mono font-bold text-xs tracking-wide transition-all duration-150 px-3 py-1.5 rounded-md"
+          style={{
+            color: 'var(--yellow-text)',
+            background: 'rgba(242,155,28,0.1)',
+            border: '1px solid rgba(242,155,28,0.3)',
+            cursor: 'pointer',
+            letterSpacing: '0.08em',
+          }}
+        >
+          {allChecked ? 'DESELECT ALL' : 'SELECT ALL'}
+        </button>
+      </div>
 
       <ul className="space-y-3">
         {items.map((item, i) => (

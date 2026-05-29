@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { ChevronDown } from 'lucide-react'
 
 interface GearItem {
   id: string
@@ -19,7 +20,7 @@ interface BriefingData {
 type TopTab = 'targets' | 'gears' | null
 
 export default function LevelBriefingSection({ data }: { data: BriefingData }) {
-  const [activeTab, setActiveTab] = useState<TopTab>(null)
+  const [activeTab, setActiveTab] = useState<TopTab>('targets')
   const [activeGear, setActiveGear] = useState<string>(data.mission_gear[0]?.id ?? '')
 
   const { mission_targets, mission_gear } = data
@@ -41,7 +42,7 @@ export default function LevelBriefingSection({ data }: { data: BriefingData }) {
             <button
               key={tab}
               onClick={() => toggle(tab)}
-              className="py-4 rounded-xl font-bold text-base transition-all duration-150"
+              className="py-4 rounded-xl font-bold text-base transition-all duration-150 flex items-center justify-center gap-2"
               style={{
                 fontFamily: 'var(--font-body)',
                 color: isActive ? 'var(--text-primary)' : 'var(--text-muted)',
@@ -51,6 +52,14 @@ export default function LevelBriefingSection({ data }: { data: BriefingData }) {
               }}
             >
               {label}
+              <ChevronDown
+                size={16}
+                style={{
+                  transition: 'transform 0.2s ease',
+                  transform: isActive ? 'rotate(180deg)' : 'rotate(0deg)',
+                  flexShrink: 0,
+                }}
+              />
             </button>
           )
         })}

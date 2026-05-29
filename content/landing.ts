@@ -38,10 +38,12 @@ export const landingContent = {
 
   levelsSection: {
     sectionLabel: "THE TRAINING PROGRAM",
-    heading: "4 Levels. One Mission.",
+    // heading: "4 Levels. One Mission.",          // Level 04 temporarily hidden
+    heading: "3 Levels. One Mission.",
+    // subheading: "Each level gives your Minion a new capability. Complete all 4 and your Minion is ready for the heist.",
     subheading:
       "Each level gives your Minion a new capability. " +
-      "Complete all 4 and your Minion is ready for the heist.",
+      "Complete all 3 and your Minion is ready for the heist.",
   },
 
 } as const

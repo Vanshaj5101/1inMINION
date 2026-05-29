@@ -2,7 +2,7 @@
   "level": {
     "number": "01",
     "title": "Talk to Your Minion",
-    "eyebrow": "// LEVEL 01 — PROMPT ENGINEERING",
+    "eyebrow": "// LEVEL 01 - PROMPT ENGINEERING",
     "concept": "Prompt Engineering",
     "duration": "20 min",
     "subdescription": "Your Minion just arrived. They are eager, willing, and understand absolutely nothing. The quality of their response depends entirely on the quality of your order. Learn to give precise, structured prompts and watch your Minion transform from confused to capable."
@@ -30,11 +30,11 @@
   "mission_check": [
     "Ran the vague prompt and saw the generic output",
     "Ran the structured prompt and compared the two outputs",
-    "Ran L0 — Raw Ask and set my baseline",
-    "Ran L1 — Specificity and saw the first improvement",
-    "Ran L2 — Role and noticed how the thinking changed",
-    "Ran L3 — Context and saw it answer for my world",
-    "Ran L4 — Output Format and got a usable result",
-    "Ran L5 — Constraints and completed the full prompt"
+    "Ran L0 - Raw Ask and set my baseline",
+    "Ran L1 - Specificity and saw the first improvement",
+    "Ran L2 - Role and noticed how the thinking changed",
+    "Ran L3 - Context and saw it answer for my world",
+    "Ran L4 - Output Format and got a usable result",
+    "Ran L5 - Constraints and completed the full prompt"
   ]
 }

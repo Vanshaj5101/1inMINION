@@ -14,12 +14,13 @@ const accentColor: Record<string, string> = {
   orange: 'var(--orange)',
 }
 
-const TOTAL = 4
+const TOTAL = 4 // 4 slides: Backstory, Mission, Training Program, Name entry
 
 export default function OnboardingCarousel() {
   const { story } = landingContent
   const [current, setCurrent] = useState(0)
   const [nameInput, setNameInput] = useState('')
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
   const { saveMinionName } = useMinionName()
   const router = useRouter()
 
@@ -121,27 +122,39 @@ export default function OnboardingCarousel() {
               TRAINING PROGRAM
             </span>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 5vw, 60px)', color: 'white', lineHeight: 1.1, margin: 0 }}>
-              4 Levels. 60 Minutes. One Heist Plan.
+              {/* 4 Levels. 60 Minutes. One Heist Plan. */}{/* Level 04 temporarily hidden */}
+              3 Levels. 60 Minutes. One Heist Plan.
             </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, width: '100%' }}>
+            {/* gridTemplateColumns: 'repeat(4, 1fr)' — Level 04 temporarily hidden */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, width: '100%' }}>
               {levels.map(level => {
                 const accent = accentColor[level.color] ?? 'var(--yellow)'
+                const isHovered = hoveredCard === level.number
                 return (
-                  <div key={level.number} style={{
-                    background: 'rgba(6,10,22,0.60)',
-                    border: `1px solid rgba(255,255,255,0.10)`,
-                    borderTop: `3px solid ${accent}`,
-                    borderRadius: 12,
-                    padding: '20px 16px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 8,
-                  }}>
-                    <span style={{ fontFamily: 'var(--font-display)', fontSize: 32, color: 'rgba(255,255,255,0.25)', lineHeight: 1 }}>{level.number}</span>
+                  <div
+                    key={level.number}
+                    onMouseEnter={() => setHoveredCard(level.number)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                    style={{
+                      background: isHovered ? 'rgba(6,10,22,0.85)' : 'rgba(6,10,22,0.60)',
+                      border: `1px solid ${isHovered ? accent : 'rgba(255,255,255,0.10)'}`,
+                      borderTop: `3px solid ${accent}`,
+                      borderRadius: 12,
+                      padding: '20px 16px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 8,
+                      cursor: 'default',
+                      transform: isHovered ? 'translateY(-6px) scale(1.02)' : 'translateY(0) scale(1)',
+                      boxShadow: isHovered ? `0 16px 40px rgba(0,0,0,0.5), 0 0 20px ${accent}33` : 'none',
+                      transition: 'transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease',
+                    }}
+                  >
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: 32, color: isHovered ? accent : 'rgba(255,255,255,0.25)', lineHeight: 1, transition: 'color 0.25s ease' }}>{level.number}</span>
                     <p style={{ fontFamily: 'var(--font-display)', fontSize: 18, color: 'white', margin: 0, lineHeight: 1.2 }}>{level.title}</p>
                     <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: accent, fontWeight: 700, letterSpacing: '0.06em' }}>{level.concept}</span>
-                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, margin: 0, flex: 1 }}>{level.description}</p>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'rgba(255,255,255,0.40)' }}>⏱ {level.duration}</span>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 12, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, margin: 0, flex: 1 }}>{level.description}</p>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: isHovered ? accent : 'rgba(255,255,255,0.65)', transition: 'color 0.25s ease' }}>⏱ {level.duration}</span>
                   </div>
                 )
               })}

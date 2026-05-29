@@ -5,7 +5,7 @@
       "id": "project-instructions",
       "type": "copy",
       "label": "Project Instructions",
-      "content": "You are [MINION NAME] - a data-driven mission strategist for 1inMINION. You are not a regular Minion. You are the one who reads the data while everyone else is eating bananas. Bello!\n\nWe are planning Operation: Steal the Sun. The moon heist failed. This time we do it right. You have access to 374 previous Minion mission records covering timing, ship type, team size, budget, and why missions failed. Use this data to help us make smarter decisions than every team that came before us.\n\nFor every question, always give a specific number or percentage, highlight the most surprising finding, and end with one clear recommendation. No vague answers. One recommendation only. Gru is a busy man.\n\nKeep a touch of Minion energy - Bello, Poopaye, Whaaat - but stay sharp. And whatever you do, do not get distracted by bananas. The data shows exactly where that leads."
+      "content": "You are BOB a data-driven mission strategist for 1inMINION.\n\nYou are not a regular Minion. While the others are distracted by bananas and jelly, you are the one studying the mission records, spotting patterns, and turning data into decisions. You take the mission seriously. Bello!\n\nWe are planning Operation: Steal the Sun. The moon heist failed and we are not making the same mistakes again. You have access to 374 previous Minion mission records covering timing, ship type, team size, budget, and why missions failed.\n\nYour job is to help the mission strategist explore this data and make smarter decisions than every team that came before us.\n\nWhen answering questions:\n- Explore the data before jumping to conclusions\n- Use specific numbers and percentages to support your findings\n- Highlight anything surprising or counterintuitive those insights matter most\n- Create a simple visualization, chart, or table whenever it helps the strategist see the data more clearly\n- End with one clear recommendation not a list of options, one call\n- Keep your Minion energy Bello, Poopaye, Whaaat but stay sharp and focused\n\nWhatever you do, do not get distracted by bananas. The data shows exactly where that leads."
     },
     {
       "id": "mission-data",
@@ -37,7 +37,7 @@
         {
           "number": "01",
           "title": "When should we go?",
-          "prompt": "Look at the mission data and tell me - when is the best time to attempt the heist? Which month had the highest success rate and how long should the mission take?"
+          "prompt": "Look at the mission data and tell me when is the best time to attempt the heist? Which month had the highest success rate and how long should the mission take?"
         },
         {
           "number": "02",
@@ -52,21 +52,29 @@
         {
           "number": "04",
           "title": "What budget do we need?",
-          "prompt": "Look at budget ranges across all missions. Which budget category succeeded most often? Was there anything surprising about how money affected mission outcomes?"
+          "selfGuided": true
         },
         {
           "number": "05",
           "title": "Why did previous missions fail?",
-          "prompt": "Analyze the failure reasons across all 374 missions. What was the single most common reason missions failed? What should we absolutely avoid on our mission?"
+          "selfGuided": true
         }
       ]
     },
     {
       "id": "prompt-special-tool",
       "type": "prompt",
-      "label": "Bonus - The Special Tool",
+      "label": "Bonus The Special Tool",
       "instruction": "Ask your Minion to invent something no previous mission team had. Copy and paste this prompt:",
-      "content": "Based on everything you found in the data - especially why previous missions failed - invent one special tool that solves our biggest mission risk. Give it a name, one sentence on what it does, and why it gives us an edge no previous mission team had."
+      "content": "Based on everything you know about Operation: Steal the Sun, invent one special tool that your team could bring on this mission. Give it a name, one sentence on what it does, and why it gives us an edge no previous mission team ever had."
+    },
+    {
+      "id": "prompt-create-txt",
+      "type": "prompt",
+      "label": "Create Your Mission Debrief File",
+      "instruction": "Ask your Minion to compile everything you found into a structured mission debrief. Copy and paste this prompt:",
+      "content": "Based on all the answers we found today, create a structured mission debrief as a plain text document.\n\nUse exactly this format:\n\nMISSION NAME\nOperation: Steal the Sun\n\nBEST TIMING\n[month, season, optimal duration from the data]\n\nBEST SHIP\n[ship type and company with success rate]\n\nOPTIMAL TEAM\n[team size and experience level with success rate]\n\nBUDGET\n[budget range and why it wins]\n\nBIGGEST MISSION RISK\n[most common failure reason with percentage]\n\nOUR SPECIAL TOOL\nName: [tool name]\nWhat it does: [one sentence]\nWhy it gives us an edge: [one sentence]\n\nMISSION SUMMARY\n[2 to 3 sentences summarizing the overall plan]\n\nKeep each section short and specific. Numbers only, no vague claims.\n\nOnce you have written the full debrief, generate it as a downloadable .txt file named mission_debrief.txt.",
+      "note": "Download the mission_debrief.txt file and keep it safe — you will need it in the next level."
     }
   ]
 }

@@ -4,12 +4,12 @@
     "title": "Set Up Base",
     "eyebrow": "// LEVEL 02 - PROJECTS + CONTEXT",
     "concept": "Projects + Context",
-    "duration": "15 min",
+    "duration": "25 min",
     "subdescription": "Your Minion is smart but forgetful. Every new chat - blank slate. No memory. No context. Back to square one. It is time to build your Minion a permanent base - so they are always briefed, always ready, and never starting from scratch."
   },
 
   "mission_targets": [
-    "Create a Claude Project - your Minion's permanent organized workspace",
+    "Create a ChatGPT Project - your Minion's permanent organized workspace",
     "Load context into that Project - so your Minion knows your world without being told every time",
     "Run prompts without repeating yourself - ever again"
   ],
@@ -24,14 +24,15 @@
     "Q3: Optimal team size confirmed",
     "Q4: Budget range locked in",
     "Q5: Top failure reasons mapped",
-    "Special tool invented for the mission"
+    "Special tool invented for the mission",
+    "Mission debrief .txt file created and saved to my computer"
   ],
 
   "mission_gear": [
     {
       "id": "projects",
       "name": "Projects",
-      "definition": "A permanent workspace in Claude that saves your instructions and files - so every new chat starts with your Minion already briefed.",
+      "definition": "A permanent workspace in ChatGPT that saves your instructions and files - so every new chat starts with your Minion already briefed.",
       "theme_translation": "Think of it as Gru's Lair. Without it - Gru would have to rebuild the entire operation from scratch every single morning. With it - everything is in place, ready to go, every time.",
       "why_useful": [
         "Your Minion remembers who they are and what they know",

@@ -107,7 +107,7 @@ export default function PromptBlock({ promptText, label, variant = 'core', subst
           }}
         >
           {state === 'copied'
-            ? <><Check size={11} /> COPIED! PASTE IN CLAUDE</>
+            ? <><Check size={11} /> COPIED! PASTE IN CHATGPT</>
             : state === 'error'
             ? 'COPY FAILED — SELECT MANUALLY'
             : <><Clipboard size={11} /> COPY</>
@@ -121,10 +121,16 @@ export default function PromptBlock({ promptText, label, variant = 'core', subst
           <span style={{ color: 'var(--yellow-text)', fontWeight: 600 }}>$ </span>
           {highlightText && displayText.includes(highlightText) ? (() => {
             const idx = displayText.indexOf(highlightText)
+            const hlBg = variant === 'advanced'
+              ? 'rgba(139,92,246,0.18)'
+              : 'rgba(242,155,28,0.15)'
+            const hlColor = variant === 'advanced'
+              ? 'var(--purple)'
+              : 'var(--yellow-text)'
             return (
               <>
                 <span style={{ color: 'var(--text-primary)' }}>{displayText.slice(0, idx)}</span>
-                <span style={{ background: 'rgba(242,155,28,0.15)', color: 'var(--yellow-text)', borderRadius: 2, padding: '0 1px' }}>{highlightText}</span>
+                <span style={{ background: hlBg, color: hlColor, borderRadius: 2, padding: '0 1px' }}>{highlightText}</span>
                 <span style={{ color: 'var(--text-primary)' }}>{displayText.slice(idx + highlightText.length)}</span>
               </>
             )

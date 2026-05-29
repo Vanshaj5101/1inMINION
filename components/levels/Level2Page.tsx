@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import { ExternalLink, Download, Copy, Check, CheckSquare, Square } from 'lucide-react'
+import { ExternalLink, Download, Copy, Check, CheckSquare, Square, FileText } from 'lucide-react'
 import { motion } from 'framer-motion'
 import PromptBlock from '../PromptBlock'
 import StepCard from '../StepCard'
@@ -26,7 +26,7 @@ export default function Level2Page() {
   // Shared checklist state — indices map to missionCheckItems in level2.ts
   // 0: created project  1: added instructions  2: uploaded data
   // 3-7: Q1-Q5          8: special tool
-  const [checked, setChecked] = useState<boolean[]>(() => new Array(10).fill(false))
+  const [checked, setChecked] = useState<boolean[]>(() => new Array(11).fill(false))
   const toggleCheck = useCallback((i: number) => {
     setChecked(prev => { const next = [...prev]; next[i] = !next[i]; return next })
   }, [])
@@ -43,17 +43,21 @@ export default function Level2Page() {
   const missionData = res['mission-data'] as { filename: string; description: string }
   const meetMinionPrompt: string    = res['prompt-meet-minion'].content
   const testMemoryPrompt: string    = res['prompt-test-memory'].content
-  const questions: Array<{ number: string; title: string; prompt: string }> = res['mission-questions'].questions
+  const questions: Array<{ number: string; title: string; prompt?: string; selfGuided?: boolean }> = res['mission-questions'].questions
   const missionInstruction: string  = res['mission-questions'].instruction
   const specialToolContent: string  = res['prompt-special-tool'].content
   const specialToolLabel: string    = res['prompt-special-tool'].label
   const specialToolInstruction: string = res['prompt-special-tool'].instruction
+  const debriefContent: string      = res['prompt-create-txt'].content
+  const debriefInstruction: string  = res['prompt-create-txt'].instruction
+  const debriefNote: string         = res['prompt-create-txt'].note
 
   const tocSections = [
     { id: 'overview',      label: 'Overview' },
     { id: 'setup',         label: 'Setup — 5 Steps' },
     { id: 'questions',     label: '5 Mission Questions' },
     { id: 'special-tool',  label: 'The Final Question' },
+    { id: 'debrief',       label: 'Mission Debrief' },
     { id: 'mission-check', label: 'Mission Check' },
   ]
 
@@ -94,8 +98,8 @@ export default function Level2Page() {
 
           {/* Card 01: Create Your Project (action sub-steps) */}
           <StepCard stepNumber={actionCard.card} title={actionCard.title} checked={checked[0]} onCheck={() => toggleCheck(0)}>
-            <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex">
-              Open Claude <ExternalLink size={13} />
+            <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex">
+              Open ChatGPT <ExternalLink size={13} />
             </a>
             <div className="space-y-2">
               {(actionCard.steps ?? []).map((step, i) => (
@@ -129,33 +133,75 @@ export default function Level2Page() {
               ))}
             </div>
 
-            {/* Project setup screenshot */}
+            {/* Create project modal screenshot */}
             <div className="space-y-2">
               <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
                 <img
-                  src="/level2_project_setup.png"
-                  alt="Claude Projects interface showing Instructions and Files panels"
+                  src="/chatgpt_create_project.png"
+                  alt="ChatGPT Create project modal with project name field"
                   style={{ width: '100%', display: 'block' }}
                 />
               </div>
               <p className="text-xs font-mono text-center" style={{ color: 'var(--text-muted)' }}>
-                Your screen should show a similar interface.
+                Name it after your Minion and click Create project.
+              </p>
+            </div>
+
+            {/* Project created screenshot */}
+            <div className="space-y-2">
+              <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                <img
+                  src="/chatgpt_project_created.png"
+                  alt="ChatGPT project interface showing Chats and Sources tabs"
+                  style={{ width: '100%', display: 'block' }}
+                />
+              </div>
+              <p className="text-xs font-mono text-center" style={{ color: 'var(--text-muted)' }}>
+                Your screen should look like this after creating the project.
               </p>
             </div>
           </StepCard>
 
           {/* Card 02: Add Instructions */}
           <StepCard stepNumber={copyCard.card} title={copyCard.title} description={copyCard.description} checked={checked[1]} onCheck={() => toggleCheck(1)}>
+            {(copyCard.steps ?? []).length > 0 && (
+              <div className="space-y-2">
+                {(copyCard.steps ?? []).map((step, i) => (
+                  <div key={step.id} className="flex items-start gap-3 p-3 rounded-lg" style={{ background: 'var(--bg-primary)', border: '1px solid var(--border)' }}>
+                    <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center font-mono font-bold text-xs mt-0.5" style={{ background: 'var(--yellow)', color: 'var(--text-primary)' }}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-xs mb-0.5" style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-primary)' }}>{step.short_title}</p>
+                      <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
             <PromptBlock
-              label="PROJECT INSTRUCTIONS - PASTE INTO CLAUDE PROJECT"
+              label="PROJECT INSTRUCTIONS — PASTE INTO PROJECT SETTINGS"
               promptText={projectInstructions}
               variant="core"
               substituteMinion={true}
             />
+            {/* Project settings screenshot */}
+            <div className="space-y-2">
+              <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                <img
+                  src="/chatgpt_project_settings.png"
+                  alt="ChatGPT Project settings modal showing Instructions field"
+                  style={{ width: '100%', display: 'block' }}
+                />
+              </div>
+              <p className="text-xs font-mono text-center" style={{ color: 'var(--text-muted)' }}>
+                Paste the instructions here, then click Save.
+              </p>
+            </div>
             <div className="p-3 rounded-lg flex items-start gap-2" style={{ background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)' }}>
               <span>💡</span>
               <p className="text-xs" style={{ color: 'var(--blue)', fontFamily: 'var(--font-body)' }}>
-                This is your Minion&apos;s permanent memory. Every new chat inside this Project starts with these instructions already loaded - no re-explaining needed.
+                This is your Minion&apos;s permanent memory. Every new chat inside this Project starts with these instructions already loaded — no re-explaining needed.
               </p>
             </div>
           </StepCard>
@@ -183,24 +229,38 @@ export default function Level2Page() {
                 DOWNLOAD
               </span>
             </a>
-            <div className="p-3 rounded-lg" style={{ background: 'rgba(255,215,0,0.06)', border: '1px solid rgba(255,215,0,0.2)' }}>
-              <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>
-                <span style={{ color: 'var(--yellow-text)' }}>⚠ Stay inside your Project </span>
-                when you upload - not a regular chat. Your project name should be visible in the sidebar.
-              </p>
-            </div>
-
-            {/* Post-upload screenshot */}
+            {/* Sources tab empty screenshot */}
             <div className="space-y-2">
               <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
                 <img
-                  src="/level2_with_data.png"
-                  alt="Claude Projects interface with instructions and mission data file uploaded"
+                  src="/chatgpt_sources_empty.png"
+                  alt="ChatGPT Sources tab showing Add sources button"
                   style={{ width: '100%', display: 'block' }}
                 />
               </div>
               <p className="text-xs font-mono text-center" style={{ color: 'var(--text-muted)' }}>
-                Your screen should show a similar interface.
+                Click Sources, then Add sources to upload the file.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-lg" style={{ background: 'rgba(255,215,0,0.06)', border: '1px solid rgba(255,215,0,0.2)' }}>
+              <p className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>
+                <span style={{ color: 'var(--yellow-text)' }}>⚠ Stay inside your Project </span>
+                when you upload — not a regular chat. Your project name should be visible at the top.
+              </p>
+            </div>
+
+            {/* Sources with data screenshot */}
+            <div className="space-y-2">
+              <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                <img
+                  src="/chatgpt_sources_with_data.png"
+                  alt="ChatGPT Sources tab showing minion_mission_data.csv uploaded"
+                  style={{ width: '100%', display: 'block' }}
+                />
+              </div>
+              <p className="text-xs font-mono text-center" style={{ color: 'var(--text-muted)' }}>
+                Your screen should look like this once the file is uploaded.
               </p>
             </div>
           </StepCard>
@@ -217,7 +277,30 @@ export default function Level2Page() {
               <p className="font-mono text-xs font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>PROMPT 1</p>
               <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{combinedCard.prompts?.[0]?.description}</p>
               <PromptBlock label="PROMPT - MEET YOUR MINION" promptText={meetMinionPrompt} variant="core" substituteMinion={true} />
+              <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                <img src="/chatgpt_prompt1_sent.png" alt="ChatGPT project with first prompt typed in" style={{ width: '100%', display: 'block' }} />
+              </div>
             </div>
+
+            {/* Between prompts — new chat instruction */}
+            <div className="flex items-start gap-3 p-4 rounded-lg" style={{ background: 'rgba(255,215,0,0.06)', border: '1px solid rgba(255,215,0,0.2)' }}>
+              <span className="text-base flex-shrink-0">💬</span>
+              <div className="space-y-3 flex-1">
+                <p className="text-sm font-bold" style={{ color: 'var(--yellow-text)', fontFamily: 'var(--font-body)' }}>
+                  Click the project name at the top left corner of the screen to go back to the project homescreen.
+                </p>
+                <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                  <img src="/chatgpt_project_header.png" alt="ChatGPT project name header at top left" style={{ width: '100%', display: 'block' }} />
+                </div>
+                <p className="text-sm font-bold" style={{ color: 'var(--yellow-text)', fontFamily: 'var(--font-body)' }}>
+                  From the project homescreen, type Prompt 2 in the chat input to start a new chat.
+                </p>
+                <div className="rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>
+                  <img src="/chatgpt_prompt2_ready.png" alt="ChatGPT project homescreen with Prompt 2 typed in" style={{ width: '100%', display: 'block' }} />
+                </div>
+              </div>
+            </div>
+
             <div className="space-y-2">
               <p className="font-mono text-xs font-bold tracking-widest" style={{ color: 'var(--text-muted)' }}>PROMPT 2</p>
               <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>{combinedCard.prompts?.[1]?.description}</p>
@@ -239,7 +322,7 @@ export default function Level2Page() {
           </div>
 
           <div className="space-y-4">
-            {questions.map(({ number, title, prompt }, qi) => {
+            {questions.map(({ number, title, prompt, selfGuided }, qi) => {
               const checkIdx = 4 + qi
               const isDone = checked[checkIdx]
               return (
@@ -266,11 +349,21 @@ export default function Level2Page() {
                       <span className="hidden sm:inline">{isDone ? 'Done' : 'Mark done'}</span>
                     </button>
                   </div>
-                  <PromptBlock
-                    label={`${number} - ${title.toUpperCase()}`}
-                    promptText={prompt}
-                    variant="core"
-                  />
+                  {selfGuided ? (
+                    <div className="flex items-start gap-3 p-4 rounded-lg" style={{ background: 'rgba(242,155,28,0.06)', border: '1px dashed rgba(242,155,28,0.4)' }}>
+                      <span className="text-base flex-shrink-0">🧠</span>
+                      <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
+                        <span className="font-bold" style={{ color: 'var(--yellow-text)' }}>Your turn. </span>
+                        Ask your Minion this question yourself — in your own words. There&apos;s no right way to phrase it. Try it, see what comes back, and adjust from there.
+                      </p>
+                    </div>
+                  ) : (
+                    <PromptBlock
+                      label={`${number} - ${title.toUpperCase()}`}
+                      promptText={prompt!}
+                      variant="core"
+                    />
+                  )}
                 </div>
               )
             })}
@@ -307,6 +400,71 @@ export default function Level2Page() {
               promptText={specialToolContent}
               variant="final"
             />
+          </div>
+        </section>
+
+        {/* Mission Debrief — highlighted activity */}
+        <section id="debrief">
+          <div
+            className="rounded-xl overflow-hidden"
+            style={{
+              border: '2px solid var(--yellow)',
+              boxShadow: '0 0 0 4px rgba(242,155,28,0.12), 0 8px 32px rgba(242,155,28,0.18)',
+              animation: 'shadowPulse 2.2s ease-in-out infinite',
+            }}
+          >
+            {/* Header stripe */}
+            <div
+              className="flex items-center justify-between px-5 py-4"
+              style={{ background: 'var(--yellow)' }}
+            >
+              <div className="flex items-center gap-3">
+                <FileText size={20} style={{ color: 'var(--text-primary)', flexShrink: 0 }} />
+                <div>
+                  <p className="font-mono font-bold text-xs tracking-widest" style={{ color: 'rgba(0,0,0,0.5)', letterSpacing: '0.16em' }}>
+                    // DO THIS BEFORE YOU LEAVE
+                  </p>
+                  <p className="font-bold text-lg leading-tight" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)', letterSpacing: '0.02em' }}>
+                    Create Your Mission Debrief File
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => toggleCheck(10)}
+                className="flex-shrink-0 flex items-center gap-1.5 transition-all duration-150"
+                style={{ color: checked[10] ? 'var(--green)' : 'rgba(0,0,0,0.45)', fontFamily: 'var(--font-mono)', fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+              >
+                {checked[10] ? <CheckSquare size={20} /> : <Square size={20} />}
+                <span className="hidden sm:inline font-bold">{checked[10] ? 'Done' : 'Mark done'}</span>
+              </button>
+            </div>
+
+            {/* Body */}
+            <div
+              className="px-5 py-5 flex flex-col gap-4"
+              style={{ background: 'var(--bg-warm)' }}
+            >
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>
+                {debriefInstruction}
+              </p>
+
+              <PromptBlock
+                label="MISSION DEBRIEF — COMPILE EVERYTHING"
+                promptText={debriefContent}
+                variant="final"
+              />
+
+              {/* Note — standout box */}
+              <div
+                className="flex items-start gap-3 p-4 rounded-lg"
+                style={{ background: 'rgba(242,155,28,0.12)', border: '1.5px solid rgba(242,155,28,0.5)' }}
+              >
+                <span className="text-lg flex-shrink-0">💾</span>
+                <p className="text-sm font-bold leading-relaxed" style={{ color: 'var(--yellow-text)', fontFamily: 'var(--font-body)' }}>
+                  {debriefNote}
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 

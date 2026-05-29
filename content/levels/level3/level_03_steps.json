@@ -1,32 +1,64 @@
 {
   "level": "03",
   "title": "Train Your Minion",
-  "cards": [
+  "steps": [
     {
-      "card": "01",
-      "title": "Run Without Skill",
-      "type": "prompt",
-      "resource_id": "prompt-no-skill",
-      "description": "Paste the prompt into a new chat inside your Project. Claude will respond immediately - save the output, you will compare it in Step 3."
+      "id": "step-01",
+      "short_title": "Open Explore GPTs",
+      "description": "Click Explore GPTs in the left sidebar of ChatGPT.",
+      "type": "action"
     },
     {
-      "card": "02",
-      "title": "Add the Skill",
-      "type": "action-download",
-      "resource_id": "skill-file",
-      "description": "Navigate to Customize Claude and upload the Skill file to train your Minion.",
-      "steps": [
-        { "id": "step-02", "short_title": "Open Customize", "description": "Click Customize Claude in the left sidebar of Claude." },
-        { "id": "step-03", "short_title": "Go to Skills",   "description": "Click Skills inside the Customize panel." },
-        { "id": "step-04", "short_title": "Upload the Skill", "description": "Click Add Skill, then Create Skill, then upload the skill file below." }
-      ]
+      "id": "step-02",
+      "short_title": "Click + Create",
+      "description": "Click the + Create button in the top right corner of the Explore GPTs page.",
+      "type": "action"
     },
     {
-      "card": "03",
-      "title": "Run Same Prompt Again",
+      "id": "step-03",
+      "short_title": "Switch to Configure",
+      "description": "Click the Configure tab at the top of the GPT builder.",
+      "type": "action"
+    },
+    {
+      "id": "step-04",
+      "short_title": "Add Name",
+      "description": "Type the following name in the Name field.",
+      "type": "copy",
+      "resource_id": "gpt-name"
+    },
+    {
+      "id": "step-05",
+      "short_title": "Add Description",
+      "description": "Type the following in the Description field.",
+      "type": "copy",
+      "resource_id": "gpt-description"
+    },
+    {
+      "id": "step-06",
+      "short_title": "Add Instructions",
+      "description": "Download the instructions file below. Open it, copy everything, and paste into the Instructions field.",
+      "type": "download",
+      "resource_id": "gpt-instructions"
+    },
+    {
+      "id": "step-07",
+      "short_title": "Enable All Capabilities",
+      "description": "Scroll down to Capabilities and check all options - Web Search, Apps, Canvas, Image Generation, and Code Interpreter & Data Analysis.",
+      "type": "action"
+    },
+    {
+      "id": "step-08",
+      "short_title": "Save Your GPT",
+      "description": "Click the Create button in the top right corner to save. When the confirmation dialog appears, click View GPT.",
+      "type": "action"
+    },
+    {
+      "id": "step-09",
+      "short_title": "Run With Your GPT",
+      "description": "Inside your Custom GPT, upload your mission debrief .txt file from Level 2 and send this prompt.",
       "type": "prompt",
-      "resource_id": "prompt-with-skill",
-      "description": "Copy the exact same prompt. Paste it into Claude. Watch what happens differently this time."
+      "resource_id": "prompt-with-gpt"
     }
   ]
 }

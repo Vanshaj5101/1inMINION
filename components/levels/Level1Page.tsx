@@ -79,8 +79,8 @@ export default function Level1Page() {
           <p className="section-eyebrow">// PART 01 — SEE THE DIFFERENCE</p>
 
           <StepCard stepNumber={vagueCard.card} title={vagueCard.title} description={vagueCard.description} checked={checked[0]} onCheck={() => toggleCheck(0)}>
-            <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex">
-              OPEN CLAUDE.AI <ExternalLink size={12} />
+            <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" className="btn-secondary inline-flex">
+              OPEN CHATGPT <ExternalLink size={12} />
             </a>
             <PromptBlock label={res['prompt-vague'].label.toUpperCase()} promptText={vaguePrompt} variant="test" substituteMinion={true} />
             <div className="p-3 rounded-lg" style={{ background: 'rgba(255,215,0,0.06)', border: '1px solid rgba(255,215,0,0.2)' }}>
@@ -254,6 +254,8 @@ export default function Level1Page() {
                           label={adv.label.toUpperCase()}
                           promptText={adv.try_prompt?.content ?? ''}
                           variant="advanced"
+                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                          highlightText={(adv as any).added_highlight ?? null}
                         />
                         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                         {(adv.try_prompt as any)?.what_changed && (

@@ -2,26 +2,31 @@
   "level": "03",
   "resources": [
     {
-      "id": "prompt-no-skill",
-      "type": "prompt",
-      "label": "Pitch Prompt - Without Skill",
-      "instruction": "Open your Project from Level 2. Start a new chat. Copy and paste this prompt:",
-      "content": "Create a pitch deck for Operation: Steal the Sun using our mission plan and findings."
+      "id": "gpt-name",
+      "type": "copy",
+      "label": "GPT Name",
+      "content": "1inMINION Project Manager"
     },
     {
-      "id": "skill-file",
+      "id": "gpt-description",
+      "type": "copy",
+      "label": "GPT Description",
+      "content": "Upload your project brief and get a structured, aesthetic HTML project plan with risks, a quick win, and an interactive checklist."
+    },
+    {
+      "id": "gpt-instructions",
       "type": "download",
-      "label": "Pitch Deck Skill File",
-      "filename": "pitch_skill.md",
-      "description": "This Skill trains your Minion to build structured, data-backed pitch decks. It works in any Project - not just this one."
+      "label": "GPT Instructions File",
+      "filename": "custom_gpt_project_manager.txt",
+      "description": "The full instruction set for your Custom GPT. Download this file, copy the entire contents, and paste into the Instructions field."
     },
     {
-      "id": "prompt-with-skill",
+      "id": "prompt-with-gpt",
       "type": "prompt",
-      "label": "Pitch Prompt - With Skill",
-      "instruction": "Go back to your Project. Start a new chat. Copy and paste the exact same prompt:",
-      "content": "Create a pitch deck for Operation: Steal the Sun using our mission plan and findings.",
-      "note": "Same words. Watch what your Minion does differently this time."
+      "label": "Run Your Custom GPT",
+      "instruction": "Upload your mission debrief .txt file from Level 2 into the chat, then send this prompt:",
+      "content": "Here is my project brief. Please create my project plan.",
+      "note": "Your Custom GPT will read your mission debrief and generate a fully structured HTML project plan - with risks, a quick win, and an interactive checklist."
     }
   ]
 }

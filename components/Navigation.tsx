@@ -5,13 +5,17 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-const LEVELS = [1, 2, 3, 4]
-const LEVEL_LABELS = ['Level 1', 'Level 2', 'Level 3', 'Level 4']
+// const LEVELS = [1, 2, 3, 4]           // Level 04 temporarily hidden
+// const LEVEL_LABELS = ['Level 1', 'Level 2', 'Level 3', 'Level 4']
+const LEVELS = [1, 2, 3]
+const LEVEL_LABELS = ['Level 1', 'Level 2', 'Level 3']
 
 export default function Navigation() {
   const pathname = usePathname()
   const [completedLevels, setCompletedLevels] = useState<number[]>([])
   const [hoveredLevel, setHoveredLevel] = useState<number | null>(null)
+
+  if (pathname === '/slides') return null
 
   const isHomePage  = pathname === '/' || pathname === '/onboarding'
   const levelMatch  = pathname.match(/^\/level\/(\d+)/)
@@ -50,14 +54,15 @@ export default function Navigation() {
         >
           {/* Connector lines — positioned relative to full track, circle-center to circle-center */}
           <div style={{ position: 'relative', height: 40 }}>
-            {[0, 1, 2].map(idx => {
+            {/* [0, 1, 2] — Level 04 temporarily hidden */}
+            {[0, 1].map(idx => {
               const nextReached = completedLevels.includes(idx + 2) || (idx + 2) === currentLevel
               return (
                 <div key={idx} style={{
                   position: 'absolute',
                   top: 19,
-                  left: `calc(${12.5 + idx * 25}% + 20px)`,
-                  width: `calc(25% - 40px)`,
+                  left: `calc(${16.67 + idx * 33.33}% + 20px)`,
+                  width: `calc(33.33% - 40px)`,
                   height: 2,
                   background: nextReached
                     ? 'linear-gradient(to right, var(--yellow-muted), rgba(255,215,0,0.35))'
@@ -70,7 +75,8 @@ export default function Navigation() {
             })}
 
             {/* Circles */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', height: '100%', position: 'relative', zIndex: 1 }}>
+            {/* gridTemplateColumns: 'repeat(4, 1fr)' — Level 04 temporarily hidden */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', height: '100%', position: 'relative', zIndex: 1 }}>
               {LEVELS.map((n, idx) => {
                 const isCompleted = completedLevels.includes(n)
                 const isCurrent   = n === currentLevel
@@ -85,7 +91,7 @@ export default function Navigation() {
                     >
                       <Link
                         href={`/level/${n}`}
-                        aria-label={`Level ${n} of 4`}
+                        aria-label={`Level ${n} of 3`}
                         style={{ textDecoration: 'none', display: 'block' }}
                       >
                         <div style={{
@@ -126,7 +132,8 @@ export default function Navigation() {
           </div>
 
           {/* Labels row — grid mirrors circles grid for perfect alignment */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', marginTop: 6 }}>
+          {/* gridTemplateColumns: 'repeat(4, 1fr)' — Level 04 temporarily hidden */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', marginTop: 6 }}>
             {LEVELS.map((n, idx) => {
               const isCompleted = completedLevels.includes(n)
               const isCurrent   = n === currentLevel
@@ -146,8 +153,37 @@ export default function Navigation() {
         </div>
       )}
 
-      {/* Right: spacer mirrors logo width */}
-      <div style={{ width: 160, flexShrink: 0 }} />
+      {/* Right: slide deck button */}
+      <Link
+        href="/slides"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          width: 160,
+          flexShrink: 0,
+          display: 'flex',
+          justifyContent: 'flex-end',
+          textDecoration: 'none',
+        }}
+      >
+        <span
+          style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: '0.1em',
+            color: '#1F2937',
+            background: 'var(--yellow)',
+            border: '1px solid transparent',
+            padding: '7px 16px',
+            borderRadius: 8,
+            whiteSpace: 'nowrap',
+            cursor: 'pointer',
+          }}
+        >
+          SLIDE DECK ↗
+        </span>
+      </Link>
     </nav>
   )
 }
